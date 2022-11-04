@@ -11,22 +11,22 @@ include_once("conexion.php");
 <body>
     <table>
 	<img src="img/logo.png" class="logo" >
-			<div id="barrabuscar">
+	     <div id="barrabuscar">
 		<form method="POST">
 		<input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">
 		</form>
-        </form>
-        <form method="get" action="../CRUDCLIENTES/index.php">
-        <button type="submit">Administrar Clientes
-</form>
-<form method="get" action="../../index.html">
- <button type="submit">INICIO
-</form>
+         </div>
 
-        <form method="POST" action="create_excel.php">
-				<button class="btn btn-success pull-right" name="export"><span class="glyphicon glyphicon-print"></span>Exportar excel</button>
-			</form>
-		</div>
+        <tr><th colspan="10">
+        <div class="divsup"> 
+        <a class="INICIO" href="../../index.html"><span class="glyphicon glyphicon-print"></span>Inicio</a>
+
+        <a class="AdminClientes" href="../CRUDCLIENTES/index.php"><span class="glyphicon glyphicon-print"></span>Administrar clientes</a>
+        
+        <a class=" ExportarExcel" href="">Exportar Excel</a>
+        </div>
+           </th></tr>
+
 			<tr><th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Agregar</a></th></tr>
 			<tr>
                     <th>Id Producto</th>
