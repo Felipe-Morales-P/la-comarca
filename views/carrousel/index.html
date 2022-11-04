@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carousel /papeleria comarca</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+	<link rel="stylesheet" href="../carrousel/css/estilos.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lora:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+	<div class="contenedor">
+		<main class="contenido-principal">
+			<body>
+				<div class="Alinear_Flex">
+					<img src="img/1.png"  alt="papeleria la comarca" class="contenido-principal__imagen">
+		         </div>
+			<div class="contenido-principal__contenedor">
+				<h1 class="contenido-principal__titulo">PAPELERIA LA COMARCA</h1>
+			</div>
+		</body>
+		</main>
+
+		<div class="carousel">
+			<div class="carousel__contenedor">
+				<button aria-label="Anterior" class="carousel__anterior">
+					<i class="fas fa-chevron-left"></i>
+				</button>
+
+				<div class="carousel__lista">
+					<div class="carousel__elemento">
+						<button id="open">
+							<img src="img/2.png" width="200" height="120" alt="texto de la img">
+						</button>
+
+						  <div id="modal_container" class="modal_container">
+							<div class="modal">
+							  <h2>utiles escolares</h2>
+							  <p>
+								detalle del prodducto
+							  </p>
+							  <button id="close">Cerrar</button>
+							</div>
+						  </div>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/3.png" width="200" height="120" alt="texto de la img">
+						<p>productos de aseo </p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/4.png" width="190" height="120" alt="texto de la img">
+						<p>perfumes</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/5.png" width="180" height="120" alt="texto de la img">
+						<p>accesorios</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/6.png" width="160" height="120" alt="texto de la img">
+						<p>perfumes</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/7.png" width="160" height="120" alt="texto de la img">
+						<p>perfumes</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/8.png" width="160" height="120" alt="texto de la img">
+						<p>limpiador de rostro</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/9.png" width="160" height="120" alt="texto de la img">
+						<p></p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/10.png" width="160" height="120" alt="texto de la img">
+						<p>maquillaje</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/11.png" width="160" height="120" alt="texto de la img">
+						<p>chocolatina</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/12.png" width="160" height="120" alt="texto de la img">
+						<p>dulceria</p>
+					</div>
+					<div class="carousel__elemento">
+						<img src="img/13.png" width="160" height="120" alt="texto de la img">
+						<p>dulceria</p>
+					</div>
+				</div>
+
+				<button aria-label="Siguiente" class="carousel__siguiente">
+					<i class="fas fa-chevron-right"></i>
+				</button>
+			</div>
+
+			<div role="tablist" class="carousel__indicadores"></div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
