@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2022 a las 07:50:25
+-- Tiempo de generación: 04-11-2022 a las 16:49:35
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -48,18 +48,6 @@ INSERT INTO `administrador` (`idAdmin`, `tipoIdentificacionA`, `numIdentificacio
 -- --------------------------------------------------------
 
 --
--- Estructura Stand-in para la vista `articulos_de_mayor_valor_vista`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `articulos_de_mayor_valor_vista` (
-`idProductos` int(11)
-,`nombreProducto` varchar(50)
-,`precioVenta` varchar(11)
-);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `clientes`
 --
 
@@ -82,7 +70,9 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`idCliente`, `tipoIdentificacion`, `numIdentificacionC`, `nombreCliente`, `correoCliente`, `telefonoCliente`, `direccionCliente`, `contraseñaCliente`, `usuarioCliente`) VALUES
 (13, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/', 'Jeffer126'),
 (14, 'C.C', 54822585, 'Juanito Fonseca', 'fonseca@gmail.com', '3214594862', 'call 65 sur N87 M05', '$2y$10$lTk5QzyDGsrrdVco3cAFL.K6XM.k8IuGhKphKMRERdL', 'Juanito'),
-(15, 'C.C', 2489546, 'Carlitos Lucresio', 'carlitos1@gmail.com', '3214854862', 'call 78 Norte N77 M04', '$2y$10$OIbMuRJj0n6MYGmMctuLGOMYrH7gADS/KEYv.6i7Jhr', 'Carlitos16');
+(15, 'C.C', 2489546, 'Carlitos Lucresio', 'carlitos1@gmail.com', '3214854862', 'call 78 Norte N77 M04', '$2y$10$OIbMuRJj0n6MYGmMctuLGOMYrH7gADS/KEYv.6i7Jhr', 'Carlitos16'),
+(0, 'controls', 15081055, 'Jose', 'jos@gmail.com', '3214877859', 'calle 45 b sur', '123', ''),
+(0, 'Cedula de ', 1515151, 'E', 'e@gmail.com', '215554', 'da4', '123', '');
 
 -- --------------------------------------------------------
 
@@ -92,12 +82,41 @@ INSERT INTO `clientes` (`idCliente`, `tipoIdentificacion`, `numIdentificacionC`,
 
 CREATE TABLE `compra` (
   `idCompra` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apellido` varchar(50) NOT NULL,
-  `telefono` varchar(11) NOT NULL,
-  `localidad` varchar(50) NOT NULL,
-  `direccion` varchar(50) NOT NULL
+  `Cantidad` varchar(50) NOT NULL,
+  `Producto` varchar(11) NOT NULL,
+  `Precio` varchar(50) NOT NULL,
+  `total` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `Cantidad`, `Producto`, `Precio`, `total`) VALUES
+(4, '1', 'Lapiz', '1000', '1000'),
+(0, '', '', '', ''),
+(0, '1', 'Lapiz', '1000', '1000'),
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `envio`
+--
+
+CREATE TABLE `envio` (
+  `idenvio` int(11) NOT NULL,
+  `Direccion` varchar(50) NOT NULL,
+  `Localidad` varchar(50) NOT NULL,
+  `Telefono` varchar(50) NOT NULL,
+  `Barrio` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `envio`
+--
+
+INSERT INTO `envio` (`idenvio`, `Direccion`, `Localidad`, `Telefono`, `Barrio`) VALUES
+(1, 'calle 3', 'kannedy', '122454', 'bor'),
+(5, 'g', 'g', 'g', 'g');
 
 -- --------------------------------------------------------
 
@@ -161,82 +180,25 @@ INSERT INTO `productos` (`idProductos`, `categoriaProducto`, `nombreProducto`, `
 (11, 'papeleria', 'Lupa', 'Lupa', 1, '2500', '2500'),
 (12, 'papeleria', 'Block Iris', 'Econo  Tamaño Oficio - Carta', 1, '2300', '2300');
 
--- --------------------------------------------------------
-
---
--- Estructura para la vista `articulos_de_mayor_valor_vista`
---
-DROP TABLE IF EXISTS `articulos_de_mayor_valor_vista`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `articulos_de_mayor_valor_vista`  AS SELECT `productos`.`idProductos` AS `idProductos`, `productos`.`nombreProducto` AS `nombreProducto`, `productos`.`precioVenta` AS `precioVenta` FROM `productos` WHERE `productos`.`nombreProducto` is not null AND `productos`.`precioVenta` > 1.000 ORDER BY `productos`.`precioVenta` AS `DESCdesc` ASC  ;
-
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `administrador`
+-- Indices de la tabla `envio`
 --
-ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`idAdmin`);
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`idCliente`);
-
---
--- Indices de la tabla `compra`
---
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`idCompra`);
-
---
--- Indices de la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD PRIMARY KEY (`idFactura`);
-
---
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`idProductos`);
+ALTER TABLE `envio`
+  ADD PRIMARY KEY (`idenvio`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `administrador`
+-- AUTO_INCREMENT de la tabla `envio`
 --
-ALTER TABLE `administrador`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'esta es la forma de al identificar del cliente en la tabla', AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `compra`
---
-ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `factura`
---
-ALTER TABLE `factura`
-  MODIFY `idFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `idProductos` int(11) NOT NULL AUTO_INCREMENT COMMENT ' Esta es la identificacion de l producto', AUTO_INCREMENT=13;
+ALTER TABLE `envio`
+  MODIFY `idenvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
