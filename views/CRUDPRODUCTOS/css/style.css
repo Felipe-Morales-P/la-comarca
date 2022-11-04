@@ -94,11 +94,11 @@ a,input[type="submit"],button
 	font-size: 14px;
 	text-align:center;
 	display: inline-block;
-	background-color:#2f6edb;
+	background-color: #809af0b6;
 	padding: 6px 10px;
 	border-radius:10px;
 	text-decoration: none;
-
+	color: rgba(0, 0, 0);
 	cursor:pointer;
 }
 h1
