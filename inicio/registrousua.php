@@ -37,7 +37,7 @@
 
                     <select class="cajaentradatexto" name="tipoIdeC" value="" placeholder="Tipo identificación">
                         <option value="controls">Tipo de Documento</option>
-                        <option value="controls">Cedula de Ciudadania</option>
+                        <option value="CC">Cedula de Ciudadania</option>
                         <option value="controls">Cedula de Extrajeria </option>
                         <option value="controls">Pasaporte</option>
                         <option value="controls">Tarjeta de identidad</option>

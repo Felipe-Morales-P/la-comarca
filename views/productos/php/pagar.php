@@ -11,8 +11,7 @@ for($i=0;$i<5;$i++) {
 $password .= substr($str,rand(0,64),1);
 }
 $ref_cliente = $password;
-$query = "INSERT INTO compra 
-VALUES (idCompra, fechaCompra, apellido, telefono, localidad, direccion)";
+$query = "INSERT INTO compra VALUES (idCompra,Cantidad, Producto, Precio, total)";
 $result = mysqli_query($con,$query);
 
 
@@ -49,7 +48,7 @@ if(isset($_SESSION['carrito'])){
                     $articulo = $carrito_mio[$i]['titulo'];
                     $precio = $carrito_mio[$i]['precio'];
                     $total_precio = $precio * $cantidad;
-                    $query = "INSERT INTO compra (re,nombre,apellido,telefono,localidad,direccion)
+                    $query = "INSERT INTO compra (idCompra,Cantidad,Producto,Precio,total)
                     VALUES ('$ref', '$cantidad', '$articulo', '$precio', '$total_precio')";
                     $result = mysqli_query($con,$query); 
            
@@ -82,14 +81,14 @@ $estado = 'Falta de pago';
 $medio = 'Tarjeta bancaria';
 $total_pedido = $total;
 
-$query = "INSERT INTO compra (idCompra, nombre, apellido, telefono, localidad, direccion)
+$query = "INSERT INTO compra (idCompra, Cantidad, Producto, Precio, total)
 VALUES ('$ref', '$ref_user', '$estado', '$medio', '$total_pedido')";
-$result = mysqli_query($conexion,$query);
+$result = mysqli_query($con,$query);
 
 
 unset( $_SESSION["carrito"] ); 
 
-header("Location: ../Carrito de compra paso 6/index.php");
+header("Location: envio.php");
 
 
 

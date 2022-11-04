@@ -69,12 +69,11 @@ include("modal_cart.php");
 
                     <form id="formulario" name="formulario" method="post" action="cart.php">
                         <div class="blog-post ">
-                            <img src="../img/utiles/lap<?php echo $resultado["img"]; ?>.jpg" >
+                            <img src="../img/utiles/lap.jpg" >
                             <a class="category">
                                 <?php echo $resultado["precioVenta"]; ?>$
                             </a>
                                 <div class="text-content">
-                                    <input name="ref" type="hidden" id="ref" value="<?php echo $resultado["ref"]; ?>" />                           
                                     <input name="precio" type="hidden" id="precio" value="<?php echo $resultado["precioVenta"]; ?>" />
                                     <input name="titulo" type="hidden" id="titulo" value="<?php echo $resultado["nombreProducto"]; ?>" />
                                     <input name="cantidad" type="hidden" id="cantidad" value="1" class="pl-2" />

@@ -218,8 +218,7 @@ include("conexion.php");
 
         <?php
         $busqueda = mysqli_query($conex, "SELECT * FROM compra");
-        if ($resultado = mysqli_fetch_assoc($busqueda)) {
-        }
+
         ?>
 
 
@@ -227,13 +226,8 @@ include("conexion.php");
         <div class="container p-5">
             <form class="row g-3 needs-validation" action="pagar.php" method="POST" novalidate>
 
-                <p style="font-weight: bold; color: #0F6BB7; font-size: 22px;">Datos de envío</p>
-                <input type="text" class="cajaentradatexto" placeholder=" Ingresar Nombre de Usuario" name="noma" required="">
-                <input type="email" class="cajaentradatexto" placeholder=" Ingresar Apellido" name="apell" required="">
-                <input type="text" class="cajaentradatexto" placeholder=" Ingresar Telefono" name="tela" required="">
-                <input type="text" class="cajaentradatexto" placeholder=" Ingresar Localidad/Barrio" name="loca" required="">
-                <input type="text" class="cajaentradatexto" placeholder=" Ingresar Dirección" name="direca" required="">
-                <a href="location: utiles.php"><button class="btn btn-success mb-4" type="submit" name="enviar">Pagar y finalizar</button></a>
+                
+                <a href="location: envio.php"><button class="btn btn-success mb-4" type="submit" name="enviar">Registrar Productos</button></a>
             </form>
         </div>
 
@@ -244,16 +238,16 @@ include("conexion.php");
             $apellido = $_POST['apell'];
             $tela = $_POST['tela'];
             $locali = $_POST['loca'];
-            $direcc = $_POST['direca'];
+            $direccr = $_POST['direca'];
 
 
-            $guardar = mysqli_query($conn, "INSERT INTO compra (idCompra, nombre, apellido, telefono, localidad, direccion)  VALUES ('', '$nombrea', '$apellido', '$tela', '$locali' '$direccr')");
+            $guardar = mysqli_query($conex, "INSERT INTO compra (idCompra, nombre, apellido, telefono, localidad, direccion)  VALUES ('', '$nombrea', '$apellido', '$tela', '$locali' '$direccr')");
 
             if (!$guardar) {
                 echo "error al registrar";
             } else {
                 echo "El registro fue valido";
-                header("location: utiles.php");
+                header("location: envio.php");
             }
         }
         mysqli_close($conex);
