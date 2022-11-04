@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/../assets/CSS/estilosinicio.css">
     <title>Registro Clientes</title>
 
     <!--aquí va la conexión a la base de datos-->
