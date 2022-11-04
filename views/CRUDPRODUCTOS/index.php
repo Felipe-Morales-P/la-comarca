@@ -9,24 +9,37 @@ include_once("conexion.php");
 		<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <table>
-	<img src="img/logo.png" class="logo" >
+
+
+<table>
+
+
+<img src="img/logo.png" class="logo" >
 			<div id="barrabuscar">
+
 		<form method="POST">
 		<input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">
 		</form>
-        </form>
+
+<div class=divsup>
+
         <form method="get" action="../CRUDCLIENTES/index.php">
-        <button type="submit">Administrar Clientes
-</form>
-<form method="get" action="../../index.html">
- <button type="submit">INICIO
+        <button type="submit">Administrar Clientes</button>
 </form>
 
-        <form method="POST" action="create_excel.php">
-				<button class="btn btn-success pull-right" name="export"><span class="glyphicon glyphicon-print"></span>Exportar excel</button>
-			</form>
-		</div>
+
+<form method="get" action="../../index.html">
+ <button type="submit">INICIO</button>
+</form>
+
+
+<form method="POST" action="create_excel.php">
+	<button class="btn btn-success pull-right" name="export"><span class="glyphicon glyphicon-print"></span>Exportar excel</button>
+</form>
+</div>
+
+
+
 			<tr><th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Agregar</a></th></tr>
 			<tr>
                     <th>Id Producto</th>
@@ -64,6 +77,16 @@ $queryusuarios = mysqli_query($conn, "SELECT * FROM productos ORDER BY idProduct
 }
         ?>
     </table>
+
+
+
+
+
+
+
+
+
+
 	 <script>
 function abrirform() {
   document.getElementById("formregistrar").style.display = "block";

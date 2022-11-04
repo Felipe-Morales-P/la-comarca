@@ -28,7 +28,7 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 
 					<br><br>
 					<label for="usuario">USUARIO</label>
-					<br><input type="text" class="cajaentradatextoUsuario" placeholder="Ingrese Usuario" name="nombreCliente" required=""><br><br>
+					<br><input type="text" class="cajaentradatextoUsuario" placeholder="Ingrese Usuario" name="usuarioCliente" required=""><br><br>
 					<label for="password">CCONTRASEÑA</label>
 					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese Contraseña" name="contraseñaCliente" required="">
 					<br><br><br>

@@ -23,6 +23,15 @@ body
 	height: 50px;
 	text-align: center;
 }
+
+.divsup{
+
+	background-color: #38678f;
+	z-index: 1;
+	height: 50px;
+	
+}
+
 table
 {
 	text-align:center;

@@ -2,10 +2,10 @@
 
 //Validar usuario
 
-$nombreCliente = $_POST['nombreCliente'];
+$usuarioCliente = $_POST['usuarioCliente'];
 $contraseñaCliente = $_POST['contraseñaCliente'];
 $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEXIÓN");
-$consulta = "SELECT * FROM clientes WHERE nombreCliente= '$nombreCliente' AND contraseñaCliente='$contraseñaCliente'";
+$consulta = "SELECT * FROM clientes WHERE usuarioCliente= '$usuarioCliente' AND contraseñaCliente='$contraseñaCliente'";
 
 $resultado = mysqli_query($con, $consulta);
 

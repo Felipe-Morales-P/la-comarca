@@ -48,6 +48,7 @@
                     <input type="email" class="cajaentradatexto" placeholder="&#128273 Ingresar Correo" name="corrCl" required="">
                     <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="teleCl" required="">
                     <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Dirección" name="direCl" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Usuario" name="UsuCl" required="">
                     <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="">
 
                     <br>
@@ -73,13 +74,16 @@
             $correoC = $_POST['corrCl'];
             $telefonoC = $_POST['teleCl'];
             $direccionC = $_POST['direCl'];
-            $contrasenaC = $_POST['contraCl'];
+            $contraseña_fuerte = password_hash ($contraCL,PASSWORD_BCRYPT);
+            $usuarioC = $_POST['UsuCl'];
 
-            $guardar = mysqli_query($conex, "INSERT INTO clientes (tipoIdentificacion, numIdentificacionC, nombreCliente, correoCliente, telefonoCliente, direccionCliente, contraseñaCliente) VALUES ( '$tipoIdC', '$numIdC','$nombreC', '$correoC', '$telefonoC', '$direccionC', '$contrasenaC')");
+            if (isset ($_POST["btnregistrar"]))
+
+            $guardar = mysqli_query($conex, "INSERT INTO clientes (tipoIdentificacion, numIdentificacionC, nombreCliente, correoCliente, telefonoCliente, direccionCliente, contraseñaCliente, usuarioCliente) VALUES ( '$tipoIdC', '$numIdC','$nombreC', '$correoC', '$telefonoC', '$direccionC', '$contraseña_fuerte', '$usuarioC')");
 
             if (!$guardar) {
 
-                echo "error al registrar";
+                echo "Error: ".$queryregistrar."<br>".mysql_error($conn);
             } else {
         ?>
                 <script>
