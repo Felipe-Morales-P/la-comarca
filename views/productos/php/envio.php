@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../assets/CSS/estilosregistro.css">
+    <link rel="stylesheet" type="text/css" href="/../assets/CSS/estilosinicio.css">
     <title>Registro Clientes</title>
 
     <!--aquí va la conexión a la base de datos-->
@@ -23,14 +23,10 @@
 
             <ul>
                 <li><a href="../index.html" class="Boton">INICIO</a></li>
-
-
             </ul>
 
             <div class="login-box">
                 <h1>REGISTRO CLIENTES</h1>
-
-
                 <!--Formulario para registrar-->
                 
                 <form method="POST" action="" class="form">
@@ -40,15 +36,10 @@
                     <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="tele" required="">
                     <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Barrio" name="bar" required="">
                     <br>
-                    <input type="submit" class="inicioboton" name="enviar" value="Registrar">
-                    <p><a class="textofinal" href="../index.html">¿Ya tienes una cuenta?</a></p>
+                    <input type="submit" class="inicioboton" name="enviar" value="Enviar">
 
                     <br>
                 </form>
-
-
-
-
             </div>
         </div>
         <?php
