@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2022 a las 16:49:35
+-- Tiempo de generación: 16-11-2022 a las 16:36:13
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -93,9 +93,26 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`idCompra`, `Cantidad`, `Producto`, `Precio`, `total`) VALUES
-(4, '1', 'Lapiz', '1000', '1000'),
+(0, '1', 'Aretes', '3000', '3000'),
+(0, '1', 'Aretes', '3000', '3000'),
+(0, '1', 'Perfume', '90000', '90000'),
+(0, '1', 'Cheetos', '5000', '5000'),
+(0, '1', 'Frunas', '500', '500'),
+(0, '1', 'Barritas de', '2500', '2500'),
+(0, '', '', '', ''),
+(0, '1', 'Alfiler Caj', '2000', '2000'),
+(0, '1', 'Lapiz', '1000', '1000'),
+(0, 'wfeY', 'Falta de pa', 'Tarjeta bancaria', '3000'),
 (0, '', '', '', ''),
 (0, '1', 'Lapiz', '1000', '1000'),
+(0, 'Xxd4s', 'Falta de pa', 'Tarjeta bancaria', '1000'),
+(0, '', '', '', ''),
+(0, 'Usj7', 'Falta de pa', 'Tarjeta bancaria', '0'),
+(0, '', '', '', ''),
+(0, '1', 'Lapiz', '1000', '1000'),
+(0, '1', 'Lapiz', '1000', '1000'),
+(0, 'rDP7g', 'Falta de pa', 'Tarjeta bancaria', '2000');
+
 -- --------------------------------------------------------
 
 --
@@ -115,8 +132,9 @@ CREATE TABLE `envio` (
 --
 
 INSERT INTO `envio` (`idenvio`, `Direccion`, `Localidad`, `Telefono`, `Barrio`) VALUES
-(1, 'calle 3', 'kannedy', '122454', 'bor'),
-(5, 'g', 'g', 'g', 'g');
+(9, 'soacha', 'soacha', 'aja nose', 'nose'),
+(10, 'calle 48 A sur', 'a', 't', 't'),
+(11, 'dr 12', 'san da', '12312', 'villa');
 
 -- --------------------------------------------------------
 
@@ -155,6 +173,7 @@ INSERT INTO `factura` (`idFactura`, `numeroFact`, `numeroPed`, `fechaCre`, `fech
 CREATE TABLE `productos` (
   `idProductos` int(11) NOT NULL COMMENT ' Esta es la identificacion de l producto',
   `categoriaProducto` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `img` varchar(150) COLLATE latin1_general_ci NOT NULL,
   `nombreProducto` varchar(50) CHARACTER SET latin1 NOT NULL COMMENT 'este es el nombre del producto',
   `descripcionProducto` varchar(50) CHARACTER SET latin1 NOT NULL,
   `cantidadProductos` int(11) NOT NULL,
@@ -166,19 +185,42 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`idProductos`, `categoriaProducto`, `nombreProducto`, `descripcionProducto`, `cantidadProductos`, `precioVenta`, `precioCompra`) VALUES
-(1, 'papeleria', 'Lapiz', 'B2 - HB2 - BIG', 1, '1000', '1000'),
-(2, 'papeleria', 'Alfiler Caja', 'Alfiler en caja', 1, '2000', '2000'),
-(3, 'papeleria', 'Block Cuadriculado', 'Tamaño Oficio - Carta', 1, '2300', '2300'),
-(4, 'papeleria', 'Borrador', 'Nata - Marfil', 1, '500', '500'),
-(5, 'papeleria', 'Clips', 'Clips de colores y clips mariposa - caja', 1, '1800', '1800'),
-(6, 'papeleria', 'Forro Cuadernos', 'Para cuadernos grandes y pequeños', 1, '500', '500'),
-(7, 'papeleria', 'Colores ', 'Doble punta - Kores', 1, '7000', '7000'),
-(8, 'papeleria', 'Resaltador', 'Pelikan', 1, '1500', '1500'),
-(9, 'papeleria', 'Acetato', 'Grueso y Delgado, tamaño Oficio - Carta', 1, '1000', '1000'),
-(10, 'papeleria', 'Calculadora', 'Calculadora', 1, '3500', '3500'),
-(11, 'papeleria', 'Lupa', 'Lupa', 1, '2500', '2500'),
-(12, 'papeleria', 'Block Iris', 'Econo  Tamaño Oficio - Carta', 1, '2300', '2300');
+INSERT INTO `productos` (`idProductos`, `categoriaProducto`, `img`, `nombreProducto`, `descripcionProducto`, `cantidadProductos`, `precioVenta`, `precioCompra`) VALUES
+(1, 'papeleria', 'lap.jpg', 'Lapiz', 'B2 - HB2 - BIG', 1, '1000', '1000'),
+(2, 'papeleria', 'alfi.jpg', 'Alfiler Caja', 'Alfiler en caja', 1, '2000', '2000'),
+(3, 'papeleria', 'blo.jpg', 'Block Cuadriculado', 'Tamaño Oficio - Carta', 1, '2300', '2300'),
+(4, 'papeleria', 'borpe.jpg', 'Borrador', 'Nata - Marfil', 1, '500', '500'),
+(5, 'papeleria', 'clip.jpg', 'Clips', 'Clips de colores y clips mariposa - caja', 1, '1800', '1800'),
+(6, 'papeleria', 'forro.jpg', 'Forro Cuadernos', 'Para cuadernos grandes y pequeños', 1, '500', '500'),
+(7, 'papeleria', 'color.jpg', 'Colores ', 'Doble punta - Kores', 1, '7000', '7000'),
+(8, 'papeleria', 'resaltadores.jpg', 'Resaltador', 'Pelikan', 1, '1500', '1500'),
+(9, 'papeleria', 'ace.jpg', 'Acetato', 'Grueso y Delgado, tamaño Oficio - Carta', 1, '1000', '1000'),
+(10, 'papeleria', 'cal.jpg', 'Calculadora', 'Calculadora', 1, '3500', '3500'),
+(11, 'papeleria', 'lupa.jpg', 'Lupa', 'Lupa', 1, '2500', '2500'),
+(12, 'papeleria', 'iris.jpg', 'Block Iris', 'Econo  Tamaño Oficio - Carta', 1, '2300', '2300'),
+(13, 'belleza', 'are.jpg', 'Aretes', 'Aretes Par', 1, '3000', '3000'),
+(14, 'belleza', 'base.jpg', 'Base', 'Base Crema Correctora', 1, '13000', '13000'),
+(15, 'belleza', 'espe.jpg', 'Espejo', 'Espejos Distinto tamaño', 1, '1200', '1200'),
+(16, 'belleza', 'ganc.jpg', 'Gancho', 'Ganchos para cabello', 1, '1500', '1500'),
+(17, 'belleza', 'lap.jpg', 'Lápiz de Ojos ', 'Lápiz de colores para Ojos', 1, '1000', '1000'),
+(18, 'belleza', 'permu.jpg', 'Perfume', 'Perfume para mujer', 1, '90000', '90000'),
+(19, 'belleza', 'pesta.png', 'Pestañina', 'Pestañina', 1, '22000', '22000'),
+(20, 'belleza', 'Pinc.jpg', 'Pinzas', 'Pinzar para cabello por par y colores', 1, '1000', '1000'),
+(21, 'belleza', 'pinl.jpg', 'Pinzas', 'Pinzas laso para cabello por par', 1, '1000', '1000'),
+(22, 'belleza', 'smal.jpg', 'Esmalte', 'Esmalte por colores', 1, '3000', '3000'),
+(23, 'belleza', 'spra.jpg', 'Spray', 'Spray Fragancia Tropical', 1, '28000', '28000'),
+(24, 'belleza', 'spray.jpg', 'Spray', 'Aplicaor en Spray', 1, '10000', '10000'),
+(25, 'dulce', '100.jpg', 'Dulces', 'Dulces de 100', 1, '100', '100'),
+(26, 'dulce', 'boca.jpg', 'Bocadillo', 'Bocadillo de Guayaba', 1, '500', '500'),
+(27, 'dulce', 'chi.jpg', 'Cheetos', 'Cheetos - Natural - Picante - Limón y Caramelo', 1, '5000', '5000'),
+(28, 'dulce', 'fruun.jpg', 'Frunas', 'Frunas', 1, '500', '500'),
+(29, 'dulce', 'gomi.jpeg', 'Gomitas', 'Gomitas', 1, '1500', '1500'),
+(30, 'dulce', 'papa.jpg', 'Papas', 'Papas - Naturales - Picantes - Pollo', 1, '5000', '5000'),
+(31, 'dulce', 'pin.png', 'Dulces', 'Dulces PinPop', 1, '400', '400'),
+(32, 'dulce', 'sna.jpg', 'Barritas de Chocolate', 'Snickers y Milkyway', 1, '2500', '2500'),
+(33, 'dulce', 'todo.jpg', 'Todo Rico', 'Todo Rico', 1, '1800', '1800'),
+(34, 'dulce', 'troci.jpg', 'Tricipollos', 'Trocipollos', 1, '800', '800'),
+(35, 'dulce', 'yo.jpg', 'Yogue Pops', 'Yogue Pops', 1, '500', '500');
 
 --
 -- Índices para tablas volcadas
@@ -191,6 +233,12 @@ ALTER TABLE `envio`
   ADD PRIMARY KEY (`idenvio`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`idProductos`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -198,7 +246,13 @@ ALTER TABLE `envio`
 -- AUTO_INCREMENT de la tabla `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `idenvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idenvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `idProductos` int(11) NOT NULL AUTO_INCREMENT COMMENT ' Esta es la identificacion de l producto', AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,26 +1,40 @@
 <?php
 
-//Validar usuario
+ //Validar usuario y registrar
+ $conn = new mysqli ("localhost","root","","comarca");
 
-$usuarioCliente = $_POST['usuarioCliente'];
-$contraseñaCliente = $_POST['contraseñaCliente'];
-$con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEXIÓN");
-$consulta = "SELECT * FROM clientes WHERE usuarioCliente= '$usuarioCliente' AND contraseñaCliente='$contraseñaCliente'";
 
-$resultado = mysqli_query($con, $consulta);
 
-$filas = mysqli_num_rows($resultado);
 
-if ($filas > 0) {
+ if ($conn ->connect_errno)
+ {
+    echo "No hay conexion: (".$conn->connect_errno.")".$conn->connect_error;
+ }
+
+ 
+ $usuarioC = $_POST['UsuCl'];
+ $pass = $_POST['contraCl'];
+
+
+ if (isset($_POST['login'])) {
+
+        
+
+
+    $queryusuario    = mysqli_query($conn, "SELECT * FROM clientes WHERE usuarioCliente = '$usuarioC'");
+    $nr              = mysqli_num_rows($queryusuario);
+    $buscarpass      = mysqli_fetch_array($queryusuario);
+
+
+    if (($nr == 1) && (password_verify($pass, $buscarpass['contraseñaCliente']))) {
+    
+        {
+            echo "Bienvenido: $nombre";
+        }
+
+    } else {
+        echo "ERROR DE AUTENTIFICACIÓN";
+    }
+ }
 ?>
-    <script>
-        window.alert("Bienvenido a Papeleria La Comarca");
-        window.location = "../views/productos/index.html";
-    </script>
 
-<?php
-} else {
-    echo "ERROR DE AUTENTIFICACIÓN";
-}
-mysqli_free_result($resultado);
-?>

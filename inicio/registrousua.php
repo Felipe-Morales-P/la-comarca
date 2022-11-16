@@ -33,11 +33,13 @@
 
                 <!--Formulario para registrar-->
                 
-                <form method="POST" action="" class="form">
+
+
+                <form method="POST" action="validarregistro.php" class="form">
 
                     <select class="cajaentradatexto" name="tipoIdeC" value="" placeholder="Tipo identificación">
                         <option value="controls">Tipo de Documento</option>
-                        <option value="CC">Cedula de Ciudadania</option>
+                        <option value="controls">Cedula de Ciudadania</option>
                         <option value="controls">Cedula de Extrajeria </option>
                         <option value="controls">Pasaporte</option>
                         <option value="controls">Tarjeta de identidad</option>
@@ -52,7 +54,7 @@
                     <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="">
 
                     <br>
-                    <input type="submit" class="inicioboton" name="enviar" value="Registrar">
+                    <input type="submit" class="inicioboton" name="registrarse" value="Registrar">
 
 
                     <p><a class="textofinal" href="iniciousua.php">¿Ya tienes una cuenta?</a></p>
@@ -63,43 +65,15 @@
 
 
 
+
+
+
+
+
             </div>
         </div>
-        <?php
-
-        if (isset($_POST['enviar'])) {
-            $tipoIdC = $_POST['tipoIdeC'];
-            $numIdC = $_POST['numIdeC'];
-            $nombreC = $_POST['nomC'];
-            $correoC = $_POST['corrCl'];
-            $telefonoC = $_POST['teleCl'];
-            $direccionC = $_POST['direCl'];
-            $contraseña_fuerte = password_hash ($contraCL,PASSWORD_BCRYPT);
-            $usuarioC = $_POST['UsuCl'];
-
-            if (isset ($_POST["btnregistrar"]))
-
-            $guardar = mysqli_query($conex, "INSERT INTO clientes (tipoIdentificacion, numIdentificacionC, nombreCliente, correoCliente, telefonoCliente, direccionCliente, contraseñaCliente, usuarioCliente) VALUES ( '$tipoIdC', '$numIdC','$nombreC', '$correoC', '$telefonoC', '$direccionC', '$contraseña_fuerte', '$usuarioC')");
-
-            if (!$guardar) {
-
-                echo "Error: ".$queryregistrar."<br>".mysql_error($conn);
-            } else {
-        ?>
-                <script>
-                    window.alert("Sus datos han sido registrados,Bienvenido!");
-                    window.location = "iniciousua.php";
-                </script>
 </body>
 
-</script>
-<?php
 
-            }
-        }
-        mysqli_close($conex);
-?>
-
-</body>
 
 </html>
