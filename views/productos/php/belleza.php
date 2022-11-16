@@ -58,9 +58,9 @@ include("modal_cart.php");
 <div class="center mt-5">
     <div class="card pt-3" >
             <p style="font-weight: bold; color: #0F6BB7; font-size: 22px;">Utiles Escolares</p>
-        <div class="container-fluid p-2" style="background-color: #EBF5FB;">
+        <div class="container-fluid p-2" style="background-color: #F5EEF8;">
 
-            <?php $busqueda=mysqli_query($conex,"SELECT * FROM productos WHERE categoriaProducto='papeleria' "); 
+            <?php $busqueda=mysqli_query($conex,"SELECT * FROM productos WHERE categoriaProducto='belleza' "); 
             $numero = mysqli_num_rows($busqueda); ?>
 
             <h5 class="card-tittle">Resultados (<?php echo $numero; ?>)</h5>
@@ -72,7 +72,7 @@ include("modal_cart.php");
 
                     <form id="formulario" name="formulario" method="post" action="cart.php">
                         <div class="blog-post ">
-                            <img src="../img/utiles/<?php echo $resultado["img"];?>" >
+                            <img src="../img/belleza/<?php echo $resultado["img"];?>" >
                             <a class="category">
                                 <?php echo $resultado["precioVenta"]; ?>$
                             </a>
@@ -95,7 +95,6 @@ include("modal_cart.php");
     </div>
                 
 </div>
-
 
 <footer class="pie-pagina">
                 <div class="contenedor-2">
