@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../assets/CSS/estilosregistro.css">
+    <link rel="stylesheet" type="text/css" href="CSS/estilosregistro.css">
     <title>Registro Clientes</title>
 
     <!--aquí va la conexión a la base de datos-->
@@ -38,11 +38,9 @@
                 <form method="POST" action="validarregistro.php" class="form">
 
                     <select class="cajaentradatexto" name="tipoIdeC" value="" placeholder="Tipo identificación">
-                        <option value="controls">Tipo de Documento</option>
-                        <option value="controls">Cedula de Ciudadania</option>
-                        <option value="controls">Cedula de Extrajeria </option>
-                        <option value="controls">Pasaporte</option>
-                        <option value="controls">Tarjeta de identidad</option>
+                        <option value="CC">Cedula de Ciudadania</option>
+                        <option value="CE">Cedula de Extranjeria </option>
+                        <option value="PS">Pasaporte</option>
                     </select>
 
                     <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Numero de Documento" name="numIdeC" required="">

@@ -6,7 +6,7 @@ include_once("conexion.php");
 <head>
     <title>Crud Clientes</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/crudclientes.css">
 </head>
 
 <body>

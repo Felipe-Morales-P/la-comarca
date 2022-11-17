@@ -28,7 +28,7 @@ if (isset($_POST['registrarse'])) {
    $pass_fuerte = password_hash($pass, PASSWORD_DEFAULT);
    $queryregistrar = "INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,nombreCliente,correoCliente
    ,telefonoCliente, direccionCliente,contraseñaCliente,usuarioCliente) VALUES
-   ('$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$pass_fuerte','$usuarioC')";
+   ('$tipoIdeC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$pass_fuerte','$usuarioC')";
 
 if (mysqli_query($conn,$queryregistrar))
 

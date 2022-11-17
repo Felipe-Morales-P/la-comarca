@@ -29,7 +29,7 @@
     if (($nr == 1) && (password_verify($pass, $buscarpass['contraseñaCliente']))) {
     
         {
-            echo "Bienvenido: $nombre";
+            echo "<script>alert (Bienvenido: $usuarioC');window.location='../views/PRODUCTOS/index.html'</script>";
         }
 
     } else {
