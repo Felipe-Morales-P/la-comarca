@@ -23,15 +23,6 @@ body
 	height: 50px;
 	text-align: center;
 }
-
-.divsup{
-
-	background-color: #38678f;
-	z-index: 1;
-	height: 50px;
-	
-}
-
 table
 {
 	text-align:center;
@@ -59,7 +50,6 @@ tr
     border-bottom: 1px solid #cccccc;
 	width:100%;
 }
-
 td 
 {
     border: 1px solid #314b68;
@@ -68,46 +58,17 @@ td
 	font-size: 14px;
 	border-radius: 20px;
 }
-
-.divsup{
-
-	display: block;
-}
-.AdminClientes{
-    
-	border: 2px solid #314b68;
-    color: #fcfdfe;
-	background-color: #cccccc64;
-	
-    
-}
-
-.INICIO{
-	
-    border: 2px solid #314b68;
-    color: #fcfdfe;
-	background-color: #cccccc64;
-    
-}
-.ExportarExcel{
-	
-	border: 2px solid #314b68;
-    color: #fcfdfe;
-	background-color: #cccccc64;
-    
-    
-}
-
 a,input[type="submit"],button
 {
 	font-size: 14px;
 	text-align:center;
+	width: 100px;
 	display: inline-block;
-	background-color: #809af0b6;
+	background-color:#2f6edb;
 	padding: 6px 10px;
 	border-radius:10px;
 	text-decoration: none;
-	color: rgba(0, 0, 0);
+
 	cursor:pointer;
 }
 h1

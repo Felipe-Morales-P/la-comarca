@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2022 a las 16:36:13
+-- Tiempo de generación: 16-11-2022 a las 17:07:35
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -69,10 +69,10 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`idCliente`, `tipoIdentificacion`, `numIdentificacionC`, `nombreCliente`, `correoCliente`, `telefonoCliente`, `direccionCliente`, `contraseñaCliente`, `usuarioCliente`) VALUES
 (13, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/', 'Jeffer126'),
-(14, 'C.C', 54822585, 'Juanito Fonseca', 'fonseca@gmail.com', '3214594862', 'call 65 sur N87 M05', '$2y$10$lTk5QzyDGsrrdVco3cAFL.K6XM.k8IuGhKphKMRERdL', 'Juanito'),
 (15, 'C.C', 2489546, 'Carlitos Lucresio', 'carlitos1@gmail.com', '3214854862', 'call 78 Norte N77 M04', '$2y$10$OIbMuRJj0n6MYGmMctuLGOMYrH7gADS/KEYv.6i7Jhr', 'Carlitos16'),
-(0, 'controls', 15081055, 'Jose', 'jos@gmail.com', '3214877859', 'calle 45 b sur', '123', ''),
-(0, 'Cedula de ', 1515151, 'E', 'e@gmail.com', '215554', 'da4', '123', '');
+(0, 'controls', 1061697131, 'Jeffrey', 'ceronarandia@gmail.com', '3228492068', ' calle 62', '$2y$10$6AJPG2byUmxzujI1.X1.AuDc2aUVRKgbhMmrRnySLKy', 'Jeffer1'),
+(0, 'controls', 1061697131, 'Jeffrey', 'ceronarandia@gmail.com', '3228492068', ' calle 62', '$2y$10$yPccEPoIBte7JAsssdOK7uqJ1Pdrp1HuAspWeB1wueD', 'Jeffer1'),
+(0, 'controls', 1061697131, 'Jeffrey Ceron', 'jjceron13@misena.edu.co', '3228492068', ' calle 65 sur n77 M04', '$2y$10$badrEfvCGhehmQOW57LcOeI.x6tD6DQmm2G9eIv2uIW', 'Jeffer126');
 
 -- --------------------------------------------------------
 
@@ -111,7 +111,13 @@ INSERT INTO `compra` (`idCompra`, `Cantidad`, `Producto`, `Precio`, `total`) VAL
 (0, '', '', '', ''),
 (0, '1', 'Lapiz', '1000', '1000'),
 (0, '1', 'Lapiz', '1000', '1000'),
-(0, 'rDP7g', 'Falta de pa', 'Tarjeta bancaria', '2000');
+(0, 'rDP7g', 'Falta de pa', 'Tarjeta bancaria', '2000'),
+(0, '', '', '', ''),
+(0, '1', 'Forro Cuade', '500', '500'),
+(0, '1', 'Lapiz', '1000', '1000'),
+(0, '1', 'Alfiler Caj', '2000', '2000'),
+(0, '1', 'Block Cuadr', '2300', '2300'),
+(0, 'ZReA', 'Falta de pa', 'Tarjeta bancaria', '5800');
 
 -- --------------------------------------------------------
 
@@ -134,7 +140,8 @@ CREATE TABLE `envio` (
 INSERT INTO `envio` (`idenvio`, `Direccion`, `Localidad`, `Telefono`, `Barrio`) VALUES
 (9, 'soacha', 'soacha', 'aja nose', 'nose'),
 (10, 'calle 48 A sur', 'a', 't', 't'),
-(11, 'dr 12', 'san da', '12312', 'villa');
+(11, 'dr 12', 'san da', '12312', 'villa'),
+(12, 'Calle 65', 'Bosa', '3228492068', 'La estacion');
 
 -- --------------------------------------------------------
 
@@ -246,7 +253,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `idenvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idenvio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

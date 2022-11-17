@@ -11,7 +11,7 @@ include_once("conexion.php");
 <body>
     <table>
 	<img src="img/logo.png" class="logo" >
-	     <div id="barrabuscar">
+			<div id="barrabuscar">
 		<form method="POST">
 		<input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">
 		</form>
@@ -64,16 +64,6 @@ $queryusuarios = mysqli_query($conn, "SELECT * FROM productos ORDER BY idProduct
 }
         ?>
     </table>
-
-
-
-
-
-
-
-
-
-
 	 <script>
 function abrirform() {
   document.getElementById("formregistrar").style.display = "block";
