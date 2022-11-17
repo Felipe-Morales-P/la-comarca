@@ -16,6 +16,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $telefono = $mostrar['telefonoCliente'];
     $direccion = $mostrar['direccionCliente'];
     $contraseña = $mostrar['contraseñaCliente'];
+    $usuario = $mostrar['usuarioCliente'];
 }
 ?>
 <html>
@@ -61,8 +62,12 @@ while($mostrar = mysqli_fetch_array($querybuscar))
                 <td><input type="text" name="txtdireccionCliente" value="<?php echo $direccion;?>" required></td>
             </tr>
             <tr> 
-                <td>Contrseña</td>
+                <td>Contraseña</td>
                 <td><input type="password" name="txtcontraseñaCliente" value="<?php echo $contraseña;?>" required></td>
+            </tr>
+            <tr> 
+                <td>Usuario</td>
+                <td><input type="text" name="txtusuarioCliente" value="<?php echo $usuario;?>" required></td>
             </tr>
             <tr>
 				
@@ -89,8 +94,8 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $correo1 	= $_POST['txtcorreo'];
     $telefono1 	= $_POST['txttelefono']; 
     $direccion1 = $_POST ['txtdireccionCliente'];
-    $contraseña1 = $_POST['txtcontraseñaCliente'];  
-    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1'  WHERE idCliente=$idCliente1");
+    $usuario1 = $_POST['txtusuarioCliente'];
+    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
 
   	echo "<script>window.location= 'index.php' </script>";
     

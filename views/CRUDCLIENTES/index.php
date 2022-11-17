@@ -44,13 +44,14 @@ include_once("conexion.php");
             <th>Teléfono</th>
             <th>Direccion</th>
             <th>Contraseña</th>
+            <th>Usuario</th>
             <th>Acción</th>
         </tr>
         <?php
 
         if (isset($_POST['btnbuscar'])) {
             $buscar = $_POST['txtbuscar'];
-            $queryusuarios = mysqli_query($conn, "SELECT idCliente,tipoIdentificacion,numIdentificacionC,nombreCliente,	correoCliente,telefonoCliente,direccionCliente,contraseñaCliente FROM clientes where nombreCliente like '" . $buscar . "%'");
+            $queryusuarios = mysqli_query($conn, "SELECT idCliente,tipoIdentificacion,numIdentificacionC,nombreCliente,	correoCliente,telefonoCliente,direccionCliente,contraseñaCliente,usuarioCliente FROM clientes where nombreCliente like '" . $buscar . "%'");
         } else {
             $queryusuarios = mysqli_query($conn, "SELECT * FROM clientes ORDER BY idCliente asc");
         }
@@ -66,6 +67,7 @@ include_once("conexion.php");
             echo "<td>" . $mostrar['telefonoCliente'] . "</td>";
             echo "<td>" . $mostrar['direccionCliente'] . "</td>";
             echo "<td>" . $mostrar['contraseñaCliente'] . "</td>";
+            echo "<td>" . $mostrar['usuarioCliente'] . "</td>";
             echo "<td style='width:26%'><a href=\"editar.php?idCliente=$mostrar[idCliente]\">Modificar</a> | <a href=\"eliminar.php?idCliente=$mostrar[idCliente]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreCliente]?')\">Eliminar</a></td>";
         }
         ?>
