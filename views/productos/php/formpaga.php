@@ -6,6 +6,10 @@ include("conexion.php");
 <html lang="es">
 
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="../css/style.css">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -260,7 +264,67 @@ include("conexion.php");
     </div>
 
 
+<!-- partial:index.partial.html -->
+<!-- multistep form -->
+<form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li>Social Profiles</li>
+    <li>Personal Details</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Localizacion</h2>
+    <h3 class="fs-subtitle">Localizacion</h3>
+    <input type="text" name="email" placeholder="Direccion" />
+    <input type="password" name="pass" placeholder="Localidad" />
+    <input type="password" name="cpass" placeholder="Barrio" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Contacto</h2>
+    <h3 class="fs-subtitle">Informacion para contacto</h3>
+    <input type="text" name="twitter" placeholder="Gmail" />
+    <input type="text" name="facebook" placeholder="Telefono" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+</form>
+<?php
+if (isset($_POST['enviar'])) {
+    $dirr = $_POST['direc'];
+    $local = $_POST['loca'];
+    $telef = $_POST['tele'];
+    $barr = $_POST['bar'];
 
+    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Telefono, Barrio) VALUES ('', '$dirr', '$local', '$telef', '$barr')");
+
+    if (!$guardar) {
+
+        echo "error al registrar";
+    } else {
+?>
+        <script>
+            window.alert("Sus datos han sido registrados,Bienvenido!");
+            window.location = "../index.html";
+        </script>
+</body>
+
+</script>
+<?php
+
+    }
+}
+mysqli_close($conex);
+?>
+                
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="../js/script.js"></script>
+
+
+    
 </body>
 
 </html>

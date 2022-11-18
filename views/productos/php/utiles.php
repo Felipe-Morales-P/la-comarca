@@ -1,5 +1,4 @@
-<?php  session_s 
-tart();
+<?php  session_start();
 include("conexion.php");
 ?>
 
