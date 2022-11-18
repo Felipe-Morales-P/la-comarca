@@ -17,18 +17,18 @@ $correoC = $_POST['corrCl'];
 $telefonoC = $_POST['teleCl'];
 $direccionC = $_POST['direCl'];
 $usuarioC = $_POST['UsuCl'];
-$pass = $_POST['contraCl'];
+$contraseña = $_POST['contraCl'];
 
 
 
 if (isset($_POST['registrarse'])) {
 
+   include 'SED.php';
+   $contraseñaE = SED::encryption($contraseña);
 
-
-   $pass_fuerte = password_hash($pass, PASSWORD_DEFAULT);
    $queryregistrar = "INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,nombreCliente,correoCliente
    ,telefonoCliente, direccionCliente,contraseñaCliente,usuarioCliente) VALUES
-   ('$tipoIdeC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$pass_fuerte','$usuarioC')";
+   ('$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseñaE','$usuarioC')";
 
 if (mysqli_query($conn,$queryregistrar))
 

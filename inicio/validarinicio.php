@@ -1,8 +1,8 @@
 <?php
 
  //Validar usuario y registrar
- $conn = new mysqli ("localhost","root","","comarca");
-
+ include 'conexion.php';
+ include 'SED.php';
 
 
 
@@ -13,28 +13,27 @@
 
  
  $usuarioC = $_POST['UsuCl'];
- $pass = $_POST['contraCl'];
+ $contraseña = $_POST['contraCl'];
 
 
  if (isset($_POST['login'])) {
 
-        
+    $query_buscar_usuario =mysqli_query ("SELECT * FROM clientes WHERE usuarioCliente=='$usuarioC'");
+    $nr                   =mysqli_num_rows($query_buscar_usuario);
+    $buscar_pass_usuario  =mysqli_fetch_array($query_buscar_usuario);
+ 
 
+    if (($nr==1)&&($buscar_pass_usuario=SED::decryption($contraseña)))
+    {
+        if($contraseña==$contraseñaD){
 
-    $queryusuario    = mysqli_query($conn, "SELECT * FROM clientes WHERE usuarioCliente = '$usuarioC'");
-    $nr              = mysqli_num_rows($queryusuario);
-    $buscarpass      = mysqli_fetch_array($queryusuario);
-
-
-    if (($nr == 1) && (password_verify($pass, $buscarpass['contraseñaCliente']))) {
-    
-        {
             echo "<script>alert (Bienvenido: $usuarioC');window.location='../views/PRODUCTOS/index.html'</script>";
         }
 
-    } else {
+    } else 
+    {
         echo "ERROR DE AUTENTIFICACIÓN";
     }
- }
+}
 ?>
 
