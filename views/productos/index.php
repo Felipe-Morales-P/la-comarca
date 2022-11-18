@@ -1,6 +1,11 @@
+<?php  session_start();
+include ("php\conexion.php");
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
+
 	<meta charset="utf-8">
 	<title>PRODUCTOS</title>
 	<link rel="stylesheet" type="text/css" href="css/produc.css">
@@ -10,6 +15,7 @@
 <h1 class="titulo">¡ADMIRA A LA VARIEDAD DE PRODUCTOS QUE TENEMOS PARA OFRECERTE!</h1>
 <ul>
 	<li><a class="INICIO" href="../../index.html">INICIO</a></li>
+	<LI> <a class="INICIO" href="php/logout.php">Cerrar Sesión</a>-</LI>
 </ul>            
 <div class="container">
  	<div class="card">

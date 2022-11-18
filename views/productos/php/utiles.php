@@ -52,8 +52,8 @@ include("modal_cart.php");
 
 
 
-<a href="../index.html">Categorias</a>
-
+<li><a class="INICIO" href="../index.php">Categorias</a></li>
+<LI> <a class="INICIO" href="logout.php">Cerrar Sesión</a></LI>
 
 <div class="center mt-5">
     <div class="card pt-3" >
