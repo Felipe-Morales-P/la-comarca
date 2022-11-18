@@ -53,6 +53,7 @@ include("modal_cart.php");
 
 
 <a href="../index.html">Categorias</a>
+<LI> <a class="INICIO" href="logout.php">Cerrar Sesión</a>-</LI>
 
 
 <div class="center mt-5">
