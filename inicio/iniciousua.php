@@ -27,10 +27,10 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<h1>INICIO SESION DE CLIENTES</h1>
 
 					<br><br>
-					<label for="usuario">USUARIO</label>
-					<br><input type="text" class="cajaentradatextoUsuario" placeholder="Ingrese Usuario" name="UsuCl" required=""><br><br>
+					<label for="usuario">CORREO</label>
+					<br><input type="email" class="cajaentradatextoUsuario" placeholder="Ingrese su correo" name="correoCl" required=""><br><br>
 					<label for="password">CONTRASEÑA</label>
-					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese Contraseña" name="contraCl" required="">
+					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese contraseña" name="contraCl" required="">
 					<br><br><br>
 					<input class="inicioboton" type="submit" name="login" value="INGRESAR"></a>
 					<br>
@@ -40,7 +40,7 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 
 </html>

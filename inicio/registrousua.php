@@ -32,7 +32,7 @@
 
 
                 <!--Formulario para registrar-->
-                
+
 
 
                 <form method="POST" action="validarregistro.php" class="form">

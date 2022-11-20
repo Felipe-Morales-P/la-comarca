@@ -1,47 +1,36 @@
-
 <?php
-$conn = new mysqli ("localhost","root","","comarca");
+//Registrar usuario
 
+include("../config/conexion.php");
 
+if(isset($_POST['registrarse'])){
 
+ $tipoIdC = mysqli_real_escape_string($conn, $_POST ['tipoIdeC']);
+ $numIdC = mysqli_real_escape_string($conn, $_POST ['numIdeC']);
+ $nombreC = mysqli_real_escape_string($conn, $_POST ['nomC']);
+ $correoC = mysqli_real_escape_string($conn, $_POST ['corrCl']);
+ $telefonoC = mysqli_real_escape_string($conn, $_POST ['teleCl']);
+ $direccionC = mysqli_real_escape_string($conn, $_POST ['direCl']);
+ $usuarioC = mysqli_real_escape_string($conn, $_POST ['UsuCl']);
+ $contraseña = mysqli_real_escape_string($conn, $_POST ['contraCl']);
+ $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
+ $sql_user = "SELECT idCliente, numIdentificacionC FROM clientes WHERE numIdentificacionC = '$numIdC' and tipoIdentificacion = '$tipoIdC'";
+ $resultado_user = $conn->query($sql_user);
+ $filas = $resultado_user -> num_rows;
 
- if ($conn ->connect_errno)
- {
-    echo "No hay conexion: (".$conn->connect_errno.")".$conn->connect_error;
- }
+if ($filas > 0){
+   echo "<script>alert('Este usuario ya existe en la base de datos');window.location='registrousua.php'</script>";
+} else {
 
-$tipoIdC = $_POST['tipoIdeC'];
-$numIdC = $_POST['numIdeC'];
-$nombreC = $_POST['nomC'];
-$correoC = $_POST['corrCl'];
-$telefonoC = $_POST['teleCl'];
-$direccionC = $_POST['direCl'];
-$usuarioC = $_POST['UsuCl'];
-$contraseña = $_POST['contraCl'];
+   $query_usuario = "INSERT INTO clientes VALUES
+   ('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada','$usuarioC')";
 
-
-
-if (isset($_POST['registrarse'])) {
-
-   include 'SED.php';
-   $contraseñaE = SED::encryption($contraseña);
-
-   $queryregistrar = "INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,nombreCliente,correoCliente
-   ,telefonoCliente, direccionCliente,contraseñaCliente,usuarioCliente) VALUES
-   ('$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseñaE','$usuarioC')";
-
-if (mysqli_query($conn,$queryregistrar))
-
-{
-   echo "<script>alert ('Usuario registrado: $usuarioC');window.location='iniciousua.php'</script>";
-
+$resultado_registrar = $conn->query ($query_usuario);
+if ($resultado_registrar > 0){
+   echo "<script>alert('El usuario ha sido registrado: $usuarioC');window.location='iniciousua.php'</script>";
+ }else{
+   echo "Error: ".$query. "<br>".mysqli_error($conn);
 }
-else
-{
-   echo "Error:".$queryregistrar."<br>".mysql_error($conn);
 }
-
-}       
-                
-
- ?>
+}
+?>

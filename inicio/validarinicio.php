@@ -1,39 +1,27 @@
 <?php
 
- //Validar usuario y registrar
- include 'conexion.php';
- include 'SED.php';
+//Validar usuario
+
+include("../config/conexion.php");
+
+$correoC = $_POST['correoCl'];
+$contraseñaC = $_POST['contraCl'];
 
 
-
- if ($conn ->connect_errno)
- {
-    echo "No hay conexion: (".$conn->connect_errno.")".$conn->connect_error;
- }
-
- 
- $usuarioC = $_POST['UsuCl'];
- $contraseña = $_POST['contraCl'];
+if (isset($_POST['login'])) {
 
 
- if (isset($_POST['login'])) {
+    $query_login = mysqli_query ($conn,"SELECT * FROM clientes WHERE correoCliente = '$correoC'");
+    $nr = mysqli_num_rows($query_login);
+    $buscar_pass = mysqli_fetch_array($query_login);
 
-    $query_buscar_usuario =mysqli_query ("SELECT * FROM clientes WHERE usuarioCliente=='$usuarioC'");
-    $nr                   =mysqli_num_rows($query_buscar_usuario);
-    $buscar_pass_usuario  =mysqli_fetch_array($query_buscar_usuario);
- 
+    if(($nr == 1) && (password_verify($contraseñaC,$buscar_pass ['contraseñaCliente']))){
 
-    if (($nr==1)&&($buscar_pass_usuario=SED::decryption($contraseña)))
-    {
-        if($contraseña==$contraseñaD){
+        header("Location: ../views/productos/index.php");
+    }else{
 
-            echo "<script>alert (Bienvenido: $usuarioC');window.location='../views/PRODUCTOS/index.html'</script>";
-        }
-
-    } else 
-    {
-        echo "ERROR DE AUTENTIFICACIÓN";
+        echo "<script>alert('El usuario o la contraseña es incorrecto');window.location='iniciousua.php'</script>";
     }
-}
-?>
 
+    }
+?>
