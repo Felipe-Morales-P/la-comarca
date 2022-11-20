@@ -13,6 +13,7 @@ if(isset($_POST['registrarse'])){
  $direccionC = mysqli_real_escape_string($conn, $_POST ['direCl']);
  $usuarioC = mysqli_real_escape_string($conn, $_POST ['UsuCl']);
  $contraseña = mysqli_real_escape_string($conn, $_POST ['contraCl']);
+ 
  $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
  $sql_user = "SELECT idCliente, numIdentificacionC FROM clientes WHERE numIdentificacionC = '$numIdC' and tipoIdentificacion = '$tipoIdC'";
  $resultado_user = $conn->query($sql_user);
