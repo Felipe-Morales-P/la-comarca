@@ -129,3 +129,16 @@ body {
 	background: #27AE60;
 	color: white;
 }
+         
+/*Modal de envio */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 680px;
+            height: 400px;
+            overflow: auto;
+            padding-top: 80px;
+        }

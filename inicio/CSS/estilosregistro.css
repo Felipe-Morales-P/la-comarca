@@ -188,9 +188,6 @@ ul li a {
     border-radius: 10px;
 
 } 
-.textofinal{
-   
-}
 .textofinal:hover{
     font-size: 110%;
     transition: all 300ms ease;
