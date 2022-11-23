@@ -11,9 +11,6 @@ $contraseñaC = $_POST['contraCl'];
 $consul = mysqli_query($conn,"SELECT * FROM clientes WHERE correoCliente = '$correoC'");
 $data = mysqli_fetch_array($consul);
 
-    session_start();
-
-    $_SESSION['idCliente'] = $data['idCliente'];
 
  if (isset($_POST['login'])) {
 
@@ -28,6 +25,8 @@ $data = mysqli_fetch_array($consul);
 
     if(($nr == 1) && (password_verify($contraseñaC,$buscar_pass ['contraseñaCliente']))){
 
+        session_start();
+		$_SESSION['correoCliente']=$correoC;
         header("Location: ../views/productos/index.php");
 
     }else{

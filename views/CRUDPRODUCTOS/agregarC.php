@@ -1,4 +1,4 @@
-<?php include_once("conexion.php"); 
+<?php include_once("php/conexion.php"); 
     
     $tipoId = $_POST['txttipoIdentificacion'];
     $numId = $_POST['txtnumIdentificacionC'];

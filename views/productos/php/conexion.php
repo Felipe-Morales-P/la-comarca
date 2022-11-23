@@ -1,5 +1,5 @@
 <?php
-$conex = mysqli_connect("localhost","root","","Comarca");
+$conex = mysqli_connect("localhost","root","","comarca");
 
 	if (!$conex) {
 		echo

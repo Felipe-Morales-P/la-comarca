@@ -1,5 +1,5 @@
 <?php
-include_once("conexion.php");
+include_once("php/conexion.php");
  
 $idCliente = $_GET['idCliente'];
  
