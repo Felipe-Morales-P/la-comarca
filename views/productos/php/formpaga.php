@@ -269,26 +269,25 @@ include("conexion.php");
 <form id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
-    <li class="active">Account Setup</li>
-    <li>Social Profiles</li>
-    <li>Personal Details</li>
+    <li class="active">Localizacion</li>
+    <li>Contacto</li>
   </ul>
   <!-- fieldsets -->
   <fieldset>
     <h2 class="fs-title">Localizacion</h2>
     <h3 class="fs-subtitle">Localizacion</h3>
-    <input type="text" name="email" placeholder="Direccion" />
-    <input type="password" name="pass" placeholder="Localidad" />
-    <input type="password" name="cpass" placeholder="Barrio" />
+    <input type="text" name="direc" placeholder="Direccion" />
+    <input type="text" name="loca" placeholder="Localidad" />
+    <input type="text" name="bar" placeholder="Barrio" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Contacto</h2>
     <h3 class="fs-subtitle">Informacion para contacto</h3>
-    <input type="text" name="twitter" placeholder="Gmail" />
-    <input type="text" name="facebook" placeholder="Telefono" />
+    <input type="email" name="gmail" placeholder="Gmail" />
+    <input type="text" name="tele" placeholder="Telefono" />
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" value="Next" />
+    <input type="button" name="enviar" class="next action-button" value="Next" />
   </fieldset>
 </form>
 <?php
@@ -297,8 +296,9 @@ if (isset($_POST['enviar'])) {
     $local = $_POST['loca'];
     $telef = $_POST['tele'];
     $barr = $_POST['bar'];
+    $cor= $_POST['gmail'];
 
-    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Telefono, Barrio) VALUES ('', '$dirr', '$local', '$telef', '$barr')");
+    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Telefono, Barrio, correo) VALUES ('', '$dirr', '$local', '$telef', '$barr', '$cor')");
 
     if (!$guardar) {
 
@@ -316,7 +316,6 @@ if (isset($_POST['enviar'])) {
 
     }
 }
-mysqli_close($conex);
 ?>
                 
 <!-- partial -->
