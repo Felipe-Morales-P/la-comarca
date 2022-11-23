@@ -1,8 +1,6 @@
 <?php  
-include ("php\conexion.php");
+include("php/conexion.php");
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -76,18 +74,70 @@ include ("php\conexion.php");
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
-                   
-        </div>
-           
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../../scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="JS/datatables-simple-demo.js"></script>
+    <div id="layoutSidenav_content">
+    <table>
+        <tr>
+            <th colspan="10">
+                <h1>Listar Clientes</h1>
+        <tr>
+            <th>Id Cliente</th>
+            <th>Tipo De Identificación</th>
+            <th>Numero De Identificación</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Direccion</th>
+            <th>Contraseña</th>
+            <th>Usuario</th>
+            <th>Acción</th>
+        </tr>
+        <?php
 
-        <script>
+        if (isset($_POST['btnbuscar'])) {
+            $buscar = $_POST['txtbuscar'];
+            $queryusuarios = mysqli_query($conn, "SELECT idCliente,tipoIdentificacion,numIdentificacionC,nombreCliente,	correoCliente,telefonoCliente,direccionCliente,contraseñaCliente,usuarioCliente FROM clientes where nombreCliente like '" . $buscar . "%'");
+        } else {
+            $queryusuarios = mysqli_query($conn, "SELECT * FROM clientes ORDER BY idCliente asc");
+        }
+        $numerofila = 0;
+        while ($mostrar = mysqli_fetch_array($queryusuarios)) {
+            $numerofila++;
+            echo "<tr>";
+            echo "<td>" . $mostrar['idCliente'] . "</td>";
+            echo "<td>" . $mostrar['tipoIdentificacion'] . "</td>";
+            echo "<td>" . $mostrar['numIdentificacionC'] . "</td>";
+            echo "<td>" . $mostrar['nombreCliente'] . "</td>";
+            echo "<td>" . $mostrar['correoCliente'] . "</td>";
+            echo "<td>" . $mostrar['telefonoCliente'] . "</td>";
+            echo "<td>" . $mostrar['direccionCliente'] . "</td>";
+            echo "<td>" . $mostrar['contraseñaCliente'] . "</td>";
+            echo "<td>" . $mostrar['usuarioCliente'] . "</td>";
+            echo "<td style='width:26%'><a href=\"editar.php?idCliente=$mostrar[idCliente]\">Modificar</a> | <a href=\"eliminar.php?idCliente=$mostrar[idCliente]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreCliente]?')\">Eliminar</a></td>";
+        }
+        ?>
+    </table>
+            </div>
+            
+       </div>
+            
+    <script>
+        function abrirform() {
+            document.getElementById("formregistrar").style.display = "block";
+
+        }
+
+        function cancelarform() {
+            document.getElementById("formregistrar").style.display = "none";
+        }
+
+    </script>
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
 window.addEventListener('DOMContentLoaded', event => {
 
 
@@ -103,21 +153,6 @@ if (sidebarToggle) {
 
 });
         </script>
+</body>
 
-        <script>
-            window.addEventListener('layoutSidenav_content', event => {
-
-const datatablesSimple = document.getElementById('datatablesSimple');
-if (datatablesSimple) {
-    new simpleDatatables.DataTable(datatablesSimple);
-}
-});
-            </script>
-    </body>
-</html>
-
-
-
-
-
-<!--Busca por VaidrollTeam para más proyectos. -->
+        </html>

@@ -76,9 +76,9 @@ if(isset($_SESSION['carrito'])){
 
 
 
-$ref_user = $ref_cliente;
-$estado = 'Falta de pago';
-$medio = 'Tarjeta bancaria';
+$ref_user = $cantidad;
+$estado = 'total';
+$medio = $total;
 $total_pedido = $total;
 
 $query = "INSERT INTO compra (idCompra, Cantidad, Producto, Precio, total)

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -32,9 +33,10 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<label for="password">CONTRASEÑA</label>
 					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese contraseña" name="contraCl" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">
 					<br><br><br>
-					<input class="inicioboton" type="submit" name="login" value="INGRESAR"></a>
+					<input class="inicioboton" type="submit" name="btnloginx" value="INGRESAR"></a>
 					<br>
-					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>
+					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>					
+					<p><a class="textofinal" href="recupera.php"> Olvide mi contraseña </a></p>
 				</form>
 
 			</div>
