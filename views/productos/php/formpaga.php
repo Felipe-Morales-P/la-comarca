@@ -27,7 +27,7 @@ include("conexion.php");
     <link rel="stylesheet" href="../css/style_cp.css">
 
 
-    <title>Consulta basica</title>
+    <title>Compra Y Envio</title>
 </head>
 
 <body>

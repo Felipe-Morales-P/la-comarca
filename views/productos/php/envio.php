@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registro Clientes</title>
+    <title>Registro envio</title>
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link href="../css/style.css" rel="stylesheet" >
 
     <!--aquí va la conexión a la base de datos-->
     <?php
@@ -15,61 +18,62 @@
     <link rel="icon" href="../images/logo.png">
 
 
-    <div class="cajafuera">
-        <img class="portada" src="../images/IMAGES/PORTADA.png">
-        <div class="formulariocaja">
+    <form id="msform">
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li class="active">Localizacion</li>
+    <li>Contacto</li>
+  </ul>
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Localizacion</h2>
+    <h3 class="fs-subtitle">Datos para entrega</h3>
+    <input type="text" name="direc" placeholder="Direccion" required="">
+    <input type="text" name="loca" placeholder="Localidad" required="">
+    <input type="text" name="bar" placeholder="Barrio" required="">
+    <input type="button" name="next" class="next action-button" value="siguiente" >
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Contacto</h2>
+    <h3 class="fs-subtitle">Informacion para contacto</h3>
+    <input type="email" name="gmail" placeholder="Gmail" required="">
+    <input type="text" name="tele" placeholder="Telefono" required="">
+    <input type="button" name="previous" class="previous action-button" value="anterior" >
+    <input type="button" name="enviar" class="next action-button" value="Enviar" 2>
+  </fieldset>
+</form>
+<?php
+if (isset($_POST['enviar'])) {
+    $dirr = $_POST['direc'];
+    $local = $_POST['loca'];
+    $barr = $_POST['bar'];
+    $cor= $_POST['gmail'];
+    $telef = $_POST['tele'];
 
 
-            <ul>
-                <li><a href="../index.html" class="Boton">INICIO</a></li>
-            </ul>
+    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Barrio, correo, telefonno) VALUES ('', '$dirr', '$local', '$barr', '$cor', '$telef')");
 
-            <div class="login-box">
-                <h1>REGISTRO CLIENTES</h1>
-                <!--Formulario para registrar-->
-                
-                <form method="POST" action="" class="form">
+    if (!$guardar) {
 
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Direccion" name="direc" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingrese Localidad" name="loca" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="tele" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Barrio" name="bar" required="">
-                    <br>
-                    <input type="submit" class="inicioboton" name="enviar" value="Enviar">
-
-                    <br>
-                </form>
-            </div>
-        </div>
-        <?php
-
-        if (isset($_POST['enviar'])) {
-            $dirr = $_POST['direc'];
-            $local = $_POST['loca'];
-            $telef = $_POST['tele'];
-            $barr = $_POST['bar'];
-
-            $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Telefono, Barrio) VALUES ('', '$dirr', '$local', '$telef', '$barr')");
-
-            if (!$guardar) {
-
-                echo "error al registrar";
-            } else {
-        ?>
-                <script>
-                    window.alert("Sus datos han sido registrados,Bienvenido!");
-                    window.location = "../index.html";
-                </script>
+        echo "error al registrar";
+    } else {
+?>
+        <script>
+            window.alert("Sus datos han sido registrados,Bienvenido!");
+            window.location = "../index.html";
+        </script>
 </body>
 
 </script>
 <?php
 
-            }
-        }
-        mysqli_close($conex);
+    }
+}
 ?>
-
+                
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="../js/script.js"></script>
 </body>
 
 </html>
