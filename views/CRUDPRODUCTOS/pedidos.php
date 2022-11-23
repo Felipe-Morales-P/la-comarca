@@ -1,8 +1,3 @@
-<?php  
-include ("php\conexion.php");
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -76,17 +71,30 @@ include ("php\conexion.php");
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
-                   
         </div>
-           
+            <div id="layoutSidenav_content">
+               
+                                    
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../../scripts.js"></script>
+        <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="JS/datatables-simple-demo.js"></script>
-
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="assets/demo/chart-pie-demo.js"></script>
         <script>
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -103,21 +111,5 @@ if (sidebarToggle) {
 
 });
         </script>
-
-        <script>
-            window.addEventListener('layoutSidenav_content', event => {
-
-const datatablesSimple = document.getElementById('datatablesSimple');
-if (datatablesSimple) {
-    new simpleDatatables.DataTable(datatablesSimple);
-}
-});
-            </script>
     </body>
 </html>
-
-
-
-
-
-<!--Busca por VaidrollTeam para más proyectos. -->
