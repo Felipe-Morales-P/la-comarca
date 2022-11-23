@@ -4,7 +4,7 @@
 	header("Pragma: no-cache"); 
 	header("Expires: 0");
 
-	require_once 'conexion.php';
+	require_once 'php/conexion.php';
 	
 	$output = "";
 	
