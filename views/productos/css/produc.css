@@ -1,13 +1,26 @@
-body {
-	margin: 0;
+*{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px; 
 	padding: 0;
+	box-sizing: border-box;
 	font-family: sans-serif;
-background-image: url(../img/images/PEN.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	font-family: 'Forum', cursive;  
+
+}
+.body{
 	
+
+}
+.sesion{
+	background-image: url(../img/images/.png);
+	background-repeat: no-repeat;
+	margin: auto;
+	background-size: 100%;
+	background-attachment: fixed;
+	height: 40em;
+	width: 79em;
+	position: absolute;
 	
 }
 .logo{
@@ -20,10 +33,10 @@ background-image: url(../img/images/PEN.jpg);
 }
 .logo:hover{
     width: 200px;
-     background-repeat: no-repeat;   
-     border-radius: 60px;
-filter: saturate(200%);
-transition: 0.5s;
+    background-repeat: no-repeat;   
+    border-radius: 60px;
+    filter: saturate(200%);
+    transition: 0.5s;
 
 }
 .INICIO{
@@ -33,8 +46,8 @@ transition: 0.5s;
     transition: all 300ms ease;
     display: inline-block;
     width: 128px;
-    border: 2px solid #314b68;
-    color: #314b68;
+    border: 2px solid #43638a;
+    color: #000000;
     font-size: 20px;
     text-align: center;
     text-decoration: none;
@@ -47,7 +60,7 @@ transition: 0.5s;
     transition: all 300ms ease;
     display: inline-block;
     width: 128px;
-    border: 2px solid #314b68;
+    border: 2px solid #5595df;
     color: #ffffff;
     font-size: 20px;
 	background-color: #314b68;
@@ -58,9 +71,9 @@ transition: 0.5s;
 }
 .titulo{
 	
-	border: 2px solid #314b68;
+	border: 2px solid #094891;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 27px;
 	background-color: #314b68;
 	padding: 50px;
 	text-align: center;
@@ -82,30 +95,101 @@ ul li a {
 }
 
 /*Categorias*/
-.container {
+
+.box-card{
 	
-	padding: -15px;
-	width: 100%;
-	max-width: 1200px;
-	height: 430;
+
+	align-items: start;
+	margin: 0 0 1rem;
+	height: 10rem;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: auto;
+	position: absolute;
+  top: 5em;
+  left: 15em;
 }
-.container .card {
-	width: 330px;
-	height: 430px;
-	border-radius: 10px;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+
+.card {
+	position: relative;
+	width: 300px;
+	height: 350px;
+	float:left;
+	display: flex;
+	max-width: 220vh;
 	overflow: hidden;
+	justify-content: center;
+	align-items: center;
 	margin: 20px;
+	
+	
+}
+.card .face {
+	position: absolute;
+	width: 280px;
+	height: 320px;
+	backface-visibility: hidden;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: 3s;
+}
+.card .front {
+	transform: perspective(600px) rotate (0deg);
+	box-shadow: 0 5px 10px #000;
+}
+.card .front img {
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.card .front h3{
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	color:#fff;
+	background: rgba(0, 0, 0, .4);
 	text-align: center;
-	transition: all 0.25s;
-	float: left;
-	background-color: white;
 }
-.container .card:hover {
-	transform: translateY(-20px);
-	box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+.card .back {
+	transform: perspective(600px) rotateY(180deg);
+	background: rgb(160, 176, 184);
+	padding: 15px;
+	color: #050505;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	box-shadow: 0 5px 10px #000; 
 }
+ 
+.card .back .link {
+	border-top: solid 1px #f3f3f3;
+	height: 50px;
+	line-height: 50px;
+
+}
+
+.card .back .link a {
+	color: #f3f3f3
+
+}
+
+.card .back h3 {
+	font-size: 30px;
+	margin-top: 20px;
+	letter-spacing: 2px;
+}
+
+.card .back p{
+	letter-spacing: 1px;
+}
+
+.card:hover .from {
+	transform: perspective(600px) rotateY(180deg)
+}
+.card:hover .back {
+	transform: perspective(700px) rotateY(360deg)
+}
+
+
