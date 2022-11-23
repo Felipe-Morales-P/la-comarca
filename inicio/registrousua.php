@@ -37,24 +37,23 @@
 
                 <form method="POST" action="validarregistro.php" class="form">
 
-                    <select class="cajaentradatexto" name="txttipoIdent" value="" placeholder="Tipo identificación">
+                    <select class="cajaentradatexto" name="tipoIdeC" value="" placeholder="Tipo identificación">
                         <option value="CC">Cedula de Ciudadania</option>
                         <option value="CE">Cedula de Extranjeria </option>
                         <option value="PS">Pasaporte</option>
                     </select>
 
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Numero de Documento" name="txtnumIdent" required=>
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Nombre" name="txtnomClient" required="">
-                    <input type="email" class="cajaentradatexto" placeholder="&#128273 Ingresar Correo" name="txtemail" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="txttel" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Dirección" name="txtdir" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Usuario" name="txtusuario" required="">
-                    <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="txtpassword" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Numero de Documento" name="numIdeC" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Nombre" name="nomC" required="">
+                    <input type="email" class="cajaentradatexto" placeholder="&#128273 Ingresar Correo" name="corrCl" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="teleCl" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Dirección" name="direCl" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Usuario" name="UsuCl" required="">
+                    <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="">
 
-                    <br>                    
-                    <input type="checkbox" class="checkboxvai"><span>He leído y acepto los términos y condiciones de uso.</span>
+                    <br>
+                    <input type="submit" class="inicioboton" name="registrarse" value="Registrar">
 
-                    <input type="submit" class="inicioboton" name="btnregistrarx" value="Registrar">
 
                     <p><a class="textofinal" href="iniciousua.php">¿Ya tienes una cuenta?</a></p>
 
