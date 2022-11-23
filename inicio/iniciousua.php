@@ -27,10 +27,11 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<h1>INICIO SESION DE CLIENTES</h1>
 
 					<br><br>
-					<label for="usuario">CORREO</label>
-					<br><input type="email" class="cajaentradatextoUsuario" placeholder="Ingrese su correo" name="correoCl" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu correo')">><br><br>
-					<label for="password">CONTRASEÑA</label>
-					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese contraseña" name="contraCl" required="" oninvalid="this.setCustomValidity(' Por favor introduce tu contraseña')">
+					<label for="usuario">&#128235; Correo</label>
+					<br><input type="email" class="cajaentradatextoUsuario" placeholder="Ingrese su correo" name="correoCl" required="" >
+					<br><br>
+					<label for="password">&#128272; Contraseña</label>
+					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese contraseña" name="contraCl" required="" >
 					<br><br><br>
 					<input class="inicioboton" type="submit" name="login" value="INGRESAR"></a>
 					<br>

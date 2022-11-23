@@ -43,17 +43,16 @@
                         <option value="PS">Pasaporte</option>
                     </select>
 
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Numero de Documento" name="numIdeC" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Nombre" name="nomC" required="">
-                    <input type="email" class="cajaentradatexto" placeholder="&#128273 Ingresar Correo" name="corrCl" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Telefono" name="teleCl" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Dirección" name="direCl" required="">
-                    <input type="text" class="cajaentradatexto" placeholder="&#128273 Ingresar Usuario" name="UsuCl" required="">
-                    <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128220 Ingresar Numero de Documento" name="numIdeC" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128101 Ingresar Nombre" name="nomC" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="email" class="cajaentradatexto" placeholder="&#128235 Ingresar Correo" name="corrCl" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128241 Ingresar Telefono" name="teleCl" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="text" class="cajaentradatexto" placeholder="&#129517 Ingresar Dirección" name="direCl" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="text" class="cajaentradatexto" placeholder="&#128278 Ingresar Usuario" name="UsuCl" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
+                    <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="" oninvalid="this.setCustomValidity('Este campo es obligatorio')">
 
                     <br>
                     <input type="submit" class="inicioboton" name="registrarse" value="Registrar">
-
 
                     <p><a class="textofinal" href="iniciousua.php">¿Ya tienes una cuenta?</a></p>
 
