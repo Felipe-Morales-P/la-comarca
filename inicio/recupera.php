@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+<?php
+
+require '../config/conexion.php';
+require '../config/funcs.php';
+
+$errors = array();
+
+if (!empty($_POST)) 
+{
+	$email = $mysqli->real_escape_string($_POST['email']);
+
+	if(!isEmail($email)) 
+	{
+
+		$errors[] = "Debe  ingresar un correo electronico valido";
+
+		if(emailExiste($email))
+		{
+
+			header("Location: ../views/productos/index.php");
+
+
+		}
+
+	}
+}
+
+?>
 <html>
 
 <head>
@@ -22,21 +49,19 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 			</ul>
 			<div class="login-box">
 
-				<form method="POST" action="validarinicio.php">
+				<form method="POST" action="<?php $_SERVE['PHP_SELF']; ?>">
 
-					<h1>INICIO SESION DE CLIENTES</h1>
+					<h1>RECUPERA TU CONTRASEÑA</h1>
 
 					<br><br>
 					<label for="usuario">&#128235; Correo</label>
-					<br><input type="email" class="cajaentradatextoUsuario" placeholder="Ingrese su correo" name="correoCl" required="">
-					<br><br>
-					<label for="password">&#128272; Contraseña</label>
-					<br><input type="password" class="cajaentradatexto" placeholder="Ingrese contraseña" name="contraCl" required="">
+					<br><input type="email" class="cajaentradatextoUsuario" placeholder="Ingrese su correo" name="email" required="">
 					<br><br><br>
-					<input class="inicioboton" type="submit" name="login" value="INGRESAR"></a>
+					<input class="inicioboton" type="submit" name="login" value="Enviar"></a>
+
+					<br>
 					<br>
 					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>
-					<p><a class="textofinal" href="recupera.php">¿Olvidaste tu contraseña?</a></p>
 				</form>
 
 			</div>
