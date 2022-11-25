@@ -36,7 +36,7 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<input class="inicioboton" type="submit" name="login" value="INGRESAR"></a>
 					<br>
 					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>
-					<p><a class="textofinal" href="recupera.php">¿Olvidaste tu contraseña?</a></p>
+					<!--<p><a class="textofinal" href="recupera.php">¿Olvidaste tu contraseña?</a></p>-->
 				</form>
 
 			</div>

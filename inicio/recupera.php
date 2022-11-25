@@ -14,15 +14,40 @@ if (!empty($_POST))
 
 		$errors[] = "Debe  ingresar un correo electronico valido";
 
+	}
+
 		if(emailExiste($email))
 		{
+			$user_id = getValor('idCliente','correoCliente',$email);
+			$nombre = getValor('nombreCliente','correoCliente',$email);
 
-			header("Location: ../views/productos/index.php");
+			$token = generarTokenPass($email);
+
+			$url = 'http://'.$SERVER["SERVER NAME"].
+			'/login/cambia_pass-php?user_id='.$user_id. '&token='.$token;
+
+			$asunto = 'Recuperar Contraseña - Sistema de Usuarios';
+			$cuerpo = "¡Hola! $nombre: <br /><br />Se ha solicitado un reinicio de contrase&ntilde;a.<br /><br />
+			 Para restaurar la contrase&ntilde;a, visita la siguiente direcci&oacute;n: <a href='$url'>$url</a>";
+
+			if(enviarEmail($email, $nombre, $asunto, $cuerpo))
+			{
+				echo "Hemos enviado un correo electronico a la dirección 
+				$email para restablecer tu contraseña.<br />";
+				    echo "<a href='iniciousua.php' >Iniciar Sesion<a/a>";
+					exit;
+
+			} else {
+
+				$errors[]="Error al enviar Email";
+			}
 
 
+
+		} else {
+		
+			$errors[]="No existe el correo electronico";
 		}
-
-	}
 }
 
 ?>
@@ -63,6 +88,8 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<br>
 					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>
 				</form>
+
+				<?php echo resultBlock ($errors); ?>
 
 			</div>
 		</div>

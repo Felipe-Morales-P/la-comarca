@@ -78,10 +78,10 @@ else
 			<div class="card">
 				<div class="face front">
 					<a href="php/utiles.php"><img src="img/utiles/4.png" alt=""></a>
-					<h3>utiles</h3>
+					<h3>UTILES</h3>
 				</div>
 				<div class="face back">
-					<h3>utiles</h3>
+					<h3>UTILES</h3>
 					<p>En esta categoria podras encontrar
 						productos para que tus metas y trabajos queden de la mejor manera</p>
 					<div class="link">
@@ -95,10 +95,10 @@ else
 			<div class="card">
 				<div class="face front">
 					<a href="php/belleza.php"><img src="img/utiles/1.png" alt=""></a>
-					<h3>belleza</h3>
+					<h3>BELLEZA</h3>
 				</div>
 				<div class="face back">
-					<h3>belleza</h3>
+					<h3>BELLEZA</h3>
 					<p>En esta categoria podras encontrar
 						productos para que tu imagen y quien tu eres, luzca a la perfección</p>
 					<div class="link">
@@ -112,11 +112,11 @@ else
 			<div class="card">
 				<div class="face front">
 					<a href="php/dulces.php"><img src="img/utiles/2.png" alt=""></a>
-					<h3>dulces</h3>
+					<h3>DULCES</h3>
 				</div>
 				<div class="face back">
-					<h3>dulces</h3>
-					<p>en esta categoria podras encontrar productos para que tu dia se sienta mucho mas divertido</p>
+					<h3>DULCES</h3>
+					<p>En esta categoria podras encontrar productos para que tu dia se sienta mucho mas divertido</p>
 					<div class="link">
 						<a href="#">
 							<Details>
