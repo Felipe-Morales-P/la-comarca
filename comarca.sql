@@ -60,7 +60,13 @@ CREATE TABLE `clientes` (
   `telefonoCliente` varchar(13) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Este es el telefono del cliente',
   `direccionCliente` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la direccion del cliente',
   `contraseñaCliente` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la contraseña del cliente ',
-  `usuarioCliente` varchar(255) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el usuario del cliente'
+  `usuarioCliente` varchar(255) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el usuario del cliente',
+  `ultima_sesion` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el token del cliente para recuperar contraseña',
+  `token` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la fecha de la ultima sesion del cliente',
+  `activacion` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la activación del cliente',
+  `token_password` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es token de la contraseña del cliente',
+  `password_request` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la solicitud de la contraseña del cliente',
+  `id_tipo` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el tipo de id del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT = 'Estos son los productos ';
 
 
