@@ -5,6 +5,6 @@ $idCliente = $_GET['idCliente'];
  
 mysqli_query($conn, "DELETE FROM clientes WHERE idCliente=$idCliente");
  
-header("Location:index.php");
+header("Location: lista_cliente.php");
 
 ?>

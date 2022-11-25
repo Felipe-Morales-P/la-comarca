@@ -1,4 +1,5 @@
-<?php include_once("php/conexion.php"); 
+<?php 
+include_once("php/conexion.php"); 
     
     $nombreP = $_POST['txtnombreProducto'];
     $descpP = $_POST['txtdescripcionProducto'];
@@ -9,7 +10,9 @@
   
 	mysqli_query($conn, "INSERT INTO productos (nombreProducto,descripcionProducto,cantidadProductos,precioVenta,precioCompra,categoriaProducto) VALUES('$nombreP','$descpP','$cantP','$precioV','$precioC','$categoriaC')");
     
-header("Location:crudProductos.php");
+header("Location:lista_productos.php");
 	
 
 ?>
+
+

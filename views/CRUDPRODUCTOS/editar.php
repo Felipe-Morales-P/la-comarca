@@ -1,6 +1,6 @@
 <?php 
 include_once("php/conexion.php");
-include_once("crudProductos.php");
+include_once("lista_productos.php");
 
 
 $idProductos = $_GET['idProductos'];

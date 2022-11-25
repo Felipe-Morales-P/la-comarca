@@ -5,6 +5,6 @@ $idProductos = $_GET['idProductos'];
  
 mysqli_query($conn, "DELETE FROM productos WHERE idProductos=$idProductos");
  
-header("Location:index.php");
+header("Location: lista_productos.php");
 
 ?>

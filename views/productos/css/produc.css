@@ -14,13 +14,13 @@
 }
 
 .sesion{
-	background-image: url(../img/images/.png);
+	background-image: url(../img/images/1PEN.png);
 	background-repeat: no-repeat;
 	margin: auto;
 	background-size: 100%;
 	background-attachment: fixed;
-	height: 40em;
-	width: 79em;
+	height: 53em;
+	width: 34em;
 	position: absolute;
 	
 }
@@ -103,8 +103,8 @@ ul li a {
 	height: 10rem;
 	display: flex;
 	position: absolute;
-	 top: 10em;
-	 left: 20em;
+	 top: 5em;
+	 left: 11em;
 }
 
 .card {
@@ -152,7 +152,7 @@ ul li a {
 }
 .card .back {
 	transform: perspective(600px) rotateY(180deg);
-	background: rgb(160, 176, 184);
+	background: rgba(197, 204, 207, 0.801);
 	padding: 15px;
 	color: #050505;
 	display:flex;
