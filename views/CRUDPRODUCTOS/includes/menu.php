@@ -19,12 +19,11 @@
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
-			<span>Ventas</span>
+			<span>Dasbohard</span>
 		</a>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="nueva_venta.php">Nueva venta</a>
-				<a class="collapse-item" href="ventas.php">Ventas</a>
+				<a class="collapse-item" href="index.php">Panel Administrador</a>
 			</div>
 		</div>
 	</li>
@@ -37,7 +36,6 @@
 		</a>
 		<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="agregar_producto.php">Nuevo Producto</a>
 				<a class="collapse-item" href="lista_productos.php">Productos</a>
 			</div>
 		</div>
@@ -51,7 +49,6 @@
 		</a>
 		<div id="collapseClientes" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item" href="registro_cliente.php">Nuevo Clientes</a>
 				<a class="collapse-item" href="lista_cliente.php">Clientes</a>
 			</div>
 		</div>
