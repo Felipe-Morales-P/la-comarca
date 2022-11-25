@@ -24,7 +24,7 @@ if ($filas > 0){
 } else {
 
    $query_usuario = "INSERT INTO clientes VALUES
-   ('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada','$usuarioC')";
+   ('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada','$usuarioC','','','','','','')";
 
 $resultado_registrar = $conn->query ($query_usuario);
 if ($resultado_registrar > 0){
