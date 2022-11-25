@@ -1,7 +1,8 @@
 <?php
 
 
-function isNull ($nombre, $user, $pass, $pass_con, $email){
+function isNull ($nombre, $user, $pass, $pass_con, $email)
+{
     if(strlen(trim($nombre)) < 1|| strlen(trim($user)) < 1 || strlen(trim(
         $pass)) < 1 || strlen (trim($pass_con)) < 1 || strlen(trim($email)) < 1) 
         {
@@ -113,9 +114,16 @@ function resultBlock ($errors){
 }
 
 
-function enviarEmail ($email, $nombre, $asunto, $cuerpo){
+function enviarEmail ($email, $nombre, $asunto, $cuerpo)
+{
 
-    require_once '../../../htdocs/PHPMailer/PHP';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTPr.php';
+    require 'PHPMailer/src/Exception.php';
 
     $mail = new PHPmailer();
     $mail->issSMTP();
@@ -139,4 +147,5 @@ function enviarEmail ($email, $nombre, $asunto, $cuerpo){
     else
     return false;
 }
+
 ?>
