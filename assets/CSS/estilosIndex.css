@@ -783,3 +783,19 @@ input[type="submit"] {
     font-size: 20px;
   }
 }
+
+
+@media screen and (max-width: 1000px) {
+  #sideNav {
+    width: 35%;
+   height: 100%;
+
+ }
+}
+@media screen and (max-width: 800px) {
+  #sideNav {
+    width: 80%;
+   height: 100%;
+
+ }
+}

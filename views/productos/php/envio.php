@@ -1,79 +1,50 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
 
+    session_start();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registro envio</title>
-    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link href="../css/style.css" rel="stylesheet" >
-
-    <!--aquí va la conexión a la base de datos-->
-    <?php
-    $conex = mysqli_connect("localhost", "root", "", "comarca");
-    ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+    <title>Envio</title>
 </head>
+<body onload="showTab(current);hideMsg();">
 
-<body>
-    <link rel="icon" href="../images/logo.png">
-
-
-    <form id="msform">
-  <!-- progressbar -->
-  <ul id="progressbar">
-    <li class="active">Localizacion</li>
-    <li>Contacto</li>
-  </ul>
-  <!-- fieldsets -->
-  <fieldset>
-    <h2 class="fs-title">Localizacion</h2>
-    <h3 class="fs-subtitle">Datos para entrega</h3>
-    <input type="text" name="direc" placeholder="Direccion" required="">
-    <input type="text" name="loca" placeholder="Localidad" required="">
-    <input type="text" name="bar" placeholder="Barrio" required="">
-    <input type="button" name="next" class="next action-button" value="siguiente" >
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Contacto</h2>
-    <h3 class="fs-subtitle">Informacion para contacto</h3>
-    <input type="email" name="gmail" placeholder="Gmail" required="">
-    <input type="text" name="tele" placeholder="Telefono" required="">
-    <input type="button" name="previous" class="previous action-button" value="anterior" >
-    <input type="button" name="enviar" class="next action-button" value="Enviar" 2>
-  </fieldset>
-</form>
-<?php
-if (isset($_POST['enviar'])) {
-    $dirr = $_POST['direc'];
-    $local = $_POST['loca'];
-    $barr = $_POST['bar'];
-    $cor= $_POST['gmail'];
-    $telef = $_POST['tele'];
-
-
-    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Barrio, correo, telefonno) VALUES ('', '$dirr', '$local', '$barr', '$cor', '$telef')");
-
-    if (!$guardar) {
-
-        echo "error al registrar";
-    } else {
-?>
-        <script>
-            window.alert("Sus datos han sido registrados,Bienvenido!");
-            window.location = "../index.html";
-        </script>
+    <div id="container" class="container">
+        <form id="regForm" method="post" action="process.php">
+            <ul id="progressbar">
+                <li class="active" id="account">Localizacion</li>
+                <li id="personal">Lugar de Entrega</li>
+                <li id="contact">Datos de contacto</li>
+            </ul>
+            <div class="tab">
+                <input type="text" name="uname" placeholder="Barrio" oninput="this.className=''">
+                <input type="text" name="pass1" placeholder="Direccion" oninput="this.className=''">
+                <input type="text" name="pass2" placeholder="Confirme La Direccion" oninput="this.className=''">
+            </div>
+            <div class="tab">
+                <input type="text" name="fname" placeholder="Barrio" oninput="this.className=''">
+                <input type="text" name="lname" placeholder="Localidad" oninput="this.className=''">
+                <input type="date" name="dob" placeholder="Fecha de Compra" oninput="this.className=''">
+            </div>
+            <div class="tab">
+                <input type="text" name="addr" placeholder="Nombre" oninput="this.className=''">
+                <input type="email" name="email" placeholder="Correo Electronico" oninput="this.className=''">
+                <input type="text" name="mob" placeholder="Telefono" oninput="this.className=''">
+            </div>
+            <div style="overflow: hidden;">
+                <div style="float: right;">
+                    <button onclick="nextPrev(-1);" type="button" id="prev">Previous</button>
+                    <button onclick="nextPrev(1);" type="button" id="next">Next</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
-
-</script>
-<?php
-
-    }
-}
-?>
-                
-<!-- partial -->
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="../js/script.js"></script>
-</body>
-
 </html>
