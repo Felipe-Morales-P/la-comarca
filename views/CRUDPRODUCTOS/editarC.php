@@ -1,6 +1,6 @@
 <?php 
 include_once("php/conexion.php");
-include_once("crudClientes.php");
+include_once("lista_clientes.php");
 
 $idCliente = $_GET['idCliente'];
  
