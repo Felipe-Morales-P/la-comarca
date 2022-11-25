@@ -14,13 +14,14 @@
 }
 
 .sesion{
-	background-image: url(../img/images/1PEN.png);
-	background-repeat: no-repeat;
+
+	background-image: url(../img/images/PEN0.png);
+	background-repeat: repeat;
 	margin: auto;
 	background-size: 100%;
 	background-attachment: fixed;
-	height: 53em;
-	width: 34em;
+	height: 100%;
+	width: 100%;
 	position: absolute;
 	
 }
@@ -98,6 +99,7 @@ ul li a {
 /*Categorias*/
 
 .box-card{
+	background-image: url(../img/images/PEN0.png);
 	align-items: start;
 	margin: 0 0 1rem;
 	height: 10rem;
