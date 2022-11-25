@@ -15,6 +15,7 @@ if (!empty($_POST))
 		$errors[] = "Debe  ingresar un correo electronico valido";
 
 	}
+	
 
 		if(emailExiste($email))
 		{
