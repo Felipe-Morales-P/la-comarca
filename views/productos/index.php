@@ -62,7 +62,7 @@ else
 					</li>
 
 					<form method="POST">
-					<tr><td colspan='2' align="center"><input type="submit" value="Cerrar sesión" name="btncerrar" /></td></tr>
+					<tr><td colspan='2' aling="center"><input type="submit" value="Cerrar sesión" name="btncerrar" /></td></tr>
 					</form>
 				
 
@@ -83,7 +83,7 @@ else
 				<div class="face back">
 					<h3>UTILES</h3>
 					<p>En esta categoria podras encontrar
-						productos para que tus metas y trabajos queden de la mejor manera</p>
+						Productos para que tus metas y trabajos queden de la mejor manera</p>
 					<div class="link">
 						<a href="#">
 							<Details>
@@ -100,7 +100,7 @@ else
 				<div class="face back">
 					<h3>BELLEZA</h3>
 					<p>En esta categoria podras encontrar
-						productos para que tu imagen y quien tu eres, luzca a la perfección</p>
+						Productos para que tu imagen y quien tu eres, luzca a la perfección</p>
 					<div class="link">
 						<a href="#">
 							<Details>

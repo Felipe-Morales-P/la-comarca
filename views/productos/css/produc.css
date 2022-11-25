@@ -99,7 +99,6 @@ ul li a {
 /*Categorias*/
 
 .box-card{
-	background-image: url(../img/images/PEN0.png);
 	align-items: start;
 	margin: 0 0 1rem;
 	height: 10rem;
@@ -123,7 +122,7 @@ ul li a {
 	
 	
 }
-.card .face {
+.card .face  {
 	position: absolute;
 	width: 280px;
 	height: 320px;

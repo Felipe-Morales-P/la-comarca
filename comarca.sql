@@ -134,8 +134,9 @@ CREATE TABLE `envio` (
   `idenvio` int(11) NOT NULL,
   `Direccion` varchar(50) NOT NULL COMMENT ' Esta es la direccion a la cual entregar el envio',
   `Localidad` varchar(50) NOT NULL COMMENT ' Esta es la localidad de entrega del envio',
-  `Telefono` varchar(50) NOT NULL COMMENT ' Este es el telefono para comunicarse con el cliente',
-  `Barrio` varchar(50) NOT NULL COMMENT ' Este es el barrio de entrega del envio'
+  `Barrio` varchar(50) NOT NULL COMMENT ' Este es el barrio de entrega del envio',
+  `Correo` varchar(50) NOT NULL COMMENT 'Este es el correo al cual se le informara el envio',
+  `Telefono` varchar(50) NOT NULL COMMENT ' Este es el telefono para comunicarse con el cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT = 'Esta es la descripción del envio del producto';
 
 --
