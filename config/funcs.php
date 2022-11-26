@@ -1,12 +1,13 @@
 <?php
-    
-    require '../contrasena/correo.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
-function isNull ($nombre, $user, $pass, $pass_con, $email)
+function isNull ($nombreC, $usuarioC, $contraseña, $contraseña2, $correoC)
 {
-    if(strlen(trim($nombre)) < 1|| strlen(trim($user)) < 1 || strlen(trim(
-        $pass)) < 1 || strlen (trim($pass_con)) < 1 || strlen(trim($email)) < 1) 
+    if(strlen(trim($nombreC)) < 1|| strlen(trim($usuarioC)) < 1 || strlen(trim(
+        $contraseña)) < 1 || strlen (trim($contraseña2)) < 1 || strlen(trim($correoC)) < 1) 
         {
             return true;
             } else {
@@ -121,17 +122,23 @@ function generarTokenPass($user_id)
     return $token;
 }
 
-function enviarEmail($email, $nombre, $asunto,$cuerpo){
-
-
-    $mail = new PHPMailer();
+function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
     
+    
+    
+    //Load Composer's autoloader
+    require '../contrasena/Exception.php';
+    require '../contrasena/PHPMailer.php';
+    require '../contrasena/SMTP.php';
+
+
+    $mail =new PHPMailer();
+
 
    
         //Server settings
-        
+        $mail->isSMTP();                                       //Send using SMTP
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.zoho.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'lacomarca@zohomail.com';                     //SMTP username
@@ -140,11 +147,11 @@ function enviarEmail($email, $nombre, $asunto,$cuerpo){
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('lacomarca@zohomail.com', 'Prueba');
-        $mail->addAddress('$email');     //Add a recipient
+        $mail->setFrom('lacomarca@zohomail.com', 'Papeleria La Comarca');
+        $mail->addAddress('$correoC', '$nombreC');     //Add a recipient
         //$mail->addAddress('ellen@example.com');               //Name is optional
         //$mail->addReplyTo('info@example.com', 'Information');
-        //$mail->addCC('cc@example.com');
+        //$mail->addCC('cc@example.com'); 
         //$mail->addBCC('bcc@example.com');
     
         //Attachments
@@ -158,10 +165,10 @@ function enviarEmail($email, $nombre, $asunto,$cuerpo){
         $mail->Body    = '$cuerpo';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
-        $mail->send();
-        
-     
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        if($mail->send())
+        return true;
+        else
+        return false;
     
 }
 
@@ -189,6 +196,28 @@ function hashPassword($password)
     $hash = password_hash($password, PASSWORD_DEFAULT);
     return $hash;
 }
+
+function registraUsuario($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$contraseña_cifrada,
+$usuarioC,$token,$activo,$tipo_usuario){
+
+    global $conn;
+
+
+$stmt = $conn->prepare ("INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,
+nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente usuarioCliente,
+token,activacion,id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+$stmt -> bind_param ('$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada',
+'$usuarioC','$token','$activo','$tipo_usuario');
+
+if ($stmt->execute()){
+    return $conn->insert_id;
+}else{
+    return 0;
+}
+}
+
+
+
 
 
 function resultBlock ($errors){

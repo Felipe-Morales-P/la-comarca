@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -6,10 +6,6 @@
     <link rel="stylesheet" type="text/css" href="CSS/estilosregistro.css">
     <title>Registro Clientes</title>
 
-    <!--aquí va la conexión a la base de datos-->
-    <?php
-    $conex = mysqli_connect("localhost", "root", "", "comarca");
-    ?>
 </head>
 
 <body>
@@ -35,7 +31,7 @@
 
 
 
-                <form method="POST" action="validarregistro.php" class="form">
+                <form method="POST" action='validarregistro.php' class="form">
 
                     <select class="cajaentradatexto" name="tipoIdeC" value="" placeholder="Tipo identificación">
                         <option value="CC">Cedula de Ciudadania</option>
@@ -60,9 +56,7 @@
                     <br>
                 </form>
 
-
-
-
+<?php echo resultBlock($errors);?>
 
 
 

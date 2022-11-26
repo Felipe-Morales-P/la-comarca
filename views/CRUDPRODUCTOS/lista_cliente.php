@@ -47,6 +47,7 @@
                                     <td><?php echo $data['direccionCliente']; ?></td>
                                     <td><?php echo $data['contraseñaCliente']; ?></td>
                                     <td><?php echo $data['usuarioCliente']; ?></td>
+                                    <?php ?>
                                     <td>
                                         <a href="editar_cliente.php?id=<?php echo $data['idCliente']; ?>" class="btn btn-success"><i class='fas fa-edit'></i></a>
                                         <form action="eliminar_cliente.php?id=<?php echo $data['idCliente']; ?>" method="post" class="confirmar d-inline">
@@ -64,6 +65,7 @@
 </div>
             
     <script>
+
         function abrirform() {
             document.getElementById("formregistrar").style.display = "block";
 

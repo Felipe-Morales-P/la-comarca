@@ -57,14 +57,8 @@ if ((count($errors) == 0))
  $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
  $token = generateToken();
  
- $query_usuario = $conn ("INSERT INTO clientes (idCliente,tipoIdentificacion,numIdentificacionC,
- nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente usuarioCliente,
- token,activacion,id_tipo) 
- VALUES
-('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada',
-'$usuarioC','$token','$activo','$tipo_usuario')");
-
-$registro = $conn->query ($query_usuario);
+ $registro = registraUsuario($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$contraseña_cifrada,
+ $usuarioC,$token,$activo,$tipo_usuario);
 
 if(($registro > 0))
 {
@@ -75,19 +69,25 @@ if(($registro > 0))
    $asunto = 'Activar Cuenta - Sistema de Usuarios';
    $cuerpo = "Estimado $nombreC: <br /><br /> Para continuar con el proceso de registro, es indispensable
    que de click en la siguiente liga <a href='$url'>Activar Cuenta</a>";
-
-
    
+   if(enviarEmail($correoC, $nombreC, $asunto,$cuerpo)){
 
-   echo "<script>alert('El usuario ha sido registrado: $usuarioC');window.location='iniciousua.php'</script>";
+      echo "Para terminar el proceso de registro siga las instrucciones que le hemos enviado a la 
+      direccion de correo electronico: $correoC"; 
+      exit;
 
     }else{
 
-   echo "Error: ".$query. "<br>".mysqli_error($conn);
-   
+   $errors[]= "Error al enviar Email";
 }
 }else{
-   $errors[] = 'Error al iniciar';
+   $errors[] = "Error al registrar";
 
 }
 }
+$errors[] = "Error al comprobar la informacion";
+}
+
+
+echo resultBlock($errors);
+?>

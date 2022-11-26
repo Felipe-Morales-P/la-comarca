@@ -26,6 +26,18 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 		<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<script>
+
+function abrirform() {
+    document.getElementById("formmodificar").style.display = "block";
+
+}
+
+function cancelarform() {
+    document.getElementById("formmodificar").style.display = "none";
+}
+
+</script>   
 <div class="caja_popup2" id="formmodificar">
   <form method="POST" class="contenedor_popup" >
         <table>
