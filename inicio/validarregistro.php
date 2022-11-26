@@ -5,6 +5,8 @@ require '../config/conexion.php';
 require '../config/funcs.php';
 
 $errors = array();
+$min = 8;
+$max = 10;
 
 if(isset($_POST['registrarse'])){
 
@@ -51,10 +53,14 @@ if(!validaPassword($contraseña, $contraseña2))
    $errors[]= "Las contraseñas no coinciden";
 
 }
+if (minMax($min,$max,$contraseña))
+{
+   $errors[]="La contraseña debe ser de maximo 10 digitos";
+}
 if ((count($errors) == 0))
 { 
 
- $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
+ $contraseña_cifrada = hashPassword($contraseña);
  $token = generateToken();
 
  

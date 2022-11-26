@@ -240,11 +240,80 @@ function getValor ($campo, $campoWhere, $valor)
     }
 }
 
-function hashPassword($password)
+function hashPassword($contraseña)
 {
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($contraseña, PASSWORD_DEFAULT);
     return $hash;
 }
+
+
+function login($usuarioC, $contraseñaC)
+{
+    global $conn;
+
+    $stmt = $conn->prepare ("SELECT idCliente, id_tipo, contraseñaCliente FROM clientes
+    WHERE usuario = ? || correo = ? LIMIT 1");
+    $stmt->bind_param("ss",$usuarioC, $usuarioC);
+    $stmt->execute();
+    $stmt->store_result();
+    $rows = $stmt->num_rows;
+
+    if($rows > 0){
+
+        if(isActivo($usuarioC))
+        
+        {
+
+        $stmt->bind_result($idCliente, $id_tipo, $contraseña_cifrada);
+        $stmt->fetch();
+
+        $validaPassw = password_verify($contraseñaC,$contraseña_cifrada);
+
+        if($validaPassw){
+
+            lastSession($id);
+            $_SESSION['id_usuario']= $id;
+            $_SESSION['tipo_usuario'] =$id_tipo;
+
+            header("Location: ../views/productos/index.php");
+        } else {
+
+                $errors = 'La contrase&ntilde;a es incorrecta';
+                
+        }
+        } else {
+        
+            $errors[] = 'El usuario no esta activo';
+    }
+    } else {
+        $errors[] = 'El nombre de usuario o correo electr&oacute;nico no existe';
+    }
+    return $errors;
+}
+
+
+
+function isActivo($usuarioC)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT activacion FROM 
+    clientes WHERE usuarioC  = ? || correoC = ? LIMIT 1");
+    $stmt->bind_param('ss',$usuario,$usuario);
+    $stmt->execute();
+    $stmt->bind_result($activacion);
+    $stmt->fetch();
+    
+    if ($activacion == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 function registraUsuario($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$contraseña_cifrada,
 $usuarioC,$token,$activo,$tipo_usuario){

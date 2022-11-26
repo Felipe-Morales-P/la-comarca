@@ -1,21 +1,25 @@
 <?php
+//VALIDAR USUARIO
 
-//Validar usuario
 
 include("../config/conexion.php");
 
-$correoC = $_POST['correoCl']; 
+
+
+$errors = array();
+
+$usuarioC = $_POST['usuarioCl']; 
 $contraseñaC = $_POST['contraCl'];
 
 
-$consul = mysqli_query($conn,"SELECT * FROM clientes WHERE correoCliente = '$correoC'");
+$consul = mysqli_query($conn,"SELECT * FROM clientes WHERE correoCliente = '$usuarioC'");
 $data = mysqli_fetch_array($consul);
 
 
  if (isset($_POST['login'])) {
 
 
-    $query_login = "SELECT * FROM clientes WHERE correoCliente = '$correoC'";
+    $query_login = "SELECT * FROM clientes WHERE correoCliente = '$usuarioC'";
     $resultado = mysqli_query($conn, $query_login);
     $nr = mysqli_num_rows($resultado);
 
@@ -26,7 +30,7 @@ $data = mysqli_fetch_array($consul);
     if(($nr == 1) && (password_verify($contraseñaC,$buscar_pass ['contraseñaCliente']))){
 
         session_start();
-		$_SESSION['correoCliente']=$correoC;
+		$_SESSION['correoCliente']=$usuarioC;
         header("Location: ../views/productos/index.php");
 
     }else{
