@@ -14,49 +14,54 @@
 			<div class="table-responsive">
 				<table class="table table-striped table-bordered" id="table">
 					<thead class="thead-dark">
-					<tr>
-            <th colspan="10">
-                <h1>Listar Clientes</h1>
-        <tr>
-            <th>Id Cliente</th>
-            <th>Tipo De Identificación</th>
-            <th>Numero De Identificación</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
-            <th>Direccion</th>
-            <th>Contraseña</th>
-            <th>Usuario</th>
-            <th>Acción</th>
-        </tr>
-        <?php
+                            <th colspan="10">
+                                <h1>Listar Clientes</h1>
+                                    <tr>
+                                        <th>Id Cliente</th>
+                                        <th>Tipo De Identificación</th>
+                                        <th>Numero De Identificación</th>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
+                                        <th>Teléfono</th>
+                                        <th>Direccion</th>
+                                        <th>Contraseña</th>
+                                        <th>Usuario</th>
+                                        <th>Acción</th>
+                                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include "php/conexion.php";
 
-        if (isset($_POST['btnbuscar'])) {
-            $buscar = $_POST['txtbuscar'];
-            $queryusuarios = mysqli_query($conn, "SELECT idCliente,tipoIdentificacion,numIdentificacionC,nombreCliente,	correoCliente,telefonoCliente,direccionCliente,contraseñaCliente,usuarioCliente FROM clientes where nombreCliente like '" . $buscar . "%'");
-        } else {
-            $queryusuarios = mysqli_query($conn, "SELECT * FROM clientes ORDER BY idCliente asc");
-        }
-        $numerofila = 0;
-        while ($mostrar = mysqli_fetch_array($queryusuarios)) {
-            $numerofila++;
-            echo "<tr>";
-            echo "<td>" . $mostrar['idCliente'] . "</td>";
-            echo "<td>" . $mostrar['tipoIdentificacion'] . "</td>";
-            echo "<td>" . $mostrar['numIdentificacionC'] . "</td>";
-            echo "<td>" . $mostrar['nombreCliente'] . "</td>";
-            echo "<td>" . $mostrar['correoCliente'] . "</td>";
-            echo "<td>" . $mostrar['telefonoCliente'] . "</td>";
-            echo "<td>" . $mostrar['direccionCliente'] . "</td>";
-            echo "<td>" . $mostrar['contraseñaCliente'] . "</td>";
-            echo "<td>" . $mostrar['usuarioCliente'] . "</td>";
-            echo "<td style='width:26%'><a href=\"editar.php?idCliente=$mostrar[idCliente]\">Modificar</a> | <a href=\"eliminarC.php?idCliente=$mostrar[idCliente]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreCliente]?')\">Eliminar</a></td>";
-        }
-        ?>
-    </table>
-            </div>
+                        $query = mysql_query($conexion, "SELECT * FROM 'clientes'");
+                        $result = mysqli_num_rows($query);
+                        if ($result > 0) {
+                            while ($data = mysql_fetch_assoc($query)) { ?>
+                                <tr>
+                                    <td><?php echo $data['idCliente']; ?></td>
+                                    <td><?php echo $data['tipoIdentificacion']; ?></td>
+                                    <td><?php echo $data['numIdentificacionC']; ?></td>
+                                    <td><?php echo $data['nombreCliente']; ?></td>
+                                    <td><?php echo $data['correoCliente']; ?></td>
+                                    <td><?php echo $data['telefonoCliente']; ?></td>
+                                    <td><?php echo $data['direccionCliente']; ?></td>
+                                    <td><?php echo $data['contraseñaCliente']; ?></td>
+                                    <td><?php echo $data['usuarioCliente']; ?></td>
+                                    <td>
+                                        <a href="editar_cliente.php?id=<?php echo $data['idCliente']; ?>" class="btn btn-success"><i class='fas fa-edit'></i></a>
+                                        <form action="eliminar_cliente.php?id=<?php echo $data['idCliente']; ?>" method="post" class="confirmar d-inline">
+                                            <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
+                                        </form>
+                                    </td>
+                                    <?php } ?>
+                                </tr>
+                        <?php } ?>
+                    </tbody>  
+                </table>
+    </div>
             
-       </div>
+</div>
+</div>
             
     <script>
         function abrirform() {
@@ -69,6 +74,7 @@
         }
 
     </script>
+</div>
 <!-- /.container-fluid -->
 
 </div>

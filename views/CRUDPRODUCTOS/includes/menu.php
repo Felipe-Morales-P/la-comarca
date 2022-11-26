@@ -7,7 +7,7 @@
 		</div>
 		<div class="sidebar-brand-text mx-3">Administrador</div>
 	</a>
-
+	
 	<!-- Divider -->
 	<hr class="sidebar-divider my-0">
 
@@ -19,7 +19,7 @@
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
-			<span>Dasbohard</span>
+			<span>Dashboard</span>
 		</a>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
@@ -56,3 +56,29 @@
 	
 
 </ul>
+<script>
+window.addEventListener('DOMContentLoaded', event => {
+
+
+const sidebarToggle = document.body.querySelector('#sidebarToggle');
+if (sidebarToggle) {
+    
+    sidebarToggle.addEventListener('click', event => {
+        event.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    });
+}
+
+});
+        </script>
+
+        <script>
+            window.addEventListener('layoutSidenav_content', event => {
+
+const datatablesSimple = document.getElementById('datatablesSimple');
+if (datatablesSimple) {
+    new simpleDatatables.DataTable(datatablesSimple);
+}
+});
+            </script>
