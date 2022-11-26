@@ -4,6 +4,8 @@
 require '../config/conexion.php';
 require '../config/funcs.php';
 
+$errors = array();
+
 if(isset($_POST['registrarse'])){
 
  $tipoIdC = mysqli_real_escape_string($conn, $_POST ['tipoIdeC']);
@@ -23,9 +25,11 @@ if(isset($_POST['registrarse'])){
  $resultado_user = $conn->query($sql_user);
  $filas = $resultado_user -> num_rows;
 
+ 
+
 if ($filas > 0){
 
-   $errors[]= "El numero de documento $tipoIDC : $numIDC ya existe en la base de datos";
+   $errors[]= "El numero de documento $tipoIdC : $numIdC ya existe en la base de datos";
 }
 
 if (isNull($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$usuarioC,$contraseña))
@@ -35,7 +39,7 @@ if (isNull($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$usuarioC,$
 
 if (emailExiste($correoC))
 {
-   $errors[]= "<El correo electronico $email ya existe";
+   $errors[]= "<El correo electronico $correoC ya existe";
 }
 if (usuarioExiste($usuarioC))
 {
@@ -45,24 +49,45 @@ if (usuarioExiste($usuarioC))
 if(!validaPassword($contraseña, $contraseña2))
 {
    $errors[]= "Las contraseñas no coinciden";
+
 }
-if ((count($errors)==0)&&($resultado_registrar > 0))
+if ((count($errors) == 0))
+{ 
+
+ $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
+ $token = generateToken();
+ 
+ $query_usuario = $conn ("INSERT INTO clientes (idCliente,tipoIdentificacion,numIdentificacionC,
+ nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente usuarioCliente,
+ token,activacion,id_tipo) 
+ VALUES
+('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada',
+'$usuarioC','$token','$activo','$tipo_usuario')");
+
+$registro = $conn->query ($query_usuario);
+
+if(($registro > 0))
 {
 
+   $url = 'http://'.$_SERVER["localhost"].
+   '/COMARCA/la-comarca/inicio/activar.php?id='.$registro.'&val='.$token;
+
+   $asunto = 'Activar Cuenta - Sistema de Usuarios';
+   $cuerpo = "Estimado $nombreC: <br /><br /> Para continuar con el proceso de registro, es indispensable
+   que de click en la siguiente liga <a href='$url'>Activar Cuenta</a>";
+
+
    
- $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
-
-   $query_usuario = "INSERT INTO clientes VALUES
-   ('','$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada','$usuarioC','','','','','','')";
-
-$resultado_registrar = $conn->query ($query_usuario);
 
    echo "<script>alert('El usuario ha sido registrado: $usuarioC');window.location='iniciousua.php'</script>";
+
     }else{
 
    echo "Error: ".$query. "<br>".mysqli_error($conn);
+   
+}
+}else{
+   $errors[] = 'Error al iniciar';
+
 }
 }
-
-
-?>
