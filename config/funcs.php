@@ -222,6 +222,10 @@ function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
 }
 
 
+
+
+
+
 function getValor ($campo, $campoWhere, $valor)
 {
     global $conn;
@@ -240,6 +244,10 @@ function getValor ($campo, $campoWhere, $valor)
     }
 }
 
+
+
+
+
 function hashPassword($contraseña)
 {
     $hash = password_hash($contraseña, PASSWORD_DEFAULT);
@@ -247,12 +255,17 @@ function hashPassword($contraseña)
 }
 
 
+
+
+
+
+
 function login($usuarioC, $contraseñaC)
 {
     global $conn;
 
     $stmt = $conn->prepare ("SELECT idCliente, id_tipo, contraseñaCliente FROM clientes
-    WHERE usuario = ? || correo = ? LIMIT 1");
+    WHERE usuarioCliente = ? || correoCliente = ? LIMIT 1");
     $stmt->bind_param("ss",$usuarioC, $usuarioC);
     $stmt->execute();
     $stmt->store_result();
@@ -271,14 +284,14 @@ function login($usuarioC, $contraseñaC)
 
         if($validaPassw){
 
-            lastSession($id);
-            $_SESSION['id_usuario']= $id;
+            lastSession($idCliente);
+            $_SESSION['id_usuario']= $idCliente;
             $_SESSION['tipo_usuario'] =$id_tipo;
 
             header("Location: ../views/productos/index.php");
         } else {
 
-                $errors = 'La contrase&ntilde;a es incorrecta';
+                $errors[] = 'La contrase&ntilde;a es incorrecta';
                 
         }
         } else {
@@ -287,9 +300,30 @@ function login($usuarioC, $contraseñaC)
     }
     } else {
         $errors[] = 'El nombre de usuario o correo electr&oacute;nico no existe';
-    }
+}
     return $errors;
 }
+
+
+
+
+
+
+
+function lastsession ($id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE clientes SET lastt_session=NOW(),token_password='', password_request
+    =1 WHERE idCliente = ?");
+    $stmt->bind_param('s', $idCliente);
+    $stmt->execute();
+    $stmt->close();
+}
+
+
+
+
 
 
 
@@ -298,7 +332,7 @@ function isActivo($usuarioC)
     global $conn;
 
     $stmt = $conn->prepare("SELECT activacion FROM 
-    clientes WHERE usuarioC  = ? || correoC = ? LIMIT 1");
+    clientes WHERE usuarioCliente  = ? || correoCliente = ? LIMIT 1");
     $stmt->bind_param('ss',$usuario,$usuario);
     $stmt->execute();
     $stmt->bind_result($activacion);

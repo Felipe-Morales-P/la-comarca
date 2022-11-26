@@ -8,7 +8,10 @@
 
 </head>
 <?php
-$con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEXIÓN")
+
+
+include("../config/conexion.php");
+include("../config/funcs.php");
 
 ?>
 
@@ -38,6 +41,8 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 					<p><a class="textofinal" href="registrousua.php">¿Aun no tienes una cuenta?</a></p>
 					<!--<p><a class="textofinal" href="recupera.php">¿Olvidaste tu contraseña?</a></p>-->
 				</form>
+
+				
 
 			</div>
 		</div>
