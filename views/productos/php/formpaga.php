@@ -6,9 +6,6 @@ include("conexion.php");
 <html lang="es">
 
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel="stylesheet" href="../css/style.css">
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -262,65 +259,6 @@ include("conexion.php");
 
     </div>
     </div>
-
-
-<!-- partial:index.partial.html -->
-<!-- multistep form -->
-<form id="msform">
-  <!-- progressbar -->
-  <ul id="progressbar">
-    <li class="active">Localizacion</li>
-    <li>Contacto</li>
-  </ul>
-  <!-- fieldsets -->
-  <fieldset>
-    <h2 class="fs-title">Localizacion</h2>
-    <h3 class="fs-subtitle">Localizacion</h3>
-    <input type="text" name="direc" placeholder="Direccion" />
-    <input type="text" name="loca" placeholder="Localidad" />
-    <input type="text" name="bar" placeholder="Barrio" />
-    <input type="button" name="next" class="next action-button" value="Next" />
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Contacto</h2>
-    <h3 class="fs-subtitle">Informacion para contacto</h3>
-    <input type="email" name="gmail" placeholder="Gmail" />
-    <input type="text" name="tele" placeholder="Telefono" />
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="enviar" class="next action-button" value="Next" />
-  </fieldset>
-</form>
-<?php
-if (isset($_POST['enviar'])) {
-    $dirr = $_POST['direc'];
-    $local = $_POST['loca'];
-    $telef = $_POST['tele'];
-    $barr = $_POST['bar'];
-    $cor= $_POST['gmail'];
-
-    $guardar = mysqli_query($conex, "INSERT INTO envio (idenvio, Direccion, Localidad, Telefono, Barrio, correo) VALUES ('', '$dirr', '$local', '$telef', '$barr', '$cor')");
-
-    if (!$guardar) {
-
-        echo "error al registrar";
-    } else {
-?>
-        <script>
-            window.alert("Sus datos han sido registrados,Bienvenido!");
-            window.location = "../index.html";
-        </script>
-</body>
-
-</script>
-<?php
-
-    }
-}
-?>
-                
-<!-- partial -->
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="../js/script.js"></script>
 
 
     

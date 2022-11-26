@@ -50,6 +50,7 @@
                     <input type="text" class="cajaentradatexto" placeholder="&#129517 Ingresar Dirección" name="direCl" required="">
                     <input type="text" class="cajaentradatexto" placeholder="&#128278 Ingresar Usuario" name="UsuCl" required="">
                     <input type="password" class="cajaentradatexto" placeholder="&#128274 Ingresar contraseña" name="contraCl" required="">
+                    <input type="password" class="cajaentradatexto" placeholder="&#128274 Confirmar contraseña" name="contraCl2" required="">
 
                     <br>
                     <input type="submit" class="inicioboton" name="registrarse" value="Registrar">
