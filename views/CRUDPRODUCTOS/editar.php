@@ -5,7 +5,7 @@ include_once("lista_productos.php");
 
 $idProductos = $_GET['idProductos'];
  
-$querybuscar = mysqli_query($conn, "SELECT * FROM productos WHERE idProductos=$idProductos");
+$querybuscar = mysqli_query($conn, "SELECT * FROM productos WHERE idProductos= $idProductos");
  
 while($mostrar = mysqli_fetch_array($querybuscar))
 {
@@ -23,7 +23,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 <head>    
 		<title>VaidrollTeam</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="caja_popup2" id="formmodificar">
@@ -89,8 +89,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
  
     $querymodificar = mysqli_query($conn, "UPDATE productos SET nombreProducto='$nombreP1',descripcionProducto='$descpP1',cantidadProductos='$cantP1',precioVenta='$precioV1',precioCompra='$precioC1', categoriaProducto ='$categoriaC1' WHERE idProductos=$idProductos1");
 
-  	echo "<script>window.location= 'crudProductos.php' </script>";
+  	echo "<script>window.location= 'index.php' </script>";
     
 }
 ?>
-	

@@ -23,7 +23,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 <head>    
 		<title>VaidrollTeam</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="caja_popup2" id="formmodificar">

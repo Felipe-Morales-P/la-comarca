@@ -1,4 +1,6 @@
-<?php include_once "includes/header.php"; ?>
+<?php include_once "includes/header.php"; 
+include("php/conexion.php");
+?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -15,7 +17,7 @@
 				<table class="table table-striped table-bordered" id="table">
 					<thead class="thead-dark">
                     <tr>
-                        <th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()"><i class='fas fa-audio-description'></i>Agregar</a></th></tr>
+                        <th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Agregar</a></th></tr>
                         <tr>
                             <th>Id Producto</th>
                             <th>Nombre del Producto</th>
@@ -50,7 +52,7 @@
                         echo "<td style='width:26%'><a href=\"editar.php?idProductos=$mostrar[idProductos]\">Modificar</a> | <a href=\"eliminar.php?idProductos=$mostrar[idProductos]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreProducto]?')\">Eliminar</a></td>";           
                     }
                     ?>
-                </table>
+
             <script>
                 function abrirform() {
                     document.getElementById("formregistrar").style.display = "block";
@@ -102,17 +104,17 @@
         </table>
     </form>
 </div>
-				
-            <!-- Optional JavaScript -->
+       
+  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script>     
-  
+   
+</body>
 
-</div>
+
 <!-- /.container-fluid -->
 
 </div>

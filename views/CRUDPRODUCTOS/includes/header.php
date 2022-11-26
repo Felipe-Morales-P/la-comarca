@@ -16,12 +16,13 @@ include "php/conexion.php";
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
 	<title>Punto de Venta</title>
 
 	<!-- Custom styles for this template-->
 	<link href="css/styles.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -36,14 +37,12 @@ include "php/conexion.php";
 
 			<!-- Main Content -->
 			<div id="content">
+
 				<!-- Topbar -->
 				<nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
+					<!-- Sidebar Toggle-->
+				<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
-					<!-- Sidebar Toggle (Topbar) -->
-					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-						<i class="fa fa-bars"></i>
-					</button>
-					
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
@@ -72,3 +71,30 @@ include "php/conexion.php";
 					</ul>
 
 				</nav>
+
+				<script>
+window.addEventListener('DOMContentLoaded', event => {
+
+
+const sidebarToggle = document.body.querySelector('#sidebarToggle');
+if (sidebarToggle) {
+    
+    sidebarToggle.addEventListener('click', event => {
+        event.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    });
+}
+
+});
+        </script>
+
+        <script>
+            window.addEventListener('nav-link collapsed', event => {
+
+const datatablesSimple = document.getElementById('datatablesSimple');
+if (datatablesSimple) {
+    new simpleDatatables.DataTable(datatablesSimple);
+}
+});
+            </script>
