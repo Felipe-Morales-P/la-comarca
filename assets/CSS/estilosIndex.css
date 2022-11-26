@@ -72,7 +72,7 @@ header .titulo {
   font-weight: bolder;
   display: inline;
   padding:15px ;
-  
+  z-index: 4;
 }
 
 .subtitulo {
@@ -296,7 +296,8 @@ nav ul li a:hover {
 /* Main */
 
 .miembros {
-  padding: 260px;
+  padding-top: 22em;
+  padding-bottom: 22em;
   background-image: url(../../images/IMAGES/PEN33.jpg);
   background-attachment: fixed;
   background-position: center;
@@ -413,10 +414,11 @@ nav ul li a:hover {
 
 .card {
   color: black;
+  display: inline-block;
   font-weight: bold;
   margin: 20px 0;
-  width: 30%;
-  height: 300px;
+  width: 18em;
+  height: 20em;
   text-align: center;
   padding: 20px;
   box-shadow: 0px 0px 4px 0 rgba(0, 0, 0, 0.849);
@@ -503,6 +505,12 @@ nav ul li a:hover {
   width: 30%;
 }
 
+.contenedorcategorias
+{
+
+
+}
+
 /* Footer */
 
 .pie-pagina {
@@ -538,8 +546,16 @@ nav ul li a:hover {
 
 .pie-pagina .contenedor-1 .caja figure img {
   width: 100%;
+  border-radius: 50em;
+  box-shadow: 12px 12px 8px 8px rgba(0, 0, 0, 0.5);
 }
-
+.pie-pagina .contenedor-1 .caja figure img:hover {
+  width: 12, 5em;
+  background-repeat: no-repeat;
+  border-radius: 3, 75px;
+  filter: saturate(200%);
+  transition: 0.5s;
+}
 .pie-pagina .contenedor-1 .caja h2 {
   color: #fff;
   margin-bottom: 25px;
@@ -773,6 +789,7 @@ input[type="submit"] {
 
   .sobre-nosotros {
     font-size: 46px;
+    
   }
 
   .categorias-subtitulo {
