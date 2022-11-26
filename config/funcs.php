@@ -122,6 +122,54 @@ function generarTokenPass($user_id)
     return $token;
 }
 
+
+function validaIdToken($id, $token){
+
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT activacion FROM clientes WHERE idCliente = ? 
+    AND token = ? LIMIT 1");
+    $stmt->bind_param("is",$id, $token);
+    $stmt->execute();
+    $stmt->store_result();
+    $rows = $stmt->num_rows;
+
+    if($rows > 0){
+        $stmt->bind_result($activacion);
+        $stmt->fetch();
+
+        if($activacion == 1){
+            $msg = "La cuenta ya se activo anteriormente";
+        }else{
+
+            if(activarUsuario($id)){
+                $msg = 'Cuenta activada';} 
+                
+                else {
+
+                    $msg = 'Error al Activar cuenta.';
+                
+            } 
+        }
+        }else {
+            $msg = 'No existe el registro para activar.';
+        }
+    return $msg;
+}
+
+function activarUsuario ($id){
+
+    global $conn;
+
+    $stmt = $conn->prepare("UPDATE clientes SET activacion=1 WHERE idCliente = ?");
+    $stmt->bind_param('s',$id);
+    $result = $stmt ->execute();
+    $stmt->close();
+    return $result;
+}
+
+
+
 function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
     
     
@@ -148,7 +196,7 @@ function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
     
         //Recipients
         $mail->setFrom('lacomarca@zohomail.com', 'Papeleria La Comarca');
-        $mail->addAddress('$correoC', '$nombreC');     //Add a recipient
+        $mail->addAddress($correoC, $nombreC);     //Add a recipient
         //$mail->addAddress('ellen@example.com');               //Name is optional
         //$mail->addReplyTo('info@example.com', 'Information');
         //$mail->addCC('cc@example.com'); 
@@ -161,10 +209,11 @@ function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->CharSet = 'UTF-8';
-        $mail->Subject = '$asunto';
-        $mail->Body    = '$cuerpo';
+        $mail->Subject = $asunto;
+        $mail->Body    = $cuerpo;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    
+
+
         if($mail->send())
         return true;
         else
@@ -204,10 +253,11 @@ $usuarioC,$token,$activo,$tipo_usuario){
 
 
 $stmt = $conn->prepare ("INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,
-nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente usuarioCliente,
+nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente, usuarioCliente,
 token,activacion,id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-$stmt -> bind_param ('$tipoIdC','$numIdC','$nombreC','$correoC','$telefonoC',' $direccionC','$contraseña_cifrada',
-'$usuarioC','$token','$activo','$tipo_usuario');
+
+$stmt -> bind_param ('sisssssssii',$tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC, $direccionC,$contraseña_cifrada,
+$usuarioC,$token,$activo,$tipo_usuario);
 
 if ($stmt->execute()){
     return $conn->insert_id;

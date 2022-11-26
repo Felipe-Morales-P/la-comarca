@@ -39,7 +39,7 @@ if (isNull($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$usuarioC,$
 
 if (emailExiste($correoC))
 {
-   $errors[]= "<El correo electronico $correoC ya existe";
+   $errors[]= "El correo electronico $correoC ya existe";
 }
 if (usuarioExiste($usuarioC))
 {
@@ -56,14 +56,19 @@ if ((count($errors) == 0))
 
  $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
  $token = generateToken();
+
  
  $registro = registraUsuario($tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC,$direccionC,$contraseña_cifrada,
  $usuarioC,$token,$activo,$tipo_usuario);
 
+
+
+
+ 
 if(($registro > 0))
 {
 
-   $url = 'http://'.$_SERVER["localhost"].
+   $url = 'http://'.$_SERVER["SERVER_NAME"].
    '/COMARCA/la-comarca/inicio/activar.php?id='.$registro.'&val='.$token;
 
    $asunto = 'Activar Cuenta - Sistema de Usuarios';
@@ -79,15 +84,58 @@ if(($registro > 0))
     }else{
 
    $errors[]= "Error al enviar Email";
-}
+    }
+
 }else{
+   
    $errors[] = "Error al registrar";
-
-}
-}
-$errors[] = "Error al comprobar la informacion";
 }
 
+}
+} else { 
+   
+   $errors[] = "Error al comprobar la informacion";
+
+}
 
 echo resultBlock($errors);
 ?>
+<?
+
+/*
+ $contraseña_cifrada = password_hash ($contraseña, PASSWORD_DEFAULT);
+ $token = generateToken();
+
+ $query = mysqli_prepare($conn, "INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,
+ nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente, usuarioCliente,
+ token,activacion,id_tipo) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+// ss por que son 2 string
+mysqli_stmt_bind_param($query, 'sisssssssii', $tipoIdC,$numIdC,$nombreC,$correoC,$telefonoC, $direccionC,$contraseña_cifrada,
+$usuarioC,$token,$activo,$tipo_usuario);
+
+// validamos que se enviaron los campos
+// esto es igual a un if else
+// expresion_a_evaluar ? si_es_true : si_no_else;
+
+$tipoIdC = isset($_POST['tipoIdentificacion']) ? $_POST['tipoIdentificacion'] : 0;
+$numIdC =  isset($_POST['numIdentificacionC']) ? $_POST['numIdentificacionC'] : 0;
+$nombreC =  isset($_POST['nombreCliente']) ? $_POST['nombreCliente'] : 0;
+$correoC =  isset($_POST['token']) ? $_POST['token'] : 0; 
+$telefonoC =  isset($_POST['activacion']) ? $_POST['activacion'] : 0;
+$direccionC =  isset($_POST['id_tipo']) ? $_POST['id_tipo'] : 0;
+$contraseña =  isset($_POST['contraseñaCliente']) ? $_POST['contraseñaC'] : 0;
+$usuarioC =  isset($_POST['usuarioCliente']) ? $_POST['usuarioCliente'] : 0;
+$token = isset($_POST['token']) ? $_POST['token'] : 0;
+$activo = isset($_POST['activacion']) ? $_POST['activacion'] : 0;
+$tipo_usuario = isset($_POST['id_tipo']) ? $_POST['id_tipo'] : 0;
+
+// validamos que no sea alguan 0
+if ( !$tipoIdC || !$numIdC || !$nombreC || !$correoC || !$telefonoC ||!$direccionC || !$usuarioC || !$contraseña || !$token || !$activo || !$tipo_usuario){
+  // finalizamos la ejecucion
+  die("uno o ambos parametro sin definir!");
+}
+// si ambos estan definidos
+// continuamos con la ejecucion
+mysqli_stmt_execute($query);
+*/
+

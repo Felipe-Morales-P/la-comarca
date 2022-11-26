@@ -9,9 +9,8 @@
 </head>
 
 <body>
+
     <link rel="icon" href="../images/logo.png">
-
-
     <div class="cajafuera">
         <img class="portada" src="../images/IMAGES/PORTADA.png">
         <div class="formulariocaja">
