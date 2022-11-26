@@ -4,7 +4,7 @@ if (empty($_SESSION['active'])) {
 	
 }
 
-include "php/conexion.php";
+include "../../config/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

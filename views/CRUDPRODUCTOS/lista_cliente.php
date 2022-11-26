@@ -31,12 +31,12 @@
                     </thead>
                     <tbody>
                         <?php
-                        include "php/conexion.php";
+                        require '../../config/conexion.php';
 
-                        $query = mysql_query($conexion, "SELECT * FROM 'clientes'");
+                        $query = mysqli_query($conn, "SELECT * FROM clientes");
                         $result = mysqli_num_rows($query);
                         if ($result > 0) {
-                            while ($data = mysql_fetch_assoc($query)) { ?>
+                            while ($data = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
                                     <td><?php echo $data['idCliente']; ?></td>
                                     <td><?php echo $data['tipoIdentificacion']; ?></td>
