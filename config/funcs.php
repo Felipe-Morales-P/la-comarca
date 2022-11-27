@@ -275,14 +275,14 @@ function login($usuarioC, $contraseñaC)
 
         if(isActivo($usuarioC))
         
-        {
+         {
 
-        $stmt->bind_result($idCliente, $id_tipo, $contraseña_cifrada);
-        $stmt->fetch();
+            $queryusuario = mysqli_query($conn,"SELECT * FROM login WHERE usu = '$nombre'");
+            $nr 		= mysqli_num_rows($queryusuario); 
+            $mostrar	= mysqli_fetch_array($queryusuario); 
 
-        $validaPassw = password_verify($contraseñaC,$contraseña_cifrada);
 
-        if($validaPassw){
+        if((password_verify($pass,$mostrar['pass'])){
 
             lastSession($idCliente);
             $_SESSION['id_usuario']= $idCliente;
@@ -291,15 +291,15 @@ function login($usuarioC, $contraseñaC)
             header("Location: ../views/productos/index.php");
         } else {
 
-                $errors[] = 'La contrase&ntilde;a es incorrecta';
+                $errors = 'La contrase&ntilde;a es incorrecta';
                 
         }
         } else {
         
-            $errors[] = 'El usuario no esta activo';
+            $errors = 'El usuario no esta activo';
     }
     } else {
-        $errors[] = 'El nombre de usuario o correo electr&oacute;nico no existe';
+        $errors = 'El nombre de usuario o correo electr&oacute;nico no existe';
 }
     return $errors;
 }
@@ -374,6 +374,7 @@ if ($stmt->execute()){
 
 
 function resultBlock ($errors){
+
     if(count($errors)>0)
     {
         echo "<div id='error' class='alert alert-danger' role='alert'>

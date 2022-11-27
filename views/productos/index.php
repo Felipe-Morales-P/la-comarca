@@ -34,7 +34,7 @@ else
 }
 
 ?>
-
+<header>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.php">categorias</a>
@@ -70,6 +70,7 @@ else
 
 			</li>
 		</ul>
+	</header>
 	</nav>
 	<section class="sesion">
 		<div class="box-card">
