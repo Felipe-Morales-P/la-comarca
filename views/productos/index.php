@@ -84,8 +84,8 @@ if ($row ['id_tipo'] = 1)
 
 			</li>
 		</ul>
-	</header>
 	</nav>
+    </header>
 	<section class="sesion">
 		<div class="box-card">
 
