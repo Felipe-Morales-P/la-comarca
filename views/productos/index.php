@@ -21,7 +21,7 @@
 include('../../config/conexion.php');
 
 ?>
-
+<header>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.php">categorias</a>
@@ -57,6 +57,7 @@ include('../../config/conexion.php');
 
 			</li>
 		</ul>
+	</header>
 	</nav>
 	<section class="sesion">
 		<div class="box-card">
