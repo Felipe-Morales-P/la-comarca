@@ -1,5 +1,4 @@
 <?php
-include("php\conexion.php");
 ?>
 <html lang="en">
 
@@ -20,18 +19,6 @@ include("php\conexion.php");
 	
 <?php
 include('../../config/conexion.php');
-
-session_start();
-
-if(isset($_SESSION['correoCliente']))
-{
-	$usuarioingresado = $_SESSION['correoCliente'];
-	echo "<h1>Bienvenido: $usuarioingresado </h1>";
-}
-else
-{
-	header('location: index.html');
-}
 
 ?>
 
