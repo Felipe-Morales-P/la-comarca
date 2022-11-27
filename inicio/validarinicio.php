@@ -13,14 +13,14 @@ $errors = array();
 
 
     $usuarioC = $conn-> real_escape_string($_POST['usuarioCl']);
-    $contraseñaC = $conn-> real_escape_string($_POST['contraCl']);
+    $contraseña = $conn-> real_escape_string($_POST['contraCl']);
 
-    if((strlen(trim($usuarioC))) <1 || strlen (trim($contraseñaC)) <1)
+    if((strlen(trim($usuarioC))) <1 || strlen (trim($contraseña)) <1)
     {
         $errors [] = "Debe llenar todos los campos";
     }
 
-    $errors[]= login ($usuarioC,$contraseñaC);
+    $errors[]= login ($usuarioC,$contraseña);
 }
 
 echo resultBlock($errors); 
