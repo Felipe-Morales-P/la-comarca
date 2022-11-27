@@ -275,14 +275,14 @@ function login($usuarioC, $contraseñaC)
 
         if(isActivo($usuarioC))
         
-         {
+        {
 
-            $queryusuario = mysqli_query($conn,"SELECT * FROM login WHERE usu = '$nombre'");
-            $nr 		= mysqli_num_rows($queryusuario); 
-            $mostrar	= mysqli_fetch_array($queryusuario); 
+        $stmt->bind_result($idCliente, $id_tipo, $contraseña_cifrada);
+        $stmt->fetch();
 
+        $validaPassw = password_verify($contraseñaC,$contraseña_cifrada);
 
-        if((password_verify($pass,$mostrar['pass'])){
+        if($validaPassw){
 
             lastSession($idCliente);
             $_SESSION['id_usuario']= $idCliente;
@@ -299,7 +299,7 @@ function login($usuarioC, $contraseñaC)
             $errors = 'El usuario no esta activo';
     }
     } else {
-        $errors = 'El nombre de usuario o correo electr&oacute;nico no existe';
+        $errors= 'El nombre de usuario o correo electr&oacute;nico no existe';
 }
     return $errors;
 }
