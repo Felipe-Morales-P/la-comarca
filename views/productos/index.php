@@ -1,5 +1,5 @@
-<?php include_once '../../views/CRUDPRODUCTOS/includes/header.php'; 
- ?>
+<?php
+?>
 <html lang="en">
 
 <head>
@@ -21,7 +21,18 @@
 include('../../config/conexion.php');
 
 ?>
-<header>     
+<header>
+	<?php 
+	include('../../views/CRUDPRODUCTOS/includes/header.php');
+	session_start();
+if (empty($_SESSION['active'])) {
+	
+}
+include "../../config/conexion.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.php">categorias</a>
@@ -58,7 +69,7 @@ include('../../config/conexion.php');
 			</li>
 		</ul>
 	</nav>
-</header>
+    </header>
 	<section class="sesion">
 		<div class="box-card">
 
