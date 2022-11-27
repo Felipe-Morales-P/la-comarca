@@ -57,6 +57,31 @@ function minMax ($min, $max, $valor){
 
 }
 
+function rol ($idUsuario)
+{
+
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT id_tipo FROM 
+    clientes WHERE  idCliente = ?");
+    $stmt->bind_param('i',$id_tipo);
+    $stmt->execute();
+    $stmt->bind_result($id_tipo);
+    $stmt->fetch();
+    
+    if ($id_tipo == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+
 function usuarioExiste($usuarioC)
 {
     global $conn;
@@ -284,7 +309,9 @@ function login($usuarioC, $contraseñaC)
 
         if($validaPassw){
 
-            lastSession($idCliente);
+            
+
+            lastsession($idCliente);
             $_SESSION['id_usuario']= $idCliente;
             $_SESSION['tipo_usuario'] =$id_tipo;
 
@@ -310,11 +337,11 @@ function login($usuarioC, $contraseñaC)
 
 
 
-function lastsession ($id)
+function lastsession ($idCliente)
 {
     global $conn;
 
-    $stmt = $conn->prepare("UPDATE clientes SET lastt_session=NOW(),token_password='', password_request
+    $stmt = $conn->prepare("UPDATE clientes SET last_sesion=NOW(),token_password='', password_request
     =1 WHERE idCliente = ?");
     $stmt->bind_param('s', $idCliente);
     $stmt->execute();
@@ -333,7 +360,7 @@ function isActivo($usuarioC)
 
     $stmt = $conn->prepare("SELECT activacion FROM 
     clientes WHERE usuarioCliente  = ? || correoCliente = ? LIMIT 1");
-    $stmt->bind_param('ss',$usuario,$usuario);
+    $stmt->bind_param('ss',$usuarioC,$usuarioC);
     $stmt->execute();
     $stmt->bind_result($activacion);
     $stmt->fetch();

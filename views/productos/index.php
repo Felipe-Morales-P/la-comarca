@@ -1,4 +1,29 @@
 <?php
+
+session_start();
+require '../../config/conexion.php';
+require '../../config/funcs.php';
+
+if(!isset($_SESSION["id_usuario"])){
+
+
+	header ("Location: ../../index.html");
+}
+
+$idUsuario = $_SESSION['id_usuario'];
+
+$sql = "SELECT idCliente, nombreCliente, id_tipo FROM clientes WHERE idCliente = '$idUsuario'";
+$result = $conn->query($sql);
+
+$row = $result->fetch_assoc();
+
+if ($row ['id_tipo'] = 1)
+{
+
+
+}
+
+
 ?>
 <html lang="en">
 
@@ -8,20 +33,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Dashboard-Comarca</title>
+	<title>Catalogo</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="css/produc.css" rel="stylesheet" />
 	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+
+
 </head>
 
 <body class="sb-nav-fixed">
 	
-<?php
-include('../../config/conexion.php');
-
-?>
 <header>
+
+<?php echo 'Bienvenid@'.utf8_decode($row['nombreCliente']); ?>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.php">categorias</a>
@@ -126,7 +153,6 @@ if(isset($_POST['btncerrar']))
 }
 if(isset($_POST['btninicio']))
 {
-	session_destroy();
 	header('location: ../index.html');
 }
 	
