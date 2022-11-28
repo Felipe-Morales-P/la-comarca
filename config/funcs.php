@@ -183,6 +183,37 @@ function validaIdToken($id, $token){
     return $msg;
 }
 
+function verificaTokenPass($user_id, $token){
+
+    global $conn;
+
+    $stmt = $conn->prepare ("SELECT activacion FROM clientes WHERE idCliente= ?
+    AND token_password = ? AND password_request = 1 LIMIT 1");
+    $stmt->bind_param ('is', $user_id, $token);
+    $stmt->execute();
+    $stmt->store_result();
+    $num = $stmt->num_rows;
+
+    if ($num > 0)
+    {
+        $stmt->bind_result($activacion);
+        $stmt->fetch();
+        if ($activacion == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+   
+    
+
+
+
+}
+
 function activarUsuario ($id){
 
     global $conn;
@@ -322,6 +353,22 @@ function hashPassword($contraseña)
 }
 
 
+
+
+function cambiaPassword ($pass_hash, $user_id, $token)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE clientes SET contraseñaCliente = ?,
+    token_password = '', password_request=0 WHERE idCliente = ? AND token_password = ?");
+
+    $stmt->bind_param('sis',$pass_hash, $user_id, $token);
+
+    if($stmt->execute()){
+        return true;
+    } else {
+        return false;
+    }
+    }
 
 
 

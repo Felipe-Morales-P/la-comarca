@@ -75,7 +75,7 @@ if(($registro > 0))
 {
 
    $url = 'http://'.$_SERVER["SERVER_NAME"].
-   '/COMARCA/la-comarca/inicio/activar.php?id='.$registro.'&val='.$token;
+   '/la-comarca/inicio/activar.php?id='.$registro.'&val='.$token;
 
    $asunto = 'Activar Cuenta - Sistema de Usuarios';
    $cuerpo = "Estimado $nombreC: <br /><br /> Para continuar con el proceso de registro, es indispensable
