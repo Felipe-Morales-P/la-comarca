@@ -53,7 +53,7 @@ include("../../config/conexion.php");
                         echo "<td style='width:26%'><a href=\"editar.php?idProductos=$mostrar[idProductos]\">Modificar</a> | <a href=\"eliminar.php?idProductos=$mostrar[idProductos]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreProducto]?')\">Eliminar</a></td>";           
                     }
                     ?>
-
+                </table>
             <script>
                 function abrirform() {
                     document.getElementById("formregistrar").style.display = "block";
@@ -107,6 +107,7 @@ include("../../config/conexion.php");
     </form>
 </div>
        
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../../scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

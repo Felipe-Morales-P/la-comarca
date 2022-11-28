@@ -97,20 +97,20 @@ function cancelarform() {
 <?php
 	
 	if(isset($_POST['btnmodificar']))
-{    
-    $idCliente1 = $_POST['txtidCliente'];
 
-	$tipoId1 	= $_POST['txttipoIdentificacion'];
-    $numId1 	= $_POST['txtnumIdentificacionC'];
-	$nombre1 	= $_POST['txtnombre'];
-    $correo1 	= $_POST['txtcorreo'];
-    $telefono1 	= $_POST['txttelefono']; 
-    $direccion1 = $_POST ['txtdireccionCliente'];
-    $contraseña1 = $_POST ['contraseñaCliente'];
-    $usuario1 = $_POST['txtusuarioCliente'];
-    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
+{       
+    $idProductos1   = $_POST['txtidProductos'];
+    $nombreP1       = $_POST['txtnombreProducto'];
+    $descpP1        = $_POST['txtdescripcionProducto'];
+	$cantP1         = $_POST['txtcantidadProductos'];
+    $precioV1       = $_POST['txtprecioVenta'];
+    $precioC1       = $_POST['txtprecioCompra'];
+    $categoriaC1    = $_POST['txtcategoriaProducto'];
 
-  	echo "<script>window.location= 'index.php' </script>";
+ 
+    $querymodificar = mysqli_query($conn, "UPDATE productos SET nombreProducto='$nombreP1',descripcionProducto='$descpP1',cantidadProductos='$cantP1',precioVenta='$precioV1',precioCompra='$precioC1', categoriaProducto ='$categoriaC1' WHERE idProductos=$idProductos1");
+
+  	echo "<script>window.location= 'lista_productos.php' </script>";
     
 }
 ?>

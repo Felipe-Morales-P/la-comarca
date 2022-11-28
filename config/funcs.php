@@ -1,8 +1,8 @@
 <?php
 
-require '../contrasena/Exception.php';
-require '../contrasena/PHPMailer.php';
-require '../contrasena/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
 function isNull ($nombreC, $usuarioC, $contraseña, $contraseña2, $correoC)
 {
@@ -228,7 +228,13 @@ function activarUsuario ($id){
 
 function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
     
+    
+    
     //Load Composer's autoloader
+    require '../contrasena/Exception.php';
+    require '../contrasena/PHPMailer.php';
+    require '../contrasena/SMTP.php';
+
 
     $mail =new PHPMailer();
 
@@ -326,7 +332,6 @@ function cambiaPassword ($pass_hash, $user_id, $token)
 
 
 function login($usuarioC, $contraseñaC)
-
 {
     global $conn;
 
@@ -359,12 +364,7 @@ function login($usuarioC, $contraseñaC)
 
         $errors= 'El nombre de usuario o correo electr&oacute;nico no existe';
     }
-
     return $errors;
-
-
-
-
 
 
 
