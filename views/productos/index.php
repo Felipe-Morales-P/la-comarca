@@ -1,5 +1,6 @@
 <?php
-include("php\conexion.php");
+include('includes/header.php');  
+include "../../config/conexion.php";
 ?>
 <html lang="en">
 
@@ -9,32 +10,22 @@ include("php\conexion.php");
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>Dashboard-Comarca</title>
+	<title>Catalogo</title>
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	<link href="css/produc.css" rel="stylesheet" />
 	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+
+
 </head>
 
 <body class="sb-nav-fixed">
 	
-<?php
-include('../../config/conexion.php');
+<header>
 
-session_start();
-
-if(isset($_SESSION['correoCliente']))
-{
-	$usuarioingresado = $_SESSION['correoCliente'];
-	echo "<h1>Bienvenido: $usuarioingresado </h1>";
-}
-else
-{
-	header('location: index.html');
-}
-
-?>
-
+<?php echo 'Bienvenid@'.utf8_decode($row['nombreCliente']); ?>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.php">categorias</a>
@@ -71,6 +62,7 @@ else
 			</li>
 		</ul>
 	</nav>
+    </header>
 	<section class="sesion">
 		<div class="box-card">
 
@@ -138,7 +130,6 @@ if(isset($_POST['btncerrar']))
 }
 if(isset($_POST['btninicio']))
 {
-	session_destroy();
 	header('location: ../index.html');
 }
 	
