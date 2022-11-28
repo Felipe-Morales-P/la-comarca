@@ -1,10 +1,10 @@
 <?php 
-include_once("conexion.php");
+include_once("../../../config/conexion.php");
 session_start ();
 
-$idCliente = $_GET['idCliente'];
+$idCliente = $_SESSION['id_usuario'];
 
-$querybuscar = mysqli_query($conex,"SELECT * FROM clientes WHERE idCliente= $idCliente");
+$querybuscar = mysqli_query($conn,"SELECT * FROM clientes WHERE idCliente= $idCliente");
  
 while($mostrar = mysqli_fetch_array($querybuscar))
 {
@@ -30,12 +30,6 @@ while($mostrar = mysqli_fetch_array($querybuscar))
   <form method="POST" class="contenedor_popup" >
         <table>
 		<tr><th colspan="2">Modificar usuario</th></tr>
-		     <tr> 
-                <td>Id Cliente</td>
-                <td><input type="text" name="txtidCliente" value="<?php echo $idCliente;?>" required ></td>
-            </tr>
-            <tr> 
-
             <tr> 
                 <td>Tipo de Identificacion</td>
                 <td><input type="text" name="txttipoIdentificacion" value="<?php echo $tipoId;?>" required></td>
@@ -86,7 +80,6 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 	
 	if(isset($_POST['btnmodificar']))
 {    
-    $idCliente1 = $_POST['txtidCliente'];
 
 	$tipoId1 	= $_POST['txttipoIdentificacion'];
     $numId1 	= $_POST['txtnumIdentificacionC'];
@@ -95,7 +88,8 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $telefono1 	= $_POST['txttelefono']; 
     $direccion1 = $_POST ['txtdireccionCliente'];
     $usuario1 = $_POST['txtusuarioCliente'];
-    $querymodificar = mysqli_query($conex, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
+    
+    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
 
   	echo "<script>window.location= 'index.php' </script>";
     

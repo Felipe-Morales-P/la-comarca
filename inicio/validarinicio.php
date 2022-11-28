@@ -1,6 +1,6 @@
 <?php
 //VALIDAR USUARIO
-
+session_start();
 
 include("../config/conexion.php");
 include("../config/funcs.php");
@@ -14,6 +14,7 @@ $errors = array();
 
     $usuarioC = $conn-> real_escape_string($_POST['usuarioCl']);
     $contraseña = $conn-> real_escape_string($_POST['contraCl']);
+
 
     if((strlen(trim($usuarioC))) <1 || strlen (trim($contraseña)) <1)
     {
