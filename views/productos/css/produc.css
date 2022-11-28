@@ -13,6 +13,7 @@
 
 }
 
+
 .sesion{
 	background-image: url(../img/images/PEN1.jpg);
 	background-repeat: repeat;
@@ -70,11 +71,16 @@
     border-radius: 10px;
 
 }
+
+.titulo2{
+
+	font-size: 80px;
+}
 .titulo{
 	
 	border: 2px solid #094891;
     color: #ffffff;
-    font-size: 27px;
+    font-size: 50em;
 	background-color: #314b68;
 	padding: 50px;
 	text-align: center;
@@ -84,6 +90,7 @@
 }
 
 
+ 
 ul li  {
 	list-style: none;
 	color: white;
@@ -100,18 +107,23 @@ ul li a {
 .box-card{
 	
 	align-items: start;
-	margin: 0 0 1rem;
-	height: 10rem;
+	margin-left: 30 em;
+	margin-top: 30 em;
+	height: 40rem;
 	display: flex;
 	position: absolute;
-	top: 5em;
-	left: 11em;
+	top: 13em;
+	left: 28em;
+	bottom: 0em;
+	right: 0em;
 }
 
 .card {
+	border-color:rgb(129, 45, 45);
+	background-color:  rgb(129, 45, 45);
 	position: relative;
-	width: 300px;
-	height: 350px;
+	width: 310px;
+	height: 330px;
 	float:left;
 	display: flex;
 	max-width: 220vh;

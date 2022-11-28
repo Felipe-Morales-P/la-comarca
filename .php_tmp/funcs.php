@@ -360,10 +360,12 @@ function login($usuarioC, $contraseñaC)
             $errors = 'El usuario no esta activo';
         }
     
+
+
         $errors= 'El nombre de usuario o correo electr&oacute;nico no existe';
-    
+    }
     return $errors;
-}
+
 
 
 
