@@ -1,5 +1,5 @@
 <?php 
-include_once("php/conexion.php");
+include_once("../../config/conexion.php");
 include_once("lista_productos.php");
 
 
@@ -31,7 +31,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 <script>
 
 function abrirform() {
-    document.getElementById("formodificar").style.display = "block";
+    document.getElementById("formmodificar").style.display = "block";
 
 }
 
@@ -85,3 +85,24 @@ function cancelarform() {
     </form>
 </div>
 </html>
+
+<?php
+	
+	if(isset($_POST['btnmodificar']))
+{    
+    $idCliente1 = $_POST['txtidCliente'];
+
+	$tipoId1 	= $_POST['txttipoIdentificacion'];
+    $numId1 	= $_POST['txtnumIdentificacionC'];
+	$nombre1 	= $_POST['txtnombre'];
+    $correo1 	= $_POST['txtcorreo'];
+    $telefono1 	= $_POST['txttelefono']; 
+    $direccion1 = $_POST ['txtdireccionCliente'];
+    $contraseña1 = $_POST ['contraseñaCliente'];
+    $usuario1 = $_POST['txtusuarioCliente'];
+    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
+
+  	echo "<script>window.location= 'lista_productos.php' </script>";
+    
+}
+?>
