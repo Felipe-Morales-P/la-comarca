@@ -20,7 +20,7 @@ include "../../config/conexion.php";
 
 	<!-- Custom styles for this template-->
 	<link href="css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="../css/dataTables.bootstrap4.min.css">
 	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
 
@@ -31,22 +31,21 @@ include "../../config/conexion.php";
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<?php include_once "includes/menu.php"; 
-		?>
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
+				
 
 				<!-- Topbar -->
 				<nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
-					<!-- Sidebar Toggle-->
-				<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-
-
+					<a class= "navbar-brand ps-3 text-white" href="../../index.html">CATEGORIAS</a>
+                 
+            
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
+						
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
@@ -59,7 +58,7 @@ include "../../config/conexion.php";
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="#">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-									Admin
+									usuario
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="logout.php">
@@ -73,7 +72,7 @@ include "../../config/conexion.php";
 
 				</nav>
 
-				<script>
+			 <script>
 window.addEventListener('DOMContentLoaded', event => {
 
 
