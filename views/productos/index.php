@@ -25,6 +25,7 @@ if ($row ['id_tipo'] = 1)
 
 
 ?>
+
 <html lang="en">
 
 <head>
