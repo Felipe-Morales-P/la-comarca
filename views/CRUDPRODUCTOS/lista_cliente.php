@@ -31,12 +31,12 @@
                     </thead>
                     <tbody>
                         <?php
-                        include "php/conexion.php";
+                        require '../../config/conexion.php';
 
-                        $query = mysql_query($conexion, "SELECT * FROM 'clientes'");
+                        $query = mysqli_query($conn, "SELECT * FROM clientes");
                         $result = mysqli_num_rows($query);
                         if ($result > 0) {
-                            while ($data = mysql_fetch_assoc($query)) { ?>
+                            while ($data = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
                                     <td><?php echo $data['idCliente']; ?></td>
                                     <td><?php echo $data['tipoIdentificacion']; ?></td>
@@ -48,7 +48,7 @@
                                     <td><?php echo $data['contraseñaCliente']; ?></td>
                                     <td><?php echo $data['usuarioCliente']; ?></td>
                                     <td>
-                                        <a href="editar_cliente.php?id=<?php echo $data['idCliente']; ?>" class="btn btn-success"><i class='fas fa-edit'></i></a>
+                                        <a href="editarC.php?id=<?php echo $data['idCliente']; ?>" class="btn btn-success"><i class='fas fa-edit'></i></a>
                                         <form action="eliminar_cliente.php?id=<?php echo $data['idCliente']; ?>" method="post" class="confirmar d-inline">
                                             <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
                                         </form>

@@ -14,13 +14,14 @@
 }
 
 .sesion{
-	background-image: url(../img/images/1PEN.png);
-	background-repeat: no-repeat;
+
+	background-image: url(../img/images/PEN0.png);
+	background-repeat: repeat;
 	margin: auto;
 	background-size: 100%;
 	background-attachment: fixed;
-	height: 53em;
-	width: 34em;
+	height: 100%;
+	width: 100%;
 	position: absolute;
 	
 }
@@ -121,7 +122,7 @@ ul li a {
 	
 	
 }
-.card .face {
+.card .face  {
 	position: absolute;
 	width: 280px;
 	height: 320px;

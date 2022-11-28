@@ -1,4 +1,5 @@
-<?php include_once "includes/header.php"; ?>
+<?php include_once "includes/header.php"; 
+ ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -7,9 +8,9 @@
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
 		<h1 class="h3 mb-0 text-gray-800">Panel de Administración</h1>
 	</div>
+
 	<!-- Content Row -->
 	<div class="row">
-
 
 		<!-- Earnings (Monthly) Card Example -->
 		<a class="col-xl-3 col-md-6 mb-4" href="lista_cliente.php">
@@ -54,8 +55,8 @@
 			</div>
 		</a>
 
-		<!-- Pending Requests Card Example -->
-		<a class="col-xl-3 col-md-6 mb-4" href="ventas.php">
+			<!-- Pending Requests Card Example -->
+			<a class="col-xl-3 col-md-6 mb-4" href="ventas.php">
 			<div class="card border-left-warning shadow h-100 py-2">
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">

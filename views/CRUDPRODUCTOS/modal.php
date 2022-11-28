@@ -1,5 +1,5 @@
 <?php
-include("php/conexion.php");
+include("../../config/conexion.php");
 session_start();
 //print_r($_POST);
 if (!empty($_POST)) {
@@ -42,7 +42,7 @@ if ($_POST['action'] == 'searchCliente') {
     $dni = $_POST['clientes'];
 
     $query = mysqli_query($conexion, "SELECT * FROM clientes WHERE idCliente LIKE '$idCliente'");
-    mysqli_close($conexion);
+    mysqli_close($conexi);
     $result = mysqli_num_rows($query);
     $data = '';
     if ($result > 0) {

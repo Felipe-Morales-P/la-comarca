@@ -1,4 +1,6 @@
 <?php
+    
+    require '../contrasena/correo.php';
 
 
 function isNull ($nombre, $user, $pass, $pass_con, $email)
@@ -17,10 +19,10 @@ function isNull ($nombre, $user, $pass, $pass_con, $email)
 
 
 
-function isEmail ($email)
+function isEmail ($correoC)
 {
 
-    if (filter_var($email,FILTER_VALIDATE_EMAIL)){
+    if (filter_var($correoC,FILTER_VALIDATE_EMAIL)){
         return true;
     }else{
     return false;
@@ -28,14 +30,38 @@ function isEmail ($email)
 }
 
 
-
-
-function emailExiste($email)
+function validaPassword($var1, $var2)
 {
-    global $mysqli;
+    if(strcmp($var1, $var2) !== 0){
+        return false;
+    } else {
+    return true;
+    }
+        
+}
 
-    $stmt = $mysqli->prepare("SELECT idClientes FROM clientes WHERE correoCliente = ? LIMIT 1");
-    $stmt->bind_param("s", $email);
+function minMax ($min, $max, $valor){
+    if(strlen (trim($valor)) < $min)
+    {
+        return true;
+    }
+    else if(strlen(trim($valor)) > $max)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+function usuarioExiste($usuarioC)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idCliente FROM clientes WHERE usuarioCliente = ? LIMIT 1");
+    $stmt->bind_param("s", $usuarioC);
     $stmt->execute();
     $stmt->store_result();
     $num = $stmt->num_rows;
@@ -49,13 +75,44 @@ function emailExiste($email)
     }
 }
 
+
+function emailExiste($correoC)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idCliente FROM clientes WHERE correoCliente = ? LIMIT 1");
+    $stmt->bind_param("s", $correoC);
+    $stmt->execute();
+    $stmt->store_result();
+    $num = $stmt->num_rows;
+    $stmt-> close();
+
+    if ($num > 0)
+    {
+        return true;    
+    } else {
+    return false;
+    }
+}
+
+
+
+function generateToken()
+{
+    $gen = md5(uniqid(mt_rand(),false));
+    return $gen;
+}
+
+
+
+
 function generarTokenPass($user_id)
 {
-    global $mysql;
+    global $conn; 
 
     $token= generateToken();
 
-    $stmt = $mysqli->prepare("UPDATE clientes SET token_password=?,
+    $stmt = $conn->prepare("UPDATE clientes SET token_password=?,
     password_request=1 WHERE idCliente= ?");
     $stmt->bind_param('ss',$token,$user_id);
     $stmt->execute();
@@ -64,14 +121,56 @@ function generarTokenPass($user_id)
     return $token;
 }
 
+function enviarEmail($email, $nombre, $asunto,$cuerpo){
 
+
+    $mail = new PHPMailer();
+    
+
+   
+        //Server settings
+        
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.zoho.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'lacomarca@zohomail.com';                     //SMTP username
+        $mail->Password   = 'comarca123';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+        //Recipients
+        $mail->setFrom('lacomarca@zohomail.com', 'Prueba');
+        $mail->addAddress('$email');     //Add a recipient
+        //$mail->addAddress('ellen@example.com');               //Name is optional
+        //$mail->addReplyTo('info@example.com', 'Information');
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
+    
+        //Attachments
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = '$asunto';
+        $mail->Body    = '$cuerpo';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    
+        $mail->send();
+        
+     
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    
+}
 
 
 function getValor ($campo, $campoWhere, $valor)
 {
-    global $mysqli;
+    global $conn;
 
-    $stmt = $ $mysqli->prepare ("SELECT $campo FROM clientes WHERE $campoWhere = ? LIMIT 1");
+    $stmt = $conn->prepare ("SELECT $campo FROM clientes WHERE $campoWhere = ? LIMIT 1");
     $stmt->bind_param ('s', $valor);
     $stmt->execute();
     $stmt->store_result();
@@ -83,13 +182,6 @@ function getValor ($campo, $campoWhere, $valor)
         $stmt->fetch();
         return $_campo;
     }
-}
-
-
-function generarToken()
-{
-    $gen = md5(uniqid(mt_rand(),false));
-    return $gen;
 }
 
 function hashPassword($password)
@@ -114,38 +206,6 @@ function resultBlock ($errors){
 }
 
 
-function enviarEmail ($email, $nombre, $asunto, $cuerpo)
-{
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
-    
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTPr.php';
-    require 'PHPMailer/src/Exception.php';
-
-    $mail = new PHPmailer();
-    $mail->issSMTP();
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tipo de seguridad';
-    $mail->Host = 'smtp.hostinng.com';
-    $mail->Port = 'puerto';
-
-    $mail->Username ='miemail@dominio.com';
-    $mail->Password = 'password';
-
-    $mail->setFrom('miemail@dominio.com','Sistema de Usuarios');
-    $mail->addAddres($email, $nombre);
-
-    $mail->Subject = $asunto;
-    $mail->Body    = $cuerpo;
-    $mail->IsHTML(true);
-
-    if($mail->send())
-    return true;
-    else
-    return false;
-}
 
 ?>

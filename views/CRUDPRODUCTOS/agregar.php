@@ -1,5 +1,5 @@
 <?php 
-include_once("php/conexion.php"); 
+include_once("../../config/conexion.php"); 
     
     $nombreP = $_POST['txtnombreProducto'];
     $descpP = $_POST['txtdescripcionProducto'];

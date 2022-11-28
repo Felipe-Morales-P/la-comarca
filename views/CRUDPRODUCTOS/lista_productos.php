@@ -1,5 +1,5 @@
 <?php include_once "includes/header.php"; 
-include("php/conexion.php");
+include("../../config/conexion.php");
 ?>
 
 <!-- Begin Page Content -->
@@ -8,7 +8,7 @@ include("php/conexion.php");
 	<!-- Page Heading -->
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
 		<h1 class="h3 mb-0 text-gray-800">Productos</h1>
-		<a href="agregar.php" class="btn btn-primary">Nuevo</a>
+		<a href="registro_producto.php" class="btn btn-primary">Nuevo</a>
 	</div>
 
 	<div class="row">
@@ -17,7 +17,7 @@ include("php/conexion.php");
 				<table class="table table-striped table-bordered" id="table">
 					<thead class="thead-dark">
                     <tr>
-                        <th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Agregar</a></th></tr>
+                    <th colspan="7"><h1>Listar Productos</h1><th><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Agregar</a></th></tr>
                         <tr>
                             <th>Id Producto</th>
                             <th>Nombre del Producto</th>
@@ -28,6 +28,7 @@ include("php/conexion.php");
                            <th>Categoria</th>
                        <th>Acción</th>
 			        </tr>
+                    </thead>
                     <?php 
                     if(isset($_POST['btnbuscar']))
                     {
@@ -61,7 +62,8 @@ include("php/conexion.php");
                     document.getElementById("formregistrar").style.display = "none";
                     }
             </script>
-<div class="caja_popup" id="formregistrar">
+            </table>
+            <div class="caja_popup" id="formregistrar">
   <form action="agregar.php" class="contenedor_popup" method="POST">
         <table>
 		<tr><th colspan="2">Nuevo Producto</th></tr>
@@ -105,16 +107,30 @@ include("php/conexion.php");
     </form>
 </div>
        
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../../scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="JS/datatables-simple-demo.js"></script>
 
-   
-</body>
+    <script>
+window.addEventListener('DOMContentLoaded', event => {
 
 
+const sidebarToggle = document.body.querySelector('#sidebarToggle');
+if (sidebarToggle) {
+    
+    sidebarToggle.addEventListener('click', event => {
+        event.preventDefault();
+        document.body.classList.toggle('sb-sidenav-toggled');
+        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+    });
+}
+
+});
+        </script>
+</div>
+                </div>
 <!-- /.container-fluid -->
 
 </div>
