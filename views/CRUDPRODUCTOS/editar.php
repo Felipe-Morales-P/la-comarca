@@ -77,7 +77,7 @@ function cancelarform() {
             </tr>
 				
                 <td colspan="2">
-				<a href="lista_producto.php">Cancelar</a>
+				<a href="lista_productos.php">Cancelar</a>
 				<input type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar a este producto?');">
 				</td>
             </tr>
