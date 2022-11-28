@@ -19,7 +19,7 @@
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Clientes</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data['clientes']; ?></div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800" href="lista_cliente.php"></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-users fa-2x text-gray-300"></i>
@@ -38,7 +38,7 @@
 							<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Productos</div>
 							<div class="row no-gutters align-items-center">
 								<div class="col-auto">
-									<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo $data['productos']; ?></div>
+									<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" href="lista_productos.php"></div>
 								</div>
 								<div class="col">
 									<div class="progress progress-sm mr-2">
@@ -61,8 +61,8 @@
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
-							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Ventas</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data['ventas']; ?></div>
+							<div class="text-xs font-weight-bold text-warning text-uppercase ">Ventas</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800" href="ventas.php"></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

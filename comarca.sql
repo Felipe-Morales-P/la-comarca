@@ -57,12 +57,12 @@ CREATE TABLE `clientes` (
   `direccionCliente` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la direccion del cliente',
   `contraseñaCliente` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la contraseña del cliente ',
   `usuarioCliente` varchar(255) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el usuario del cliente',
-  `last_sesion` datetime COLLATE latin1_general_ci NULL COMMENT 'Este es el token del cliente para recuperar contraseña',
-  `token` varchar(40) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la fecha de la ultima sesion del cliente',
-  `activacion` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la activación del cliente',
-  `token_password` varchar(100) COLLATE latin1_general_ci NULL COMMENT 'Este es token de la contraseña del cliente',
-  `password_request` int(10) COLLATE latin1_general_ci NULL COMMENT 'Esta es la solicitud de la contraseña del cliente',
-  `id_tipo` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el tipo de id del cliente'
+  `last_sesion` datetime DEFAULT NULL COLLATE latin1_general_ci NULL COMMENT 'Esta es la fecha de la ultima sesion del cliente',
+  `token` varchar(40) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el token del cliente ',
+  `activacion` int(10) DEFAULT 0 COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la activación del cliente',
+  `token_password` varchar(100) COLLATE latin1_general_ci DEFAULT NULL COMMENT 'Este es token de la contraseña del cliente',
+  `password_request` int(10) DEFAULT 0 COMMENT 'Esta es la solicitud de la contraseña del cliente',
+  `id_tipo` int(10) NOT NULL COMMENT 'Este es el tipo de id del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT = 'Estos son los productos ';
 
 
@@ -71,9 +71,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `tipoIdentificacion`, `numIdentificacionC`, `nombreCliente`, `correoCliente`, `telefonoCliente`, `direccionCliente`, `contraseñaCliente`, `usuarioCliente`) VALUES
-(1, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/CYEhbijSZ2', 'Jeffer126'),
-(2, 'C.C', 54822585, 'Juanito Fonseca', 'fonseca@gmail.com', '3214594862', 'call 65 sur N87 M05', '$2y$10$lTk5QzyDGsrrdVco3cAFL.K6XM.k8IuGhKphKMRERdLYGdf4JgYyO', 'Juanito'),
-(3, 'C.C', 2489546, 'Carlitos Lucresio', 'carlitos1@gmail.com', '3214854862', 'call 78 Norte N77 M04', '$2y$10$OIbMuRJj0n6MYGmMctuLGOMYrH7gADS/KEYv.6i7Jhr8E7mitNmli', 'Carlitos16');
+(1, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/CYEhbijSZ2', 'Jeffer126');
+
 
 -- --------------------------------------------------------
 

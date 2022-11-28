@@ -48,7 +48,8 @@
                                     <td><?php echo $mostrar['contraseñaCliente']; ?></td>
                                     <td><?php echo $mostrar['usuarioCliente']; ?></td>
                                     <?php echo "<td style='width:26%'><a href=\"editarC.php?idCliente=$mostrar[idCliente]\">Modificar</a> | <a href=\"eliminarC.php?idCliente=$mostrar[idCliente]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreCliente]?')\">Eliminar</a></td>";?>
-                         
+                                    <?php ?>
+                                    
                                     <?php } ?>
                                 </tr>
                         <?php } ?>
@@ -60,6 +61,7 @@
 </div>
             
     <script>
+
         function abrirform() {
             document.getElementById("formregistrar").style.display = "block";
 
