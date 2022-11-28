@@ -19,13 +19,27 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 
 }
 ?>
+
 <html>
 <head>    
 		<title>VaidrollTeam</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+
+ 
+<script>
+
+function abrirform() {
+    document.getElementById("formodificar").style.display = "block";
+
+}
+
+function cancelarform() {
+    document.getElementById("formmodificar").style.display = "none";
+}
+</script>  
+
 <div class="caja_popup2" id="formmodificar">
   <form method="POST" class="contenedor_popup" >
         <table>
@@ -70,26 +84,4 @@ while($mostrar = mysqli_fetch_array($querybuscar))
         </table>
     </form>
 </div>
-</body>
 </html>
-
-<?php
-	
-	if(isset($_POST['btnmodificar']))
-
-{       
-    $idProductos1   = $_POST['txtidProductos'];
-    $nombreP1       = $_POST['txtnombreProducto'];
-    $descpP1        = $_POST['txtdescripcionProducto'];
-	$cantP1         = $_POST['txtcantidadProductos'];
-    $precioV1       = $_POST['txtprecioVenta'];
-    $precioC1       = $_POST['txtprecioCompra'];
-    $categoriaC1    = $_POST['txtcategoriaProducto'];
-
- 
-    $querymodificar = mysqli_query($conn, "UPDATE productos SET nombreProducto='$nombreP1',descripcionProducto='$descpP1',cantidadProductos='$cantP1',precioVenta='$precioV1',precioCompra='$precioC1', categoriaProducto ='$categoriaC1' WHERE idProductos=$idProductos1");
-
-  	echo "<script>window.location= 'lista_productos.php' </script>";
-    
-}
-?>

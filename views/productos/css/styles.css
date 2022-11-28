@@ -1,15 +1,21 @@
-
-*,html{
+*{background-color: #F8F9F9;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+}
+html {
+    height: 100%;
+    background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
 }
 body{
     margin: auto;
     padding: 0;
+
 }
 
 .container{
+    border-radius: 40px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -17,8 +23,6 @@ body{
     width:40%;
     height: 55%;
     padding: 20px;
-    border: thin solid rgba(0, 0, 0, 0.1);
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
@@ -50,7 +54,7 @@ body{
 
 #progressbar .active {
     color: #CD201F;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 #progressbar li {
@@ -59,7 +63,7 @@ body{
     width: 25%;
     float: left;
     position: relative;
-    font-weight: 400
+    font-weight: 400;
 }
 
 #progressbar #account:before {
@@ -100,17 +104,18 @@ body{
 }
 
 #progressbar li:first-child:after {
-	content: none; 
+content: none;
 }
 
 #progressbar li.active:before,
 #progressbar li.active:after {
     background: #CD201F;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .tab{
     display: none;
+
 }
 
 input {
@@ -121,7 +126,7 @@ input {
     border: thin solid rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
   }
-  
+ 
 input.invalid {
    background: #ffdddd;
 }
@@ -134,6 +139,3 @@ button {
     font-size: 17px;
     cursor: pointer;
   }
-  
-
-

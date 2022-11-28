@@ -5,10 +5,4 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
-require 'Exception.php';
-require 'PHPMailer.php';
-require 'SMTP.php';
-
-//Create an instance; passing `true` enables exceptions
 ?>
