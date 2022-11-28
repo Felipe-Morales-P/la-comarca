@@ -13,8 +13,9 @@
       $descripcionProducto = $_POST['descripcionProducto'];
       $cantidadProductos = $_POST['cantidadProductos'];
       $categoriaProductos = $_POST['categoriaProductos'];
+      $idProductos = $_SESSION['idProductos'];
 
-      $query_insert = mysqli_query($conn, "INSERT INTO productos(nombreProducto,precioVenta,precioCompra,descripcionProducto,cantidadProductos,categoriaProducto) values ('$nombreProducto', '$precioVenta', '$precioCompra', '$descripcionProducto','$cantidadProductos','$categoriaProducto')");
+      $query_insert = mysqli_query($conn, "INSERT INTO productos(nombreProducto,precioVenta,precioCompra,descripcionProducto,cantidadProductos,categoriaProducto,idProductos) values ('$nombreProducto', '$precioVenta', '$precioCompra', '$descripcionProducto','$cantidadProductos','$categoriaProducto','$idProductos')");
       if ($query_insert) {
         $alert = '<div class="alert alert-primary" role="alert">
                 Producto Registrado

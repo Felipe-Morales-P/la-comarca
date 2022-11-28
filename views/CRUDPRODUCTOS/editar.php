@@ -63,7 +63,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
             </tr>
 				
                 <td colspan="2">
-				<a href="index.php">Cancelar</a>
+				<a href="lista_producto.php">Cancelar</a>
 				<input type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar a este producto?');">
 				</td>
             </tr>
@@ -89,7 +89,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
  
     $querymodificar = mysqli_query($conn, "UPDATE productos SET nombreProducto='$nombreP1',descripcionProducto='$descpP1',cantidadProductos='$cantP1',precioVenta='$precioV1',precioCompra='$precioC1', categoriaProducto ='$categoriaC1' WHERE idProductos=$idProductos1");
 
-  	echo "<script>window.location= 'index.php' </script>";
+  	echo "<script>window.location= 'lista_productos.php' </script>";
     
 }
 ?>
