@@ -1,29 +1,6 @@
 <?php
-
-session_start();
-require '../../config/conexion.php';
-require '../../config/funcs.php';
-
-if(!isset($_SESSION["id_usuario"])){
-
-
-	header ("Location: ../../index.html");
-}
-
-$idUsuario = $_SESSION['id_usuario'];
-
-$sql = "SELECT idCliente, nombreCliente, id_tipo FROM clientes WHERE idCliente = '$idUsuario'";
-$result = $conn->query($sql);
-
-$row = $result->fetch_assoc();
-
-if ($row ['id_tipo'] = 1)
-{
-
-
-}
-
-
+include('includes/header.php');  
+include "../../config/conexion.php";
 ?>
 
 <html lang="en">

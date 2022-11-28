@@ -1,6 +1,6 @@
 <?php 
-include_once("php/conexion.php");
-include_once("lista_clientes.php");
+include_once("../../config/conexion.php");
+include("includes/header.php");
 
 $idCliente = $_GET['idCliente'];
  
@@ -15,7 +15,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $correo = $mostrar['correoCliente'];
     $telefono = $mostrar['telefonoCliente'];
     $direccion = $mostrar['direccionCliente'];
-    $contraseña = $mostrar['contraseñaCliente'];
+    $contraseña1 = $mostrar['contraseñaCliente'];
     $usuario = $mostrar['usuarioCliente'];
 }
 ?>
@@ -75,7 +75,7 @@ function cancelarform() {
             </tr>
             <tr> 
                 <td>Contraseña</td>
-                <td><input type="password" name="txtcontraseñaCliente" value="<?php echo $contraseña;?>" required></td>
+                <td><input type="password" name="txtcontraseñaCliente" value="<?php echo $contraseña1;?>" required></td>
             </tr>
             <tr> 
                 <td>Usuario</td>
@@ -84,7 +84,7 @@ function cancelarform() {
             <tr>
 				
                 <td colspan="2">
-				<a href="index.php">Cancelar</a>
+				<a href="lista_cliente.php">Cancelar</a>
 				<input type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar a este usuario?');">
 				</td>
             </tr>
@@ -106,6 +106,7 @@ function cancelarform() {
     $correo1 	= $_POST['txtcorreo'];
     $telefono1 	= $_POST['txttelefono']; 
     $direccion1 = $_POST ['txtdireccionCliente'];
+    $contraseña1 = $_POST ['contraseñaCliente'];
     $usuario1 = $_POST['txtusuarioCliente'];
     $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
 
