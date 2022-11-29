@@ -53,6 +53,18 @@
 			</div>
 		</div>
 	</li>
+	<!-- Nav Item - Pages Collapse Menu -->
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProveedor" aria-expanded="true" aria-controls="collapseUtilities">
+			<i class="fas fa-hospital"></i>
+			<span>Ventas</span>
+		</a>
+		<div id="collapseProveedor" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<a class="collapse-item" href="ventas.php">Ventas</a>
+			</div>
+		</div>
+	</li>
 	
 
 </ul>

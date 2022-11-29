@@ -1,5 +1,5 @@
 <?php 
-include_once("php/conexion.php"); 
+include_once("../../config/conexion.php"); 
     
     $tipoId = $_POST['txttipoIdentificacion'];
     $numId = $_POST['txtnumIdentificacionC'];
@@ -11,7 +11,7 @@ include_once("php/conexion.php");
     
 	mysqli_query($conn, "INSERT INTO clientes (tipoIdentificacion,numIdentificacionC,nombreCliente,correoCliente,telefonoCliente,direccionCliente,contraseñaCliente) VALUES('$tipoId','$numId','$nombre','$correo','$telefono','$direccion','$contraseña')");
     
-header("Location:index.php");
+header("Location:lista_cliente.php");
 	
 
 ?>
