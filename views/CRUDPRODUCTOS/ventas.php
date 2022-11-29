@@ -21,9 +21,9 @@
 					</thead>
 					<tbody>
 						<?php
-						require "php/conexion.php";
-						$query = mysqli_query($conexion, "SELECT idFactura, numeroFact, numeroPed, fechaCre, fechaVen FROM factura ORDER BY idFactura DESC");
-						mysqli_close($conexion);
+						require "../../config/conexion.php";
+						$query = mysqli_query($conn, "SELECT idFactura, numeroFact, numeroPed, fechaCre, fechaVen FROM factura ORDER BY idFactura DESC");
+						mysqli_close($conn);
 						$cli = mysqli_num_rows($query);
 
 						if ($cli > 0) {
@@ -35,7 +35,7 @@
 									<td><?php echo $dato['fechaCre']; ?></td>
 									<td><?php echo $dato['fechaVen']; ?></td>
 									<td>
-										<button type="button" class="btn btn-primary view_factura" cl="<?php echo $dato['numeroPed'];  ?>" f="<?php echo $dato['idFactura']; ?>">Ver</button>
+										<button type="button" class="btn btn-primary view_factura" cl="<?php echo $dato'numeroPed';  ?>" f="<?php echo $dato'idFactura'; ?>">Ver</button>
 									</td>
 								</tr>
 						<?php }
