@@ -37,7 +37,7 @@
             </div>
             <div class="tab">
                 <input type="text" name="addr" placeholder="Nombre" oninput="this.className=''">
-                <input type="email" name="email" placeholder="Correo Electronico" oninput="this.className=''">
+                <input type="email" name="email" placeholder="Correo Electrónico" oninput="this.className=''">
                 <input type="text" name="mob" placeholder="Telefono" oninput="this.className=''">
             </div>
             <div style="overflow: hidden;">

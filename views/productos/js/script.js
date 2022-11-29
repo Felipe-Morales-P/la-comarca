@@ -3,7 +3,6 @@ var current = 0;
 function _i(id){
     return document.getElementById(id);
 }
-
 function _t(tg){
     return document.getElementsByTagName(tg);
 }
