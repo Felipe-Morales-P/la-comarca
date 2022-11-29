@@ -57,28 +57,33 @@ function minMax ($min, $max, $valor){
 
 }
 
-function rol ($idUsuario)
+function rolusuario ($id_tipo)
 {
 
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT id_tipo FROM 
-    clientes WHERE  idCliente = ?");
-    $stmt->bind_param('i',$id_tipo);
-    $stmt->execute();
-    $stmt->bind_result($id_tipo);
-    $stmt->fetch();
-    
-    if ($id_tipo == 1)
-    {
+    if(strlen($id_tipo) == 1){
         return true;
-    }
-    else
-    {
+
+    } else {
+    
+    
         return false;
     }
 }
 
+
+function roladmin ($id_tipo)
+    {
+    
+        if(strlen($id_tipo) == 2){
+            return true;
+    
+        } else {
+        
+            return false;
+        
+
+        }
+}
 
 
 
@@ -245,13 +250,13 @@ function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->Host       = 'smtp.zoho.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'lacomarca@zohomail.com';                     //SMTP username
+        $mail->Username   = 'lacomarca1@zohomail.com';                     //SMTP username
         $mail->Password   = 'comarca123';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('lacomarca@zohomail.com', 'Papeleria La Comarca');
+        $mail->setFrom('lacomarca1@zohomail.com', 'Papeleria La Comarca');
         $mail->addAddress($correoC, $nombreC);     //Add a recipient
         //$mail->addAddress('ellen@example.com');               //Name is optional
         //$mail->addReplyTo('info@example.com', 'Information');
@@ -345,34 +350,29 @@ function login($usuarioC, $contraseña)
         if(isActivo($usuarioC))
         
         {
-            $stmt->bind_result($idCliente,$id_tipo,$contraseña);
+            $stmt->bind_result($idCliente,$id_tipo,$contraseñaCliente);
             $stmt->fetch();
 
-            $validaPassw = password_verify($contraseña, $contraseña);
+            $validaPassw = password_verify($contraseña, $contraseñaCliente);
 
             if($validaPassw){
 
-                if($id_tipo = 2){
+                
+                if(rolusuario($id_tipo)){
 
-                lastSession($idCliente);
+                  header("Location: ../views/productos/index.php");
+                }
+                
 
-                    $_SESSION['id_usuario'] = $idCliente;
-                    $_SESSION['tipo_usuario'] = $id_tipo;
+                if(roladmin($id_tipo)){
 
-             header("Location: ../views/productos/index.php");
+
+             header("Location: ../views/CRUDPRODUCTOS/index.php");
+             
                 }
 
-                if($id_tipo = 1){
-
-                    lastSession($idCliente);
-
-                    $_SESSION['id_usuario'] = $idCliente;
-                    $_SESSION['tipo_usuario'] = $id_tipo;
-
-             header("Location: ../views/CRUDPRODUCTOS/views/index.php");
-
-
-                }
+                
+                
              } else {
 
                 $errors = 'La contrase&ntilde;a es incorrecta';
