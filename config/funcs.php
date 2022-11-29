@@ -107,6 +107,25 @@ function usuarioExiste($usuarioC)
 }
 
 
+function emailExisteRecuperar($email)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT idCliente FROM clientes WHERE correoCliente = ? LIMIT 1");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    $num = $stmt->num_rows;
+    $stmt-> close();
+
+    if ($num > 0)
+    {
+        return true;    
+    } else {
+    return false;
+    }
+}
+
 function emailExiste($correoC)
 {
     global $conn;
