@@ -274,8 +274,6 @@ function enviarEmail($correoC, $nombreC, $asunto,$cuerpo){
         return true;
         else
         return false;
-    
-
 
     
 }
@@ -331,7 +329,7 @@ function cambiaPassword ($pass_hash, $user_id, $token)
 
 
 
-function login($usuarioC, $contraseñaC)
+function login($usuarioC, $contraseña)
 {
     global $conn;
 
@@ -347,26 +345,54 @@ function login($usuarioC, $contraseñaC)
         if(isActivo($usuarioC))
         
         {
+            $stmt->bind_result($idCliente,$id_tipo,$contraseña);
+            $stmt->fetch();
 
-            header("Location: ../views/productos/index.php");
+            $validaPassw = password_verify($contraseña, $contraseña);
 
-        } else {
+            if($validaPassw){
+
+                if($id_tipo = 2){
+
+                lastSession($idCliente);
+
+                    $_SESSION['id_usuario'] = $idCliente;
+                    $_SESSION['tipo_usuario'] = $id_tipo;
+
+             header("Location: ../views/productos/index.php");
+                }
+
+                if($id_tipo = 1){
+
+                    lastSession($idCliente);
+
+                    $_SESSION['id_usuario'] = $idCliente;
+                    $_SESSION['tipo_usuario'] = $id_tipo;
+
+             header("Location: ../views/CRUDPRODUCTOS/views/index.php");
+
+
+                }
+             } else {
 
                 $errors = 'La contrase&ntilde;a es incorrecta';
                 
-        }
-        } else {
+             }
+    
+    } else {
         
             $errors = 'El usuario no esta activo';
-        }
-    
-
+        
+        } 
+    } else {
 
         $errors= 'El nombre de usuario o correo electr&oacute;nico no existe';
+
     }
+
     return $errors;
 
-
+}
 
 
 
