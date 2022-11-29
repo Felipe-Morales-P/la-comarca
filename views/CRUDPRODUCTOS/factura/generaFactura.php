@@ -4,20 +4,18 @@
 	{
 		header('location: ../');
 	}
-	include "../../conexion.php";
+	include "../../config/conexion.php";
 	if(empty($_REQUEST['cl']) || empty($_REQUEST['f']))
 	{
 		echo "No es posible generar la factura.";
 	}else{
 		$codCliente = $_REQUEST['cl'];
 		$noFactura = $_REQUEST['f'];
-		$consulta = mysqli_query($conexion, "SELECT * FROM configuracion");
-		$resultado = mysqli_fetch_assoc($consulta);
-		$ventas = mysqli_query($conexion, "SELECT * FROM factura WHERE nofactura = $noFactura");
+		$ventas = mysqli_query($conn, "SELECT * FROM factura WHERE idFactura = $idFactura");
 		$result_venta = mysqli_fetch_assoc($ventas);
-		$clientes = mysqli_query($conexion, "SELECT * FROM cliente WHERE idcliente = $codCliente");
+		$clientes = mysqli_query($conn, "SELECT * FROM clientes WHERE idCliente = $idCliente");
 		$result_cliente = mysqli_fetch_assoc($clientes);
-		$productos = mysqli_query($conexion, "SELECT d.nofactura, d.codproducto, d.cantidad, p.codproducto, p.descripcion, p.precio FROM detallefactura d INNER JOIN producto p ON d.nofactura = $noFactura WHERE d.codproducto = p.codproducto");
+		$productos = mysqli_query($conn, "SELECT d.idFactura, d.idProducto, d.cantidad, p.idProducto, p.descripcionProducto, p.precioVenta FROM detallefactura d INNER JOIN productos p ON d.idFactura = $idFactura WHERE d.idProducto = p.idProducto");
 		require_once 'fpdf/fpdf.php';
 		$pdf = new FPDF('P', 'mm', array(80, 200));
 		$pdf->AddPage();
@@ -30,7 +28,7 @@
 		$pdf->SetFont('Arial', 'B', 7);
 		$pdf->Cell(15, 5, "Ruc: ", 0, 0, 'L');
 		$pdf->SetFont('Arial', '', 7);
-		$pdf->Cell(20, 5, $resultado['dni'], 0, 1, 'L');
+		$pdf->Cell(20, 5, $resultado['idFactura'], 0, 1, 'L');
 		$pdf->SetFont('Arial', 'B', 7);
 		$pdf->Cell(15, 5, utf8_decode("Teléfono: "), 0, 0, 'L');
 		$pdf->SetFont('Arial', '', 7);

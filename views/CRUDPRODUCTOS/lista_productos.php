@@ -8,7 +8,7 @@ include("../../config/conexion.php");
 	<!-- Page Heading -->
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
 		<h1 class="h3 mb-0 text-gray-800">Productos</h1>
-		<a href="registro_producto.php" class="btn btn-primary">Nuevo</a>
+		<a href="create_excel.php" class="btn btn-primary">Generar reporte</a>
 	</div>
 
 	<div class="row">
