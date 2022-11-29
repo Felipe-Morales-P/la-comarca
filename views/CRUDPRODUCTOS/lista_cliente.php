@@ -31,28 +31,25 @@
                     </thead>
                     <tbody>
                         <?php
-                        include "php/conexion.php";
+                        require '../../config/conexion.php';
 
-                        $query = mysql_query($conexion, "SELECT * FROM 'clientes'");
+                        $query = mysqli_query($conn, "SELECT * FROM clientes");
                         $result = mysqli_num_rows($query);
                         if ($result > 0) {
-                            while ($data = mysql_fetch_assoc($query)) { ?>
+                            while ($mostrar = mysqli_fetch_assoc($query)) { ?>
                                 <tr>
-                                    <td><?php echo $data['idCliente']; ?></td>
-                                    <td><?php echo $data['tipoIdentificacion']; ?></td>
-                                    <td><?php echo $data['numIdentificacionC']; ?></td>
-                                    <td><?php echo $data['nombreCliente']; ?></td>
-                                    <td><?php echo $data['correoCliente']; ?></td>
-                                    <td><?php echo $data['telefonoCliente']; ?></td>
-                                    <td><?php echo $data['direccionCliente']; ?></td>
-                                    <td><?php echo $data['contraseñaCliente']; ?></td>
-                                    <td><?php echo $data['usuarioCliente']; ?></td>
-                                    <td>
-                                        <a href="editar_cliente.php?id=<?php echo $data['idCliente']; ?>" class="btn btn-success"><i class='fas fa-edit'></i></a>
-                                        <form action="eliminar_cliente.php?id=<?php echo $data['idCliente']; ?>" method="post" class="confirmar d-inline">
-                                            <button class="btn btn-danger" type="submit"><i class='fas fa-trash-alt'></i> </button>
-                                        </form>
-                                    </td>
+                                    <td><?php echo $mostrar['idCliente']; ?></td>
+                                    <td><?php echo $mostrar['tipoIdentificacion']; ?></td>
+                                    <td><?php echo $mostrar['numIdentificacionC']; ?></td>
+                                    <td><?php echo $mostrar['nombreCliente']; ?></td>
+                                    <td><?php echo $mostrar['correoCliente']; ?></td>
+                                    <td><?php echo $mostrar['telefonoCliente']; ?></td>
+                                    <td><?php echo $mostrar['direccionCliente']; ?></td>
+                                    <td><?php echo $mostrar['contraseñaCliente']; ?></td>
+                                    <td><?php echo $mostrar['usuarioCliente']; ?></td>
+                                    <?php echo "<td style='width:26%'><a href=\"editarC.php?idCliente=$mostrar[idCliente]\">Modificar</a> | <a href=\"eliminarC.php?idCliente=$mostrar[idCliente]\" onClick=\"return confirm('¿Estás seguro de eliminar a $mostrar[nombreCliente]?')\">Eliminar</a></td>";?>
+                                    <?php ?>
+                                    
                                     <?php } ?>
                                 </tr>
                         <?php } ?>
@@ -64,6 +61,7 @@
 </div>
             
     <script>
+
         function abrirform() {
             document.getElementById("formregistrar").style.display = "block";
 

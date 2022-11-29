@@ -7,7 +7,7 @@ $errors = array();
 
 if (!empty($_POST)) 
 {
-	$email = $mysqli->real_escape_string($_POST['email']);
+	$email = $conn->real_escape_string($_POST['email']);
 
 	if(!isEmail($email)) 
 	{
@@ -15,16 +15,16 @@ if (!empty($_POST))
 		$errors[] = "Debe  ingresar un correo electronico valido";
 
 	}
+	
 
 		if(emailExiste($email))
 		{
 			$user_id = getValor('idCliente','correoCliente',$email);
 			$nombre = getValor('nombreCliente','correoCliente',$email);
 
-			$token = generarTokenPass($email);
+			$token = generarTokenPass($user_id);
 
-			$url = 'http://'.$SERVER["SERVER NAME"].
-			'/login/cambia_pass-php?user_id='.$user_id. '&token='.$token;
+			$url = 'http://'.$_SERVER["SERVER_NAME"].'/la-comarca/inicio/cambia_pass.php?user_id='.$user_id. '&token='.$token;
 
 			$asunto = 'Recuperar Contraseña - Sistema de Usuarios';
 			$cuerpo = "¡Hola! $nombre: <br /><br />Se ha solicitado un reinicio de contrase&ntilde;a.<br /><br />
@@ -34,8 +34,8 @@ if (!empty($_POST))
 			{
 				echo "Hemos enviado un correo electronico a la dirección 
 				$email para restablecer tu contraseña.<br />";
-				    echo "<a href='iniciousua.php' >Iniciar Sesion<a/a>";
-					exit;
+				echo "<a href='iniciousua.php' >Iniciar Sesion<a/a>";
+				exit;
 
 			} else {
 
@@ -55,7 +55,7 @@ if (!empty($_POST))
 
 <head>
 	<meta charset="utf-8">
-	<title>¡INICIO SESION DE USUARIO!</title>
+	<title>Recuperar contraseña</title>
 	<link rel="stylesheet" href="CSS/estilosinicio.css">
 
 </head>
@@ -74,7 +74,7 @@ $con = mysqli_connect("localhost", "root", "", "comarca") or die("ERROR DE CONEX
 			</ul>
 			<div class="login-box">
 
-				<form method="POST" action="<?php $_SERVE['PHP_SELF']; ?>">
+				<form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 
 					<h1>RECUPERA TU CONTRASEÑA</h1>
 

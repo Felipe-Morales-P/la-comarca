@@ -27,23 +27,19 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `administrador`
 --
 
-CREATE TABLE `administrador` (
-  `idAdmin` int(11) NOT NULL, 
-  `tipoIdentificacionA` varchar(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el tipo de identificación de el administrador',
-  `numIdentificacionA` int(11) NOT NULL COMMENT 'Este es el numero de identificación del adimistrador',
-  `nombreAdmin` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT'Este es el nombre del administrador',
-  `correoAdmin` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el correo del administrador',
-  `telefonoAdmin` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el telefono del administrador',
-  `direccionAdmin` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la direccion del administrador',
-  `passAdmin` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la contraseña del administrador'
-  )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT = 'Esta es la tabla de administradores';
+CREATE TABLE `tipo_usuarios` (
+  `id` int(11) NOT NULL,
+  `Tipo` varchar(10) COLLATE latin1_general_ci NOT NULL COMMENT  'Este es el tipo de identificación del usuario'
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT = 'Esta es la tabla con los tipos de usuarios';
 
 --
 -- Volcado de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` (`idAdmin`, `tipoIdentificacionA`, `numIdentificacionA`, `nombreAdmin`, `correoAdmin`, `telefonoAdmin`, `direccionAdmin`, `passAdmin`) VALUES
-(1, 'CC', 1025877788, 'Maicol', 'mai@gmail.com', '544151', 'carrera 4', '$2y$10$qFGWyqOhNTpQR.1gE.6uIuOYmSakzf2AUhrCipPq4vE');
+INSERT INTO `tipo_usuarios` (`id`, `Tipo`) VALUES
+(1, 'Administrador'),
+(2, 'Usuario');
+
 
 -- --------------------------------------------------------
 
@@ -61,12 +57,12 @@ CREATE TABLE `clientes` (
   `direccionCliente` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la direccion del cliente',
   `contraseñaCliente` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Esta es la contraseña del cliente ',
   `usuarioCliente` varchar(255) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el usuario del cliente',
-  `ultima_sesion` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el token del cliente para recuperar contraseña',
-  `token` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la fecha de la ultima sesion del cliente',
-  `activacion` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la activación del cliente',
-  `token_password` varchar(50) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es token de la contraseña del cliente',
-  `password_request` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la solicitud de la contraseña del cliente',
-  `id_tipo` int(10) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el tipo de id del cliente'
+  `last_sesion` datetime DEFAULT NULL COLLATE latin1_general_ci NULL COMMENT 'Esta es la fecha de la ultima sesion del cliente',
+  `token` varchar(40) COLLATE latin1_general_ci NOT NULL COMMENT 'Este es el token del cliente ',
+  `activacion` int(10) DEFAULT 0 COLLATE latin1_general_ci NOT NULL COMMENT 'Esta es la activación del cliente',
+  `token_password` varchar(100) COLLATE latin1_general_ci DEFAULT NULL COMMENT 'Este es token de la contraseña del cliente',
+  `password_request` int(10) DEFAULT 0 COMMENT 'Esta es la solicitud de la contraseña del cliente',
+  `id_tipo` int(10) NOT NULL COMMENT 'Este es el tipo de id del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci COMMENT = 'Estos son los productos ';
 
 
@@ -75,9 +71,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `tipoIdentificacion`, `numIdentificacionC`, `nombreCliente`, `correoCliente`, `telefonoCliente`, `direccionCliente`, `contraseñaCliente`, `usuarioCliente`) VALUES
-(1, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/CYEhbijSZ2', 'Jeffer126'),
-(2, 'C.C', 54822585, 'Juanito Fonseca', 'fonseca@gmail.com', '3214594862', 'call 65 sur N87 M05', '$2y$10$lTk5QzyDGsrrdVco3cAFL.K6XM.k8IuGhKphKMRERdLYGdf4JgYyO', 'Juanito'),
-(3, 'C.C', 2489546, 'Carlitos Lucresio', 'carlitos1@gmail.com', '3214854862', 'call 78 Norte N77 M04', '$2y$10$OIbMuRJj0n6MYGmMctuLGOMYrH7gADS/KEYv.6i7Jhr8E7mitNmli', 'Carlitos16');
+(1, 'T.I', 1061697131, 'Jeffrey Ceron', 'ceronarandia@gmail.com', '3228492068', 'call 65 sur N77 M04', '$2y$10$QHNv16lf2wAGRI1kWNsR1.6.1VT5gjVTR3UXeKKgvO/CYEhbijSZ2', 'Jeffer126');
+
 
 -- --------------------------------------------------------
 
@@ -132,21 +127,19 @@ INSERT INTO `factura` (`idFactura`, `numeroFact`, `numeroPed`, `fechaCre`, `fech
 
 CREATE TABLE `envio` (
   `idenvio` int(11) NOT NULL,
+  `uname` varchar(35) NOT NULL COMMENT ' Este es el nombre de usuario', 
   `Direccion` varchar(50) NOT NULL COMMENT ' Esta es la direccion a la cual entregar el envio',
   `Localidad` varchar(50) NOT NULL COMMENT ' Esta es la localidad de entrega del envio',
-  `Telefono` varchar(50) NOT NULL COMMENT ' Este es el telefono para comunicarse con el cliente',
-  `Barrio` varchar(50) NOT NULL COMMENT ' Este es el barrio de entrega del envio'
+  `Barrio` varchar(50) NOT NULL COMMENT ' Este es el barrio de entrega del envio',
+  `fechaCompra` datetime NOT NULL COMMENT ' Esta es la fecha en la cual se realizo la compra',
+  `Nombre` varchar(50) NOT NULL COMMENT ' Este es el nombre del destinatario del envio',
+  `Correo` varchar(50) NOT NULL COMMENT 'Este es el correo al cual se le informara el envio',
+  `Telefono` varchar(50) NOT NULL COMMENT ' Este es el telefono para comunicarse con el cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT = 'Esta es la descripción del envio del producto';
 
 --
 -- Volcado de datos para la tabla `envio`
 --
-
-INSERT INTO `envio` (`idenvio`, `Direccion`, `Localidad`, `Telefono`, `Barrio`) VALUES
-(1, 'soacha', 'soacha', 'aja nose', 'nose'),
-(2, 'calle 48 A sur', 'a', 't', 't'),
-(3, 'dr 12', 'san da', '12312', 'villa'),
-(4, 'Calle 65', 'Bosa', '3228492068', 'La estacion');
 
 
 -- --------------------------------------------------------
@@ -227,8 +220,6 @@ INSERT INTO `productos` (`idProductos`, `categoriaProducto`, `img`, `nombreProdu
 --
 -- Indices de la tabla `administrador`
 --
-ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`idAdmin`);
 
 --
 -- Indices de la tabla `clientes`
@@ -277,10 +268,8 @@ ALTER TABLE `productos`
 --
 
 --
--- AUTO_INCREMENT de la tabla `administrador`
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
-ALTER TABLE `administrador`
-  MODIFY `idAdmin` int NOT NULL AUTO_INCREMENT COMMENT 'Esta es la identificacion de el administrador en la tabla';
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
