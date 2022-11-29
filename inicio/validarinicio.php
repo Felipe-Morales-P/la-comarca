@@ -1,38 +1,28 @@
 <?php
-
-//Validar usuario
+//VALIDAR USUARIO
+session_start();
 
 include("../config/conexion.php");
-
-$correoC = $_POST['correoCl']; 
-$contraseñaC = $_POST['contraCl'];
+include("../config/funcs.php");
 
 
-$consul = mysqli_query($conn,"SELECT * FROM clientes WHERE correoCliente = '$correoC'");
-$data = mysqli_fetch_array($consul);
+$errors = array();
 
 
  if (isset($_POST['login'])) {
 
 
-    $query_login = "SELECT * FROM clientes WHERE correoCliente = '$correoC'";
-    $resultado = mysqli_query($conn, $query_login);
-    $nr = mysqli_num_rows($resultado);
+    $usuarioC = $conn-> real_escape_string($_POST['usuarioCl']);
+    $contraseña = $conn-> real_escape_string($_POST['contraCl']);
 
-    $buscar_pass = mysqli_fetch_array($resultado);
-  
-    
 
-    if(($nr == 1) && (password_verify($contraseñaC,$buscar_pass ['contraseñaCliente']))){
-
-        session_start();
-		$_SESSION['correoCliente']=$correoC;
-        header("Location: ../views/productos/index.php");
-
-    }else{
-
-        echo "<script>alert('El usuario o la contraseña es incorrecto');window.location='iniciousua.php'</script>";
+    if((strlen(trim($usuarioC))) <1 || strlen (trim($contraseña)) <1)
+    {
+        $errors [] = "Debe llenar todos los campos";
     }
 
-    }
+    $errors[]= login ($usuarioC,$contraseña);
+}
+
+echo resultBlock($errors); 
 ?>

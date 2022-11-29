@@ -1,6 +1,6 @@
 <?php 
-include_once("php/conexion.php");
-include_once("lista_clientes.php");
+include_once("../../config/conexion.php");
+include("includes/header.php");
 
 $idCliente = $_GET['idCliente'];
  
@@ -15,7 +15,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
     $correo = $mostrar['correoCliente'];
     $telefono = $mostrar['telefonoCliente'];
     $direccion = $mostrar['direccionCliente'];
-    $contraseña = $mostrar['contraseñaCliente'];
+    $contraseña1 = $mostrar['contraseñaCliente'];
     $usuario = $mostrar['usuarioCliente'];
 }
 ?>
@@ -23,9 +23,21 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 <head>    
 		<title>VaidrollTeam</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<script>
+
+function abrirform() {
+    document.getElementById("formmodificar").style.display = "block";
+
+}
+
+function cancelarform() {
+    document.getElementById("formmodificar").style.display = "none";
+}
+
+</script>   
 <div class="caja_popup2" id="formmodificar">
   <form method="POST" class="contenedor_popup" >
         <table>
@@ -63,7 +75,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
             </tr>
             <tr> 
                 <td>Contraseña</td>
-                <td><input type="password" name="txtcontraseñaCliente" value="<?php echo $contraseña;?>" required></td>
+                <td><input type="password" name="txtcontraseñaCliente" value="<?php echo $contraseña1;?>" required></td>
             </tr>
             <tr> 
                 <td>Usuario</td>
@@ -72,7 +84,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
             <tr>
 				
                 <td colspan="2">
-				<a href="index.php">Cancelar</a>
+				<a href="lista_cliente.php">Cancelar</a>
 				<input type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar a este usuario?');">
 				</td>
             </tr>
@@ -85,19 +97,20 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 <?php
 	
 	if(isset($_POST['btnmodificar']))
-{    
-    $idCliente1 = $_POST['txtidCliente'];
 
-	$tipoId1 	= $_POST['txttipoIdentificacion'];
-    $numId1 	= $_POST['txtnumIdentificacionC'];
-	$nombre1 	= $_POST['txtnombre'];
-    $correo1 	= $_POST['txtcorreo'];
-    $telefono1 	= $_POST['txttelefono']; 
-    $direccion1 = $_POST ['txtdireccionCliente'];
-    $usuario1 = $_POST['txtusuarioCliente'];
-    $querymodificar = mysqli_query($conn, "UPDATE clientes SET tipoIdentificacion='$tipoId1',numIdentificacionC='$numId1',nombreCliente='$nombre1',correoCliente='$correo1',telefonoCliente='$telefono1', direccionCliente ='$direccion1', contraseñaCliente ='$contraseña1', usuarioCliente='$usuario1'   WHERE idCliente=$idCliente1");
+{       
+    $idProductos1   = $_POST['txtidProductos'];
+    $nombreP1       = $_POST['txtnombreProducto'];
+    $descpP1        = $_POST['txtdescripcionProducto'];
+	$cantP1         = $_POST['txtcantidadProductos'];
+    $precioV1       = $_POST['txtprecioVenta'];
+    $precioC1       = $_POST['txtprecioCompra'];
+    $categoriaC1    = $_POST['txtcategoriaProducto'];
 
-  	echo "<script>window.location= 'index.php' </script>";
+ 
+    $querymodificar = mysqli_query($conn, "UPDATE productos SET nombreProducto='$nombreP1',descripcionProducto='$descpP1',cantidadProductos='$cantP1',precioVenta='$precioV1',precioCompra='$precioC1', categoriaProducto ='$categoriaC1' WHERE idProductos=$idProductos1");
+
+  	echo "<script>window.location= 'lista_productos.php' </script>";
     
 }
 ?>
